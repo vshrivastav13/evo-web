@@ -1,11 +1,16 @@
 {
     "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
-    "changelog": ["@changesets/changelog-github", { "repo": "ebay/skin" }],
+    "changelog": [
+        "@changesets/changelog-github",
+        {
+            "repo": "ebay/evo-web"
+        }
+    ],
     "commit": false,
     "access": "public",
     "fixed": [],
     "linked": [],
-    "baseBranch": "master",
+    "baseBranch": "main",
     "updateInternalDependencies": "patch",
     "ignore": []
 }

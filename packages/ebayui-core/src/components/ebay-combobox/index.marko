@@ -1,0 +1,117 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+
+$ const {
+    class: inputClass,
+    id: inputId,
+    button,
+    disabled,
+    style,
+    borderless,
+    autocomplete,
+    strategy,
+    option: options = [],
+    dropdownElement,
+    floatingLabel,
+    listSelection,
+    expanded,
+    fluid,
+    ...htmlInput
+} = input;
+
+$ const {
+    class: buttonClass,
+    renderBody: buttonRenderBody,
+    ...htmlButton
+} = button || {}
+
+$ var hasButton = !!button;
+$ var defaultTag = fluid ? "div" : "span";
+$ var id = inputId || component.getElId("input");
+<${defaultTag}
+    class=[
+        "combobox",
+        floatingLabel && "floating-label",
+        fluid && "combobox--fluid",
+        inputClass,
+    ]
+    style=style
+    on-activeDescendantChange("handleActiveDescendantChange")
+    onExpander-expand("handleExpand")
+    onExpander-collapse("handleCollapse")
+>
+    <if(floatingLabel)>
+        <label
+            for=id
+            class=[
+                "floating-label__label",
+                disabled && "floating-label__label--disabled",
+            ]
+        >
+            ${floatingLabel}
+        </label>
+    </if>
+    <span class=[
+        "combobox__control",
+        hasButton && "combobox__control--actionable",
+        borderless && "combobox__control--borderless",
+    ]>
+        <!--
+        NOTE: Uses autocomplete="new-password" because of a problem with Chrome where the autfill does not
+        respect the "off" key. Tested and works in all other browsers properly as well.
+        -->
+        <input
+            ...processHtmlAttributes(htmlInput)
+            id=id
+            key="combobox"
+            type="text"
+            role="combobox"
+            disabled=disabled
+            value=state.currentValue
+            aria-autocomplete=component.autocomplete
+            aria-haspopup="listbox"
+            autocomplete="off"
+            aria-expanded="false"
+            onBlur("handleComboboxBlur")
+            onClick("handleComboboxClick")
+            onFocus("handleFocus")
+            onKeydown("handleComboboxKeyDown")
+            onKeyup("handleComboboxKeyUp")
+        >
+        <if(hasButton)>
+            <button
+                ...processHtmlAttributes(htmlButton)
+                onClick("handleButtonClick")
+                key="actionable"
+                class=[
+                    "icon-btn",
+                    "icon-btn--transparent",
+                    buttonClass,
+                ]
+            >
+                <${buttonRenderBody}/>
+            </button>
+        </if>
+    </span>
+    <if(component._hasVisibleOptions())>
+        <div key="listbox" role="listbox" class=["combobox__listbox", strategy === "fixed" && "combobox__listbox--fixed"]>
+            <for|option| of=component._getVisibleOptions()>
+                $ const { text, value, class: optionClass, ...htmlOption } = option;
+                $ var isSelected = (
+                    (value || text) === state.currentValue
+                );
+                <div
+                    ...processHtmlAttributes(htmlOption)
+                    key="options[]"
+                    role="option"
+                    class:no-update=["combobox__option", optionClass]
+                    tabindex:no-update="-1"
+                    aria-selected=isSelected && "true"
+                    onClick("handleSelectOption", text)
+                    onMousedown("handleSelectOption", text)
+                >
+                    <span>${text}</span>
+                </div>
+            </for>
+        </div>
+    </if>
+</>

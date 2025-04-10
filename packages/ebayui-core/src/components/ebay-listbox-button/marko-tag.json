@@ -1,0 +1,55 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@grow": "boolean",
+    "@borderless": "boolean",
+    "@collapseOnSelect": "boolean",
+    "@hasError": "boolean",
+    "@fluid": "boolean",
+    "@invalid": "boolean",
+    "@truncate": "boolean",
+    "@prefix-id": "string",
+    "@prefix-label": "string",
+    "@a11y-icon-prefix-text": "string",
+    "@floating-label": "string",
+    "@unselected-text": "string",
+    "@postfix-label": "string",
+    "@aria-describedby": "string",
+    "@list-selection": {
+        "enum": ["manual", "auto"]
+    },
+    "@name": "#html-name",
+    "@button-name": "#html-name",
+    "@disabled": "#html-disabled",
+    "@variant": {
+        "enum": ["standard", "form"]
+    },
+    "@option <option>[]": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@description <description>": {
+            "attribute-groups": ["html-attributes"],
+            "@*": {
+                "targetProperty": null,
+                "type": "expression"
+            },
+            "@html-attributes": "expression"
+        },
+        "@html-attributes": "expression",
+        "@text": "string",
+        "@a11y-icon-text": "string",
+        "@selected": "#html-selected",
+        "@value": "#html-value",
+        "@role": "never",
+        "@tabindex": "never",
+        "@aria-selected": "never"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/buttons-ebay-listbox-button)"
+}

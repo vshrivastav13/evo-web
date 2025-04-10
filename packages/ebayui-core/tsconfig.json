@@ -1,0 +1,22 @@
+{
+    "include": ["src", "src/**/*.json"],
+    "exclude": ["**/test/*"],
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "incremental": true,
+        "lib": ["dom", "ESNext"],
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "noImplicitOverride": true,
+        "noUnusedLocals": true,
+        "outDir": "dist",
+        "resolveJsonModule": true,
+        "rootDir": "src",
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ES2015",
+        "types": ["vite/client", "mdx", "node"],
+        "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
+    }
+}

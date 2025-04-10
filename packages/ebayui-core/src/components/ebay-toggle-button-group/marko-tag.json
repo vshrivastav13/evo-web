@@ -1,0 +1,25 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@radio": "boolean",
+    "@columnsMin": "number",
+    "@columnsMD": "number",
+    "@columnsSM": "number",
+    "@columnsXS": "number",
+    "@columnsXL": "number",
+    "@a11y-text": "string",
+    "@a11y-label-id": "string",
+    "@layout-type": "string",
+    "@button <button>[]": {
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/buttons-ebay-toggle-button-group)"
+}

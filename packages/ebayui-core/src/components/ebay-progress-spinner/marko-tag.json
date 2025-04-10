@@ -1,0 +1,13 @@
+{
+    "@size": {
+        "enum": ["small", "large"]
+    },
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@role": "never",
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/progress-ebay-progress-spinner)"
+}

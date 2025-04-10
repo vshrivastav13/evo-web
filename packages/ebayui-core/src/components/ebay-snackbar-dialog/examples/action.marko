@@ -1,0 +1,33 @@
+class {
+    declare state: {
+        open: boolean;
+    };
+
+    onCreate() {
+        this.state = { open: false };
+    }
+
+    handleOpen() {
+        this.state.open = true;
+    }
+
+    handleClose() {
+        this.state.open = false;
+        this.emit("close");
+    }
+}
+<ebay-button on-click("handleOpen")>
+    Open Action Snackbar
+</ebay-button>
+<ebay-snackbar-dialog
+    open=state.open
+    on-close("handleClose")
+    on-open("emit", "open")
+    on-action("emit", "action")
+    ...input
+>
+    <@action accessKey="U">
+        Undo
+    </@action>
+    This 'snackbar' text should be 1-2 lines.
+</ebay-snackbar-dialog>

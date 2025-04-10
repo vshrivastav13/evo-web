@@ -1,0 +1,69 @@
+import { processHtmlAttributes } from "../../../common/html-attributes";
+import { typeRoles } from "./constants";
+
+static function noop() {}
+
+$ (input as any).toJSON = noop;
+
+$ const {
+    id,
+    type,
+    heading,
+    content,
+    footer,
+    a11yCloseText,
+} = input;
+
+<span
+    id=id
+    class=`${type}__overlay`
+    role=typeRoles[type]
+    aria-labelledby=(
+        type === "tourtip" &&
+        heading &&
+        component.elId("tourtip-label")
+    )
+>
+    <span class=`${type}__pointer`/>
+    <span class=`${type}__mask`>
+        <span class=`${type}__cell`>
+            <span class=`${type}__content`>
+                <if(heading)>
+                    $ const {
+                        as: headingAs,
+                        class: headingClass,
+                        renderBody: headingRenderBody,
+                        id,
+                        ...headingInput
+                    } = heading;
+                    <${headingAs || "span"}
+                        ...processHtmlAttributes(headingInput)
+                        class=[`${type}__heading`, headingClass]
+                        id:scoped="tourtip-label">
+                        <${headingRenderBody}/>
+                    </>
+                </if>
+                <if(content)>
+                    <${Object.keys(content).length > 1 && "span"}
+                        ...processHtmlAttributes(content)>
+                        <${content.renderBody}/>
+                    </>
+                </if>
+            </span>
+            <if(type !== "tooltip")>
+                <button
+                    aria-label=a11yCloseText
+                    class=['icon-btn', 'icon-btn--transparent', `${type}__close`]
+                    type="button"
+                    onClick("handleCloseButton")>
+                    <ebay-close-16-icon/>
+                </button>
+            </if>
+            <if (footer)>
+                <span class=[`${type}__footer`, footer.class]>
+                    <${footer}/>
+                </span>
+            </if>
+        </span>
+    </span>
+</span>

@@ -1,0 +1,29 @@
+{
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "template": "./index.marko",
+    "@html-attributes": "expression",
+    "@class": "string",
+    "@style": "string",
+    "@class-prefix": "string",
+    "@type": "string",
+    "@reverse": "boolean",
+    "@fix-width": "boolean",
+    "@item <item>[]": {
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression",
+        "@class": "string",
+        "@style": "string",
+        "@value": "string",
+        "@checked": "boolean",
+        "@badge-number": "expression",
+        "@badge-aria-label": "string",
+        "@separator": "boolean"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/building-blocks-ebay-menu)"
+}

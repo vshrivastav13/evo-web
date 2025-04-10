@@ -1,0 +1,7 @@
+*.marko.js
+static/
+dist/
+docs/
+_cdn/
+__snapshots__/
+!src/node_modules

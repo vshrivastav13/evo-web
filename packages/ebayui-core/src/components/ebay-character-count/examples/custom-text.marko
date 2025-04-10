@@ -1,0 +1,63 @@
+export interface Input {
+    max?: number;
+}
+
+$ const { max = 120 } = input;
+
+<span class="field">
+    <label class="field__label field__label--stacked" for="my-input">
+        Field Label
+    </label>
+    <span class="field__control">
+        <ebay-textbox
+            value=state.inputValue
+            type="text"
+            aria-describedby="my-input-charcount"
+            class="textbox__control"
+            id="my-input"
+            aria-live=state.inputAriaLive
+            on-keyup("onTextChange")
+            on-change("onTextChange")
+        />
+    </span>
+    <div class=["field__description", "field__description--group", state.charCount > max && "field__description--attention"]>
+        <ebay-character-count
+            id="my-input-charcount"
+            value=state.inputValue
+            max=max
+            on-change("onCharCountChange")
+        >
+            ${state.charCount} of ${max} (${max - state.charCount} remaining)
+        </ebay-character-count>
+    </div>
+</span>
+class {
+    declare state: {
+        inputValue: string;
+        inputAriaLive: Marko.AriaAttributes["aria-live"];
+        charCount: number;
+    };
+    onCreate() {
+        this.state = {
+            inputValue: "",
+            inputAriaLive: null,
+            charCount: 0
+        };
+    }
+    onTextChange({ value }: { value: string }) {
+        this.state.inputValue = value;
+    }
+    onCharCountChange(e?: {
+        count: number;
+        inputAriaLive: Marko.AriaAttributes["aria-live"];
+    }) {
+        if (e) {
+            this.state.inputAriaLive = e.inputAriaLive;
+            this.state.charCount = e.count;
+            this.emit("change", {
+                count: e.count,
+                inputAriaLive: e.inputAriaLive,
+            });
+        }
+    }
+}

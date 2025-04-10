@@ -1,0 +1,17 @@
+class {
+    declare state: {
+        value: number;
+    }
+
+    onCreate() {
+        this.state = {
+            value: 0
+        };
+    }
+    handleStarChange({value}: { value: number }) {
+        this.state.value = value;
+
+    }
+}
+
+<ebay-star-rating-select value=state.value on-change('handleStarChange')/>

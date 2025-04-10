@@ -1,0 +1,30 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "attributes": {
+        "locale": "string",
+        "value": "expression",
+        "rangeEnd": "expression",
+        "range": "boolean",
+        "todayISO": "expression",
+        "disableBefore": "expression",
+        "disableAfter": "expression",
+        "disableWeekdays": "array",
+        "disableList": "array",
+        "floatingLabel": "expression",
+        "inputPlaceholderText": "expression",
+        "collapseOnSelect": "boolean",
+        "getA11yShowMonthText": "function",
+        "a11yOpenPopoverText": "string",
+        "a11ySelectedText": "string",
+        "a11yRangeStartText": "string",
+        "a11yInRangeText": "string",
+        "a11yRangeEndText": "string",
+        "a11ySeparator": "string"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/dialogs-ebay-date-textbox)"
+}

@@ -1,0 +1,41 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+import { getColorForText } from "./util";
+
+$ const {
+    a11yText,
+    class: inputClass,
+    size,
+    color,
+    img,
+    username,
+    renderBody,
+    ...htmlInput
+} = input
+
+<div
+    ...processHtmlAttributes(htmlInput)
+    role="img"
+    aria-label=a11yText
+    class=[
+        "avatar",
+        state.imagePlacement === "fit" && "avatar--fit",
+        inputClass,
+        size && `avatar--${size}`,
+        username && !img && `avatar--${getColorForText(username, color)}`,
+    ]
+>
+    <if(img)>
+        <img onLoad("handleImageLoad") ...img>
+    </if>
+
+    <else-if(renderBody)>
+        <${input}/>
+    </else-if>
+    <else-if(username)>
+        ${username.charAt(0).toUpperCase()}
+    </else-if>
+
+    <else>
+        <ebay-avatar-signed-out-icon/>
+    </else>
+</div>

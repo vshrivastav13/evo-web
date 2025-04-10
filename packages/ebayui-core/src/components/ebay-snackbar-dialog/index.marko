@@ -1,0 +1,35 @@
+$ const {
+    action,
+    class: inputClass,
+    layout,
+    open,
+    renderBody,
+    ...dialogBaseInput
+} = input;
+
+<ebay-dialog-base
+    onClose("handleClose")
+    onOpen("emit", "open")
+    onMouseEnter("handleMouseEnter")
+    onMouseLeave("handleMouseLeave")
+    ...dialogBaseInput
+    open=state.open
+    isModal=false
+    classPrefix="snackbar-dialog"
+    class=[inputClass, "snackbar-dialog--transition"]
+    windowClass=[layout === "column" && "snackbar-dialog__window--column"]
+    buttonPosition="hidden"
+    transitionEl="root">
+    <if(action)>
+        <@action>
+            <ebay-fake-link
+                on-click("handleAction")
+                on-focus("handleFocus")
+                on-blur("handleBlur")>
+                <${action.renderBody}/>
+                <span class="clipped">- Access Key: ${action.accessKey}</span>
+            </ebay-fake-link>
+        </@action>
+    </if>
+    <${renderBody}/>
+</ebay-dialog-base>

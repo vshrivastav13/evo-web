@@ -1,0 +1,47 @@
+import { processHtmlAttributes } from '../../common/html-attributes';
+static var itemAnchorIgnoredAttributes = ['href'];
+
+$ const {
+    class: inputClass,
+    selectedIndex,
+    activation,
+    tab: tabs =[],
+    panel: panels = [],
+    ...htmlInput
+} = input;
+
+<div ...processHtmlAttributes(htmlInput) class=['tabs', inputClass]>
+    <div.tabs__items role='tablist' key='tabs'>
+        <for|tab, i| of=state.tab>
+            $ var isSelected = state.selectedIndex === i;
+            <div
+                ...processHtmlAttributes(tab, itemAnchorIgnoredAttributes)
+                key=`tabs-${i}`
+                id:scoped=`tabs-${i}`
+                aria-controls:scoped=`tabpanel-${i}`
+                role='tab'
+                aria-selected=isSelected && 'true'
+                class=[tab.class, 'tabs__item']
+                onClick('handleHeadingClick', i)
+                onKeydown('handleHeadingKeydown', i)
+            >
+                <span><${tab.renderBody}/></span>
+            </div>
+        </for>
+    </div>
+    <div.tabs__content>
+        <for|panel, i| of=state.panel>
+            $ var isSelected = state.selectedIndex === i;
+            <div
+                ...processHtmlAttributes(panel)
+                id:scoped=`tabpanel-${i}`
+                aria-labelledby:scoped=`tabs-${i}`
+                role='tabpanel'
+                class=[panel.class, 'tabs__panel']
+                hidden=!isSelected
+            >
+                <div.tabs__cell><div><${panel.renderBody}/></div></div>
+            </div>
+        </for>
+    </div>
+</div>

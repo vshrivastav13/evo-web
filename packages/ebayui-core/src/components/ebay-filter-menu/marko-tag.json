@@ -1,0 +1,31 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attrbibutes": "expression",
+    "@variant": {
+        "enum": ["form"]
+    },
+    "@footer-text": "string",
+    "@class-prefix": "string",
+    "@form-name": "string",
+    "@form-action": "string",
+    "@form-method": "string",
+    "@a11y-footer-text": "string",
+    "@item <item>[]": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression",
+        "@checked": "boolean",
+        "@value": "string",
+        "@role": "never",
+        "@aria-checked": "never",
+        "@for": "never"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/building-blocks-ebay-filter-menu)"
+}

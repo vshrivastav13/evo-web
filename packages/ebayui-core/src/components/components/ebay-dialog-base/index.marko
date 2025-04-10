@@ -1,0 +1,156 @@
+import { processHtmlAttributes } from "../../../common/html-attributes";
+static const isBrowser = typeof window !== "undefined";
+
+$ const {
+    open,
+    classPrefix,
+    class: inputClass,
+    focus,
+    closeFocus,
+    a11yCloseText,
+    windowClass,
+    baseEl = "div",
+    header,
+    footer,
+    transitionEl,
+    isModal,
+    closeButton,
+    closeButtonClass,
+    closeButtonText,
+    ignoreEscape,
+    windowType,
+    mainId,
+    ariaLabelledby,
+    buttonPosition = "right",
+    useHiddenProperty,
+    top,
+    action,
+    prevButton,
+    role,
+    renderBody,
+    ...htmlInput
+} = input;
+
+$ const { id: headerId, as: headerAs, class: headerClass, renderBody: headerRenderBody, ...headerHtmlInput } = header || {} as NonNullable<typeof header>;
+$ const { id: prevButtonId, class: prevButtonClass, a11yText: prevButtonA11yText, renderBody: prevButtonRenderBody, ...prevButtonHtmlInput } = prevButton || {} as NonNullable<typeof prevButton>;
+<macro name="header-content">
+    <${headerAs || "h2"}
+        class=[headerClass, `${classPrefix}__title`]
+        ...processHtmlAttributes(headerHtmlInput)
+        id=(headerId || component.getElId("dialog-title"))>
+        <${headerRenderBody}/>
+    </>
+</macro>
+<macro name="button-content">
+    <if(buttonPosition !== "hidden")>
+        <button
+            key="close"
+            class=[
+                closeButtonText ? "fake-link" : "icon-btn",
+                closeButtonClass,
+                `${classPrefix}__close`,
+            ]
+            type="button"
+            aria-label=a11yCloseText
+            onClick("handleCloseButtonClick")
+        >
+            <if(closeButtonText)>
+                ${closeButtonText}
+            </if>
+            <else-if(closeButton)>
+                <${closeButton}/>
+            </else-if>
+            <else>
+                <ebay-close-16-icon/>
+            </else>
+        </button>
+    </if>
+</macro>
+<${baseEl}
+    ...processHtmlAttributes(htmlInput)
+    aria-labelledby=(
+        ariaLabelledby ||
+        (header && component.getElId("dialog-title"))
+    )
+    aria-modal="true"
+    role=role || "dialog"
+    class=[classPrefix, inputClass]
+    hidden:no-update=!state.open
+    aria-live=!isModal && "polite"
+    onClick("handleDialogClick")
+    onMousedown("handleStartClick")
+>
+    <if(state.open && isBrowser && !ignoreEscape)>
+        <subscribe to=(document as any) on-keydown("handleKeydown")/>
+    </if>
+    <if(!state.open && isBrowser)>
+        <subscribe to=window on-click("trackLastClick")/>
+    </if>
+    <div
+        key="window"
+        onMouseenter("emit", "mouseEnter")
+        onMouseleave("emit", "mouseLeave")
+        class=[
+            windowType
+                ? `${classPrefix}__${windowType}-window`
+                : `${classPrefix}__window`,
+            windowClass,
+        ]
+    >
+        <if(top)>
+            <${top.renderBody}/>
+        </if>
+        <div class=`${classPrefix}__header`>
+            <if(prevButton)>
+                <button
+                    ...processHtmlAttributes(
+                        prevButtonHtmlInput
+                    )
+                    class=[
+                        "icon-btn",
+                        "lightbox-dialog__prev",
+                        prevButtonClass,
+                    ]
+                    type="button"
+                    aria-label=prevButtonA11yText
+                    on-click("emit", "prevButtonClick")
+                >
+                    <${prevButton}/>
+                </button>
+            </if>
+            <if(header && buttonPosition === "right")>
+                <header-content/>
+            </if>
+            <if(buttonPosition !== "bottom")>
+                <button-content/>
+            </if>
+            <if(
+                header &&
+                (buttonPosition === "left" || buttonPosition === "hidden")
+            )>
+                <header-content/>
+            </if>
+        </div>
+        <div
+            id=mainId
+            class=`${classPrefix}__main`
+            key="body"
+            onScroll("handleScroll")
+        >
+            <${renderBody}/>
+        </div>
+        <if(action)>
+            <span class=`${classPrefix}__actions`>
+                <${action && action.renderBody}/>
+            </span>
+        </if>
+        <if(footer || buttonPosition === "bottom")>
+            <div class=`${classPrefix}__footer`>
+                <${footer && footer.renderBody}/>
+                <if(buttonPosition === "bottom")>
+                    <button-content/>
+                </if>
+            </div>
+        </if>
+    </div>
+</>

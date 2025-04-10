@@ -1,0 +1,41 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@open": "boolean",
+    "@close-focus": "string",
+    "@confirm-cta-variant": "string",
+    "@confirm-text": "string",
+    "@reject-text": "string",
+    "@role": "never",
+    "@hidden": "never",
+    "@footer": "never",
+    "@header <header>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@confirm <confirm>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@reject <reject>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/dialogs-ebay-confirm-dialog)"
+}

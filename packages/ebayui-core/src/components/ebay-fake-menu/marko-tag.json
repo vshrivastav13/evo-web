@@ -1,0 +1,30 @@
+{
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "template": "./index.marko",
+    "@html-attributes": "expression",
+    "@class": "string",
+    "@style": "string",
+    "@class-prefix": "string",
+    "@reverse": "boolean",
+    "@fix-width": "boolean",
+    "@item <item>[]": {
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@item-matches-url": "boolean",
+        "@html-attributes": "expression",
+        "@class": "string",
+        "@style": "string",
+        "@href": "string",
+        "@type": "string",
+        "@current": "boolean",
+        "@badge-number": "expression",
+        "@badge-aria-label": "string",
+        "@separator": "boolean"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/building-blocks-ebay-fake-menu)"
+}

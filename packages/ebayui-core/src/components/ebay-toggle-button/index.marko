@@ -1,0 +1,71 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+
+$ const {
+    class: inputClass,
+    icon,
+    img,
+    layoutType,
+    pressed,
+    renderBody,
+    subtitle,
+    title,
+    ...htmlInput
+} = input;
+
+<button
+    type="button"
+    class=[
+        "toggle-button",
+        layoutType && `toggle-button--${layoutType}-layout`,
+        inputClass
+    ]
+    aria-pressed=state.pressed && "true"
+    ...processHtmlAttributes(htmlInput)
+    onClick("handleClick")>
+    <if(icon)>
+        <span class="toggle-button__icon">
+            <${icon}/>
+        </span>
+    </if>
+    <else-if(img)>
+        <span class="toggle-button__image-container">
+            <if(img.fillPlacement)>
+                <span
+                    role="img"
+                    aria-label=img.alt
+                    class="toggle-button__image"
+                    style={
+                        "background-image": `url(${img.src})`,
+                        "background-position": img.fillPlacement || "center",
+                        "background-size": "cover",
+                        "background-repeat": "no-repeat",
+                    } />
+            </if>
+            <else>
+                <span class="toggle-button__image">
+                    <img src=img.src alt=img.alt />
+                </span>
+            </else>
+        </span>
+    </else-if>
+    <span class="toggle-button__content">
+        <span class="toggle-button__title">
+            <if(title)>
+                ${title}
+            </if>
+            <else>
+                <${renderBody}/>
+            </else>
+        </span>
+        <if(subtitle)>
+            <span class="toggle-button__subtitle">
+                <if(typeof subtitle === "string")>
+                    ${subtitle}
+                </if>
+                <else>
+                    <${subtitle}/>
+                </else>
+            </span>
+        </if>
+    </span>
+</button>

@@ -1,0 +1,64 @@
+import type { Input as BaseInput } from "<ebay-dialog-base>";
+import type { WithNormalizedProps } from "../../global";
+import type { AttrString } from "marko/tags-html";
+
+static interface AlertDialogInput extends Omit<BaseInput, `on${string}`> {
+    "confirm-text"?: AttrString;
+    "on-open"?: () => void;
+    "on-close"?: () => void;
+    "on-confirm"?: () => void;
+    confirm?: Marko.AttrTag<
+        Marko.Input<`h${number}`> & {
+            renderBody?: Marko.Body;
+        }
+    >;
+
+}
+
+export interface Input extends WithNormalizedProps<AlertDialogInput> {}
+
+$ var confirmId = component.getElId("alert-dialog-confirm");
+$ var mainId = component.getElId("alert-dialog-main");
+
+$ const {
+    class: inputClass,
+    confirmText,
+    confirm,
+    renderBody,
+    ...restInput
+} = input;
+
+$ const { renderBody: confirmRenderBody, ...confirmRestOfInput } = confirm || {} as NonNullable<typeof confirm>;
+
+<ebay-dialog-base
+    ...restInput
+    role="alertdialog"
+    classPrefix="alert-dialog"
+    ignoreEscape=true
+    mainId=mainId
+    on-open("emit", "open")
+    on-close("emit", "close")
+    buttonPosition="hidden"
+    focus=confirmId
+    class=[inputClass, "alert-dialog--mask-fade"]
+    windowClass=["alert-dialog__window alert-dialog__window--fade"]>
+    <@footer>
+        <ebay-button
+            priority="primary"
+            aria-describedby=mainId
+            on-click("emit", "confirm")
+            key="confirm"
+            id=confirmId
+            class="alert-dialog__acknowledge"
+            ...confirmRestOfInput
+            >
+            <if(confirmText)>
+                ${confirmText}
+            </if>
+            <else>
+                <${confirmRenderBody}/>
+            </else>
+        </ebay-button>
+    </@footer>
+    <${renderBody}/>
+</ebay-dialog-base>

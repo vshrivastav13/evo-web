@@ -1,0 +1,24 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@size": {
+        "enum": ["large", "regular"]
+    },
+    "@icon-style": {
+        "enum": ["square", "rounded"]
+    },
+    "@skip-mixed": "boolean",
+    "@html-attributes": "expression",
+    "@autofocus": "#html-autofocus",
+    "@checked": "string",
+    "@disabled": "#html-disabled",
+    "@form": "#html-form",
+    "@name": "#html-name",
+    "@readonly": "#html-readonly",
+    "@value": "#html-value",
+    "@type": "never",
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/form-input-ebay-tri-state-checkbox)"
+}

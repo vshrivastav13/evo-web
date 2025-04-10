@@ -1,0 +1,45 @@
+import { processHtmlAttributes } from "../../common/html-attributes"
+
+static function noop() {}
+
+$ const {
+    class: inputClass,
+    style,
+    size,
+    iconStyle,
+    ...htmlInput
+} = input;
+
+$ (input as any).toJSON = noop;
+
+<span class=["checkbox", inputClass] style=style>
+    <input
+        ...processHtmlAttributes(htmlInput)
+        class="checkbox__control"
+        type="checkbox"
+        onClick("forwardEvent", "change")
+        onFocus("forwardEvent", "focus")
+        onKeydown("forwardEvent", "keydown")/>
+    <span class="checkbox__icon" hidden>
+        <if (size === 'large')>
+            <ebay-checkbox-unchecked-24-icon
+                class="checkbox__unchecked"
+                focusable="false"
+                no-skin-classes/>
+            <ebay-checkbox-checked-24-icon
+                class="checkbox__checked"
+                focusable="false"
+                no-skin-classes/>
+        </if>
+        <else>
+            <ebay-checkbox-unchecked-18-icon
+                class="checkbox__unchecked"
+                focusable="false"
+                no-skin-classes/>
+            <ebay-checkbox-checked-18-icon
+                class="checkbox__checked"
+                focusable="false"
+                no-skin-classes/>
+        </else>
+    </span>
+</span>

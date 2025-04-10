@@ -1,0 +1,43 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@grow": "boolean",
+    "@borderless": "boolean",
+    "@fluid": "boolean",
+    "@invalid": "boolean",
+    "@name": "#html-name",
+    "@typeahead-timeout-length": "number",
+    "@list-selection": {
+        "enum": ["manual", "auto"]
+    },
+    "@button-name": "#html-name",
+    "@disabled": "#html-disabled",
+    "@option <option>[]": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@description <description>": {
+            "attribute-groups": ["html-attributes"],
+            "@*": {
+                "targetProperty": null,
+                "type": "expression"
+            },
+            "@html-attributes": "expression"
+        },
+        "@html-attributes": "expression",
+        "@text": "string",
+        "@a11y-icon-text": "string",
+        "@selected": "#html-selected",
+        "@value": "#html-value",
+        "@role": "never",
+        "@tabindex": "never",
+        "@aria-selected": "never"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/building-blocks-ebay-listbox)"
+}

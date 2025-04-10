@@ -1,0 +1,31 @@
+import { processHtmlAttributes } from "../../common/html-attributes"
+import type { WithNormalizedProps } from "../../global";
+import type { AttrString } from "marko/tags-html";
+
+static interface ProgressSpinnerInput extends Omit<Marko.HTML.Span, `on${string}`> {
+    size?: "large" | "small";
+    "a11y-text"?: AttrString;
+}
+
+export interface Input extends WithNormalizedProps<ProgressSpinnerInput> {}
+
+$ const {
+    class: inputClass,
+    size,
+    ...htmlInput
+} = input;
+
+<span
+    ...processHtmlAttributes(htmlInput)
+    class=["progress-spinner", size === "large" && "progress-spinner--large", inputClass]
+    role="img">
+    <if(size === "large")>
+        <ebay-spinner-30-icon/>
+    </if>
+    <else-if(size === "small")>
+        <ebay-spinner-20-icon/>
+    </else-if>
+    <else>
+        <ebay-spinner-24-icon/>
+    </else>
+</span>

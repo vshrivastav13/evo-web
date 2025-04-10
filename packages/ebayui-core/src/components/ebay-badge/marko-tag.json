@@ -1,0 +1,13 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@type": {
+        "enum": ["icon"]
+    },
+    "@number": "number",
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/graphics-icons-ebay-badge)"
+}

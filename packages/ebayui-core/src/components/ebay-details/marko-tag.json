@@ -1,0 +1,24 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@type": {
+        "enum": ["regular", "center"]
+    },
+    "@size": {
+        "enum": ["regular", "small"]
+    },
+    "@summary": {
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@as": "string",
+    "@open": "boolean",
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/navigation-disclosure-ebay-details)"
+}

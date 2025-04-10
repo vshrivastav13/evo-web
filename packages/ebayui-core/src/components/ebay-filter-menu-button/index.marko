@@ -1,0 +1,75 @@
+import { processHtmlAttributes } from "../../common/html-attributes"
+
+$ const {
+    variant,
+    class: inputClass,
+    a11yText,
+    a11yFooterText,
+    text,
+    footer,
+    footerText,
+    disabled,
+    formName,
+    formAction,
+    formMethod,
+    item: items = [],
+    searchHeaderValue,
+    searchHeaderPlaceholderText,
+    a11ySearchHeaderClearText,
+    type: inputType,
+    ...htmlInput
+} = input;
+
+<span
+    ...processHtmlAttributes(htmlInput)
+    key="container"
+    class=["filter-menu-button", inputClass]
+    on-expander-expand("handleExpand")
+    on-expander-collapse("handleCollapse")>
+    <button
+        key="button"
+        type="button"
+        class="filter-menu-button__button"
+        disabled=disabled
+        aria-expanded:no-update="false"
+        aria-haspopup="true"
+        aria-label=a11yText
+        aria-pressed=(component.getCheckedValues().some(Boolean) && "true")>
+        <span class="filter-menu-button__button-cell">
+            <span class="filter-menu-button__button-text">${text}</span>
+            <ebay-chevron-down-12-icon/>
+        </span>
+    </button>
+    <ebay-filter-menu
+        key="menu"
+        classPrefix="filter-menu-button"
+        variant=variant
+        type=inputType
+        formName=formName
+        formAction=formAction
+        formMethod=formMethod
+        footerText=footerText
+        a11yFooterText=a11yFooterText
+        searchHeaderValue=searchHeaderValue
+        searchHeaderPlaceholderText=searchHeaderPlaceholderText
+        a11ySearchHeaderClearText=a11ySearchHeaderClearText
+        on-keydown("handleMenuKeydown")
+        on-change("handleMenuChange")
+        on-form-submit("handleFormSubmit")
+        on-footer-click("handleFooterButtonClick")
+        on-search-change("emit", "search-change")>
+        <for|item, i| of=(items || [])>
+            <@item ...item checked=component.isChecked(i)/>
+        </for>
+        <if(footerText)>
+            <@footer ...footer a11yFooterText=(a11yFooterText)>
+                ${footerText}
+            </@footer>
+        </if>
+        <else><if(footer)>
+            <@footer ...footer a11yFooterText=(a11yFooterText || footer.a11yFooterText)>
+                <${footer.renderBody}/>
+            </@footer>
+        </if></else>
+    </ebay-filter-menu>
+</span>

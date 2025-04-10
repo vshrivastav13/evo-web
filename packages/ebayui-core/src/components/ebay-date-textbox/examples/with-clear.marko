@@ -1,0 +1,43 @@
+export interface Input {
+    range?: boolean;
+}
+
+class {
+    declare state: {
+        value?: string;
+        rangeEnd?: string;
+    }
+    onCreate() {
+        this.state = {
+            value: undefined,
+            rangeEnd: undefined
+        };
+    }
+
+    handleChange(e: { selected: string | null }
+            | { rangeStart: string | null; rangeEnd: string | null }) {
+        if ("selected" in e && e.selected) {
+            this.state.value = e.selected;
+        } else {
+            if ("rangeStart" in e && e.rangeStart) {
+                this.state.value = e.rangeStart;
+            }
+            if ("rangeEnd" in e && e.rangeEnd) {
+                this.state.rangeEnd = e.rangeEnd;
+            }
+        }
+    }
+
+    clear() {
+        this.state.value = undefined;
+        if (this.input.range) {
+            this.state.rangeEnd = undefined;
+        }
+    }
+}
+
+<ebay-date-textbox value=state.value rangeEnd=state.rangeEnd onChange("handleChange") ...input/>
+
+<ebay-button onClick("clear")>
+    Clear
+</ebay-button>

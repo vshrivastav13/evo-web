@@ -1,0 +1,75 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+static var isBrowser = typeof window !== "undefined";
+static var browserLookup: Record<string, unknown> = {};
+static function noop() {}
+$ const {
+    _name,
+    _size,
+    _type,
+    _themes,
+    _def,
+    a11yText,
+    a11yVariant,
+    class: inputClass,
+    noSkinClasses,
+    ...htmlInput
+} = input;
+$ (input as any).toJSON = noop;
+static function getIconClass(type: string, name: string, size?: string) {
+    var colorMap:{[index: string]: string} =  {
+        "confirmation-filled-16": "confirmation-filled",
+        "confirmation-filled-24": "confirmation-filled",
+        "information-filled-16": "information-filled",
+        "information-filled-24": "information-filled",
+        "attention-filled-16": "attention-filled",
+        "attention-filled-24": "attention-filled",
+    };
+
+    var extraClass = !!colorMap[name] ? ` icon--${colorMap[name]}` : "";
+
+    if (size) {
+        return `icon icon--${size}${extraClass}`;
+    } else if (type === "icon") {
+        return `icon icon--${name}${extraClass}`;
+    } else {
+        var dashedName = name.replace(type, `${type}-`);
+        return `${type} ${dashedName}${extraClass}`;
+    }
+}
+$ var noTitle = a11yVariant === "label";
+$ var lookup = isBrowser ? browserLookup : out.global;
+$ var a11yAttributes = a11yText ? { role: "img" } : { "aria-hidden": "true" };
+$ var prefixSvg = _type === "icon" ? "icon-" : "";
+<svg
+    ...a11yAttributes
+    ...processHtmlAttributes(htmlInput)
+    class=[inputClass, !noSkinClasses && getIconClass(_type, _name, _size)]
+    key="svg"
+    focusable="false"
+    aria-labelledby=a11yText && !noTitle && component.elId("text")
+    aria-label=noTitle && a11yText
+>
+    <!-- Here we check if we should render the inline svg symbol. -->
+    <!-- Server side we store a flag in `out.global` to check if the symbol was rendered. -->
+    <!-- Client side we check the `browserLookup` object to see if the symbol is already present in root svg. -->
+    $ var themes = _themes;
+    $ var lookupName = "rendered_ebay_icon_" + _name;
+    $ var renderDefs = !lookup[lookupName];
+    $ lookup[lookupName] = true;
+    <if(renderDefs && themes)>
+        <defs key="defs">
+            <if(!isBrowser)>
+                $!{themes()}
+                <if(_def)>
+                    $!{_def().server}
+                </if>
+            </if>
+        </defs>
+    </if>
+    <if(a11yText && !noTitle)>
+        <title id:scoped="text">
+            ${a11yText}
+        </title>
+    </if>
+    <use href=`#${prefixSvg}${_name}`/>
+</svg>

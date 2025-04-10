@@ -1,0 +1,26 @@
+import { processHtmlAttributes } from "../../common/html-attributes"
+import type { WithNormalizedProps } from "../../global";
+
+static interface CtaButtonInput extends Marko.HTML.A {
+    size?: "default" | "large";
+}
+
+export interface Input extends WithNormalizedProps<CtaButtonInput> {}
+
+$ const {
+    size,
+    class: inputClass,
+    renderBody,
+    ...htmlInput
+} = input;
+
+<a
+    ...processHtmlAttributes(htmlInput)
+    class=["cta-btn", `cta-btn--${size || "default"}`, inputClass]>
+    <span class="cta-btn__cell">
+        <span>
+            <${renderBody}/>
+        </span>
+        <ebay-arrow-right-24-icon/>
+    </span>
+</a>

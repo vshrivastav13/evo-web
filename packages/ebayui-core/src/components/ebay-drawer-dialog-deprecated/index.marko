@@ -1,0 +1,41 @@
+$ const {
+    class: inputClass,
+    noHandle,
+    renderBody,
+    a11yMaximizeText = "Maximize Drawer",
+    a11yMinimizeText = "Minimize Drawer",
+    ...dialogInput
+} = input;
+$ const handleLabel = !state.expanded ? a11yMaximizeText : a11yMinimizeText;
+
+<ebay-dialog-base
+    ...dialogInput
+    classPrefix="drawer-dialog"
+    key="dialog"
+    onScroll("handleScroll")
+    onOpen("emit", "open")
+    onClose("emit", "close")
+    class=[inputClass, "drawer-dialog--mask-fade-slow"]
+    windowClass=[
+        `drawer-dialog__window`,
+        "drawer-dialog__window--slide",
+        state.expanded && "drawer-dialog__window--expanded",
+    ]
+>
+    <if(!noHandle)>
+        <@top>
+            <button
+                aria-label=handleLabel
+                type="button"
+                class=`drawer-dialog__handle`
+                onClick("handleExpand")
+                onTouchstart("handleTouchStart")
+                onTouchmove("handleTouchMove")
+                onTouchend("handleTouchEnd")
+                onTouchcancel("handleTouchEnd")
+            />
+        </@top>
+    </if>
+
+    <${renderBody}/>
+</ebay-dialog-base>

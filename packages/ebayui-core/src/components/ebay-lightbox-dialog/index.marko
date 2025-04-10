@@ -1,0 +1,54 @@
+static const validSizes = ["wide", "narrow", "fullscreen", "large"] as const;
+import type { WithNormalizedProps } from "../../global";
+import type { Input as DialogBaseInput } from "../components/ebay-dialog-base/component";
+
+export interface LightboxDialogInput extends Omit<DialogBaseInput, `on${string}`> {
+    variant?: "_mini";
+    "banner-img-src"?: string;
+    size?: (typeof validSizes)[number];
+    "banner-img-position"?: Marko.CSS.Properties["backgroundPosition"];
+    "on-open"?: DialogBaseInput["on-open"];
+    "on-close"?: DialogBaseInput["on-close"];
+    "on-prevButtonClick"?: DialogBaseInput["on-prevButtonClick"];
+}
+
+export interface Input extends WithNormalizedProps<LightboxDialogInput> {}
+
+$ const {
+    class: inputClass,
+    variant,
+    buttonPosition = "right",
+    bannerImgSrc,
+    bannerImgPosition,
+    size,
+    renderBody,
+    ...dialogBaseInput
+} = input;
+
+$ var isMini = variant === "_mini";
+
+<ebay-dialog-base
+    ...dialogBaseInput
+    key="dialog"
+    class-prefix="lightbox-dialog"
+    on-open("emit", "open")
+    on-close("emit", "close")
+    on-prevButtonClick("emit", "prevButtonClick")
+    button-position=buttonPosition
+    class=[inputClass, "lightbox-dialog--mask-fade", bannerImgSrc && "lightbox-dialog--expressive",
+        size && validSizes.includes(size) && `lightbox-dialog--${size}`,
+    ]
+    window-class=[
+        "lightbox-dialog__window--animate",
+        isMini && "lightbox-dialog__window--mini",
+    ]>
+        <@top>
+            <if(bannerImgSrc)>
+                    <div class="lightbox-dialog__image" style={
+                        backgroundImage: `url(${bannerImgSrc})`,
+                        backgroundPosition: bannerImgPosition,
+                    } />
+            </if>
+        </@top>
+        <${renderBody}/>
+</ebay-dialog-base>

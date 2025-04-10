@@ -1,0 +1,16 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+$ const {
+    data,
+    class: inputClass,
+    series,
+    title,
+    description,
+    xLabelFormatter,
+    yLabelFormatter,
+    highchartOptions,
+    ...restInput
+} = input;
+
+<div ...processHtmlAttributes(restInput) class=[inputClass, "ebay-area-chart"]>
+    <div id=component.getContainerId() class="ebay-area-chart__container"/>
+</div>

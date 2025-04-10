@@ -1,0 +1,51 @@
+$ const {
+    a11yButtonLoadingText,
+    a11yMenuText,
+    a11yText,
+    bodyState,
+    disabled,
+    href,
+    partiallyDisabled,
+    priority,
+    renderBody,
+    size,
+    transparent,
+    variant,
+    ...menuButtonInput
+} = input;
+
+<span.split-button>
+    <ebay-button
+        onClick('emit', 'click')
+        onEscape('emit', 'escape')
+        onFocus('emit', 'focus')
+        onBlur('emit', 'blur')
+        split='start'
+        type='button'
+        size=size
+        disabled=disabled
+        priority=priority
+        bodyState=bodyState
+        href=href
+        a11yText=a11yButtonLoadingText
+        partiallyDisabled=partiallyDisabled
+    >
+        <span.btn__cell><span.btn__text><${renderBody}/></span></span>
+    </ebay-button>
+    <ebay-menu-button
+        onCollapse('emit', 'collapse')
+        onExpand('emit', 'expand')
+        onChange('emit', 'change')
+        onSelect('emit', 'select')
+        a11yText=a11yMenuText
+        split='end'
+        size=size
+        disabled=disabled
+        priority=priority
+        transparent=transparent
+        reverse
+        variant='button'
+        partiallyDisabled=partiallyDisabled
+        ...menuButtonInput
+    />
+</span>

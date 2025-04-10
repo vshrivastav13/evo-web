@@ -1,0 +1,73 @@
+import countryList from "./data.json";
+import type { AttrStringOrNumber, AttrClass } from "marko/tags-html";
+import type { Input as ComboboxInput } from "<ebay-combobox>";
+class {
+    declare state: {
+        options: Array<{
+            code: string;
+            name: string;
+        }>;
+        autocompleteOption: "list" | "none";
+        value: AttrStringOrNumber;
+    };
+    timeout: any;
+    onCreate() {
+        this.state = {
+            options: countryList,
+            autocompleteOption: "none",
+            value: "",
+        };
+    }
+    async inputChange(e: {
+        currentInputValue: AttrStringOrNumber;
+        options?: Marko.AttrTag<{
+            text: string;
+            value?: string;
+            class?: AttrClass;
+            sticky?: boolean;
+        }>;
+    }) {
+        this.state.autocompleteOption = "none";
+        this.state.value = e.currentInputValue;
+        const options = await this.searchCountry(e.currentInputValue);
+        this.state.options = options;
+        this.state.autocompleteOption = "list";
+    }
+
+    async searchCountry(currentInputValue: AttrStringOrNumber): Promise<
+        Array<{
+            code: string;
+            name: string;
+        }>
+    > {
+        return new Promise((resolve) => {
+            clearTimeout(this.timeout);
+            this.timeout = setTimeout(() => {
+                const filtered = countryList
+                    .filter((country) =>
+                        country.name
+                            .toLowerCase()
+                            .startsWith(`${currentInputValue}`.toLowerCase()),
+                    )
+                    .slice(0, 10);
+                resolve(filtered);
+            }, 500);
+        });
+    }
+    selected: ComboboxInput["on-select"] = (e) => {
+        console.log("selected", e);
+    }
+}
+
+<ebay-combobox
+    ...input
+    name="example2text"
+    autocomplete=state.autocompleteOption
+    value=state.value
+    on-input-change("inputChange")
+    on-select("selected")
+>
+    <for|option| of=state.options>
+        <@option data-id=option.code text=option.name/>
+    </for>
+</ebay-combobox>

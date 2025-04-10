@@ -1,0 +1,42 @@
+export interface Input {
+    renderBody?: Marko.Body;
+    header: {
+        renderBody?: Marko.Body;
+    }
+    confirm: {
+        renderBody?: Marko.Body;
+    }
+}
+
+<ebay-alert-dialog
+    open=state.open
+    on-open('emit', 'open')
+    on-close('emit', 'close')
+    on-confirm('closeDialog')
+    ...input
+>
+    <@header><${input.header.renderBody}/></@header>
+    <@confirm><${input.confirm.renderBody}/></@confirm>
+    <${input.renderBody}/>
+    <p>
+        This 'alert' text should be 1-2 lines.
+    </p>
+</ebay-alert-dialog>
+
+<ebay-button on-click('openDialog')>Open Alert Dialog</ebay-button>
+class {
+    declare state: {
+        open: boolean;
+    }
+
+    onCreate() {
+        this.state = { open: false };
+    }
+    openDialog() {
+        this.state.open = true;
+    }
+    closeDialog() {
+        this.state.open = false;
+        this.emit('confirm')
+    }
+}

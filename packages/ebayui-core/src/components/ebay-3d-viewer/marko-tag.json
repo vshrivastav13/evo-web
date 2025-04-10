@@ -1,0 +1,16 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@class": "string",
+    "@cdn-version": "string",
+    "@cdn-url": "string",
+    "@a11y-text": "string",
+    "@a11y-start-text": "string",
+    "@a11y-load-text": "string",
+    "@error-text": "string",
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/media-ebay-3d-viewer)"
+}

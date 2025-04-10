@@ -1,0 +1,23 @@
+import type { Input as RadioInput } from "<ebay-radio>"
+export type Input = RadioInput;
+
+class {}
+
+<span class="field">
+    <ebay-radio
+        ...input
+        disabled
+        value="1"
+        on-change("emit", "change")
+        on-focus("emit", "focus")
+        on-keydown("emit", "keydown")
+        class="field__control"
+        id="radio"
+    />
+    <label
+        for="radio"
+        class="field__label field__label--end field__label--disabled"
+    >
+        Option
+    </label>
+</span>

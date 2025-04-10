@@ -1,0 +1,74 @@
+import { format, placeholder } from "../../common/dates";
+import { type DayISO } from "../../common/dates/date-utils";
+$ const {
+    a11yOpenPopoverText = "open calendar",
+    range,
+    inputPlaceholderText = placeholder(input.locale),
+    disabled,
+    textbox,
+    ...calendarInput
+} = input;
+$ const [rangeStartPlaceholder, mainPlaceholder] = (
+    Array.isArray(inputPlaceholderText)
+        ? inputPlaceholderText
+        : [inputPlaceholderText, inputPlaceholderText]
+);
+
+$ const [rangeStartTextboxInput, mainTextboxInput] = (
+    Array.isArray(textbox)
+        ? textbox
+        : [textbox, textbox]
+);
+
+$ const formatValue = (date: DayISO | null) => {
+    return date ? format(date, input.locale) : "";
+}
+
+<span
+    on-expander-expand("openPopover")
+    on-expander-collapse("closePopover")
+    class="date-textbox"
+>
+    <if(range)>
+        <ebay-textbox
+            placeholder=rangeStartPlaceholder
+            disabled=disabled
+            value=formatValue(state.firstSelected)
+            on-blur("handleInputChange", 0)
+            on-keyup("onInputKeyup")
+            ...rangeStartTextboxInput
+        />
+    </if>
+    <ebay-textbox
+        class="ebay-date-textbox--main"
+        placeholder=mainPlaceholder
+        buttonAriaLabel=a11yOpenPopoverText
+        value=formatValue(range ? state.secondSelected : state.firstSelected)
+        disabled=disabled
+        on-blur("handleInputChange", range ? 1 : 0)
+        on-keyup("onInputKeyup")
+        ...mainTextboxInput
+    >
+        <@postfix-icon>
+            <ebay-calendar-24-icon/>
+        </@postfix-icon>
+    </ebay-textbox>
+    <div hidden=!state.popover key="popover" class="date-textbox__popover">
+        <if(state.popover)>
+            <subscribe to=window onResize("calculateNumMonths")/>
+        </if>
+        <ebay-calendar
+            ...calendarInput
+            range=range
+            interactive
+            navigable
+            numMonths=state.numMonths
+            selected=(
+                state.firstSelected && state.secondSelected
+                    ? [state.firstSelected, state.secondSelected]
+                    : state.firstSelected || state.secondSelected || undefined
+            )
+            onSelect("onPopoverSelect")
+        />
+    </div>
+</span>

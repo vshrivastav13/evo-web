@@ -1,0 +1,74 @@
+{
+    "template": "./index.marko",
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@icon": "string",
+    "@disabled": "boolean",
+    "@pointer": {
+        "enum": [
+            "top-left",
+            "top",
+            "top-right",
+            "right",
+            "right-bottom",
+            "right-top",
+            "bottom-left",
+            "bottom-right",
+            "bottom",
+            "left",
+            "left-bottom",
+            "left-top"
+        ]
+    },
+    "@placement": {
+        "enum": [
+            "top",
+            "right",
+            "bottom",
+            "left",
+            "top-start",
+            "right-start",
+            "bottom-start",
+            "left-start",
+            "top-end",
+            "right-end",
+            "bottom-end",
+            "left-end"
+        ]
+    },
+    "@aria-label": "string",
+    "@variant": "string",
+    "@no-shift": "boolean",
+    "@not-inline": "boolean",
+    "@no-flip": "boolean",
+    "@a11y-close-button-text": "string",
+    "@icon <icon>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@heading <heading>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@content <content>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/buttons-ebay-infotip)"
+}

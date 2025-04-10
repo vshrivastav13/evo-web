@@ -1,0 +1,34 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "type": "expression",
+        "targetProperty": null
+    },
+    "@html-attributes": "expression",
+    "@size": {
+        "enum": ["regular", "large"]
+    },
+    "@button <button>[]": {
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression",
+        "@class": "string",
+        "@style": "string",
+        "@value": "string",
+        "@selected": "string",
+        "@icon <icon>": {
+            "@*": {
+                "targetProperty": null,
+                "type": "expression"
+            },
+            "@html-attributes": "expression",
+            "@class": "string",
+            "@style": "string"
+        }
+    },
+    "@target": "#html-target",
+    "@aria-disabled": "never",
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/buttons-ebay-segmented-buttons)"
+}

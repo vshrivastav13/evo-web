@@ -1,0 +1,90 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+
+$ const {
+    a11yCloseButtonText,
+    ariaLabel,
+    class: inputClass,
+    content,
+    disabled,
+    heading,
+    icon,
+    open,
+    pointer = "bottom",
+    variant,
+    noFlip,
+    noShift,
+    notInline,
+    ...htmlInput
+} = input;
+
+$ var isModal = input.variant === "modal";
+$ var classPrefix = !isModal ? "infotip" : "dialog--mini";
+
+<span>
+    <ebay-tooltip-base
+        open=state.open
+        key="base"
+        type=classPrefix
+        overlayId:scoped="overlay"
+        noFlip=noFlip
+        noShift=noShift
+        notInline=notInline
+        offset=input.offset
+        pointer=input.pointer
+        placement=input.placement
+        onBase-expand(isModal ? undefined : "handleExpand")
+        onBase-collapse(isModal ? undefined : "handleCollapse")>
+        <span
+            ...processHtmlAttributes(htmlInput)
+            class:no-update=[
+                "infotip",
+                isModal === true && "dialog--mini",
+                inputClass,
+            ]
+        >
+            <button
+                key="host"
+                class=[
+                    `${classPrefix}__host`,
+                    "icon-btn",
+                    "icon-btn--transparent",
+                ]
+                type="button"
+                on-click(isModal && "handleOpenModal")
+                disabled=disabled
+                aria-label=ariaLabel
+            >
+                <if(icon)>
+                    <${icon}/>
+                </if>
+                <else>
+                    <ebay-information-16-icon/>
+                </else>
+            </button>
+            <if(isModal !== true)>
+                <ebay-tooltip-overlay
+                    type="infotip"
+                    id:scoped="overlay"
+                    heading=heading
+                    content=content
+                    a11y-close-text=a11yCloseButtonText
+                    onOverlay-close("handleOverlayClose")
+                />
+            </if>
+        </span>
+    </ebay-tooltip-base>
+</span>
+<if(isModal === true)>
+    <ebay-lightbox-dialog
+        open=state.open
+        a11y-close-text=a11yCloseButtonText
+        on-open("handleExpand")
+        on-close("handleCollapse")
+        aria-label=ariaLabel
+    >
+        <@header>
+            <${heading && heading.renderBody}/>
+        </@header>
+        <${content}/>
+    </ebay-lightbox-dialog>
+</if>

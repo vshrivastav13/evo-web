@@ -1,0 +1,30 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+
+$ const {
+    class: inputClass,
+    size,
+    details: items = [],
+    autoCollapse,
+    a11yRoleDescription,
+    ...htmlInput
+} = input;
+
+<ul
+    ...processHtmlAttributes(htmlInput)
+    class=["accordion", size === "large" && "accordion--large", inputClass]
+    aria-roledescription=(a11yRoleDescription ?? "accordion")
+    key="accordion-root"
+>
+    <for|item, index| of=items || []>
+        <li>
+            <ebay-details
+                ...item
+                open= item.open || (autoCollapse && index === state.index)
+                on-toggle("handleToggle", index)
+                on-click("emit", "click")
+            >
+                <${item.renderBody} />
+            </ebay-details>
+        </li>
+    </for>
+</ul>

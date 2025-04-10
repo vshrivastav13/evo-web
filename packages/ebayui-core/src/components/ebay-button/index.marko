@@ -1,0 +1,131 @@
+import type { AttrString } from "marko/tags-html";
+import { processHtmlAttributes } from "../../common/html-attributes"
+import type { WithNormalizedProps } from "../../global";
+
+static const validSizes = ["large", "small"] as const;
+
+export interface Input extends WithNormalizedProps<ButtonInput> {}
+
+export interface ButtonEvent<T extends Event> {
+    originalEvent: T;
+}
+
+export interface ButtonInput extends Omit<Marko.HTML.Button, `on${string}` | "type">, Omit<Marko.HTML.A, `on${string}`> {
+    href?: string;
+    size?: (typeof validSizes)[number];
+    priority?: "primary" | "secondary" | "tertiary" | "none";
+    variant?: "standard" | "destructive" | "form";
+    "body-state"?: "loading" | "expand" | "reset" | "none";
+    fluid?: boolean;
+    borderless?: boolean;
+    disabled?: boolean;
+    partiallyDisabled?: boolean;
+    transparent?: boolean;
+    fixedHeight?: boolean;
+    truncate?: boolean;
+    split?: string;
+    "a11y-text"?: AttrString;
+    "aria-label"?: AttrString;
+    "on-click"?: (event: ButtonEvent<MouseEvent>) => void;
+    "on-escape"?: (event: ButtonEvent<KeyboardEvent>) => void;
+    "on-focus"?: (event: ButtonEvent<FocusEvent>) => void;
+    "on-blur"?: (event: ButtonEvent<FocusEvent>) => void;
+}
+
+static function toJSON(this: any) {
+    return {
+        disabled: this.disabled
+    };
+}
+
+$ const {
+    a11yText,
+    ariaLabel,
+    bodyState,
+    borderless,
+    class: inputClass,
+    fixedHeight,
+    fluid,
+    href,
+    partiallyDisabled,
+    priority: inputPriority,
+    renderBody,
+    size: inputSize,
+    split = "none",
+    transparent,
+    truncate,
+    type = "button",
+    variant = "standard",
+    ...htmlInput
+} = input;
+
+static var validPriorities = [
+    'primary',
+    'secondary',
+    'tertiary',
+    'delete'
+];
+
+$ {
+    (input as any).toJSON = toJSON;
+    var size = inputSize && validSizes.includes(inputSize) ? inputSize : null;
+
+    var priority = inputPriority || "secondary";
+    if (borderless || variant === 'form') {
+        priority = 'none';
+    }
+    var baseClass = href ? "fake-btn" : "btn";
+    var sizeClass = size && baseClass + "--" + size;
+    var truncateClass =
+        truncate &&
+        (sizeClass ? sizeClass + "-truncated" : baseClass + "--truncated");
+    var transparentClass = transparent ? baseClass + "--transparent" : "";
+    var fixedHeightClass =
+        fixedHeight &&
+        (sizeClass ? sizeClass + "-fixed-height" : baseClass + "--fixed-height");
+    var variantClass = variant !== 'standard' && `${baseClass}--${variant}`;
+    var tag = href ? "a" : "button";
+}
+<${tag}
+    ...processHtmlAttributes(htmlInput)
+    onClick("handleClick")
+    onKeydown("handleKeydown")
+    onFocus('handleFocus')
+    onBlur('handleBlur')
+    class=[
+        inputClass,
+        baseClass,
+        fluid && `${baseClass}--fluid`,
+        truncateClass,
+        fixedHeightClass,
+        transparentClass,
+        variantClass,
+        !truncateClass && !fixedHeightClass && sizeClass,
+        split !== 'none' && `${baseClass}--split-${split}`,
+        borderless && `${baseClass}--borderless`,
+        (validPriorities.includes(priority) &&
+        `${baseClass}--${priority}`)
+    ]
+    href=href
+    data-ebayui=true
+    type=(tag === "button" && (type || "button"))
+    aria-disabled=((partiallyDisabled) && "true")
+    aria-label=(bodyState === "loading" ? (a11yText || "Loading...") : ariaLabel)
+    >
+    <if(bodyState === "loading")>
+        <span class="btn__cell">
+            <ebay-progress-spinner/>
+        </span>
+    </if>
+    <else-if(bodyState === "expand")>
+        <span class="btn__cell">
+            <span class="btn__text">
+                <${renderBody}/>
+            </span>
+            <ebay-chevron-down-16-icon/>
+        </span>
+    </else-if>
+    <else>
+        <${renderBody}/>
+    </else>
+</>

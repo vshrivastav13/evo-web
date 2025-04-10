@@ -1,0 +1,12 @@
+class {}
+
+<ebay-video
+    width=460
+    height=300
+    a11yLoadText="This video is loading now"
+    a11yPlayText="Click to start this video"
+    on-load-error(() => {
+        console.log("handle error");
+    })>
+    <@source src="video/missing-playlist.mpd"/>
+</ebay-video>

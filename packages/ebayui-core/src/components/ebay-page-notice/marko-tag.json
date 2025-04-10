@@ -1,0 +1,40 @@
+{
+    "attribute-groups": ["html-attributes"],
+    "@*": {
+        "targetProperty": null,
+        "type": "expression"
+    },
+    "@html-attributes": "expression",
+    "@status": {
+        "enum": ["attention", "confirmation", "information"]
+    },
+    "@icon": "string",
+    "@a11y-icon-text": "string",
+    "@a11y-dismiss-text": "string",
+    "@title <title>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@footer <footer>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@cta <cta>": {
+        "attribute-groups": ["html-attributes"],
+        "@*": {
+            "targetProperty": null,
+            "type": "expression"
+        },
+        "@html-attributes": "expression"
+    },
+    "@dismissed": "bool",
+    "description": "[view documentation](https://ebay.github.io/ebayui-core/?path=/story/notices-tips-ebay-page-notice)"
+}

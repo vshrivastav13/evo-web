@@ -1,0 +1,49 @@
+import type { ComboboxEvent } from "../component";
+class {
+    declare state: {
+        value: string;
+    }
+    onCreate() {
+        this.state = {
+            value: "Basic Offer 22"
+        }
+    }
+    handleClear() {
+        this.state.value=""
+    }
+    handleSelect(e: ComboboxEvent) {
+        this.state.value = e.selectedOption?.text || "";
+    }
+}
+
+<ebay-combobox
+    key="combobox"
+    name="example2text"
+    value=state.value
+    autocomplete="list"
+    on-button-click("handleClear")
+    on-select("handleSelect")>
+    <@button aria-label="Toggle autocomplete">
+        <ebay-clear-16-icon/>
+    </@button>
+    <@option text="August Campaign"/>
+    <@option text="4th of July Sale (paused)"/>
+    <@option text="Basic Offer"/>
+    <@option text="Basic Offer 1"/>
+    <@option text="Basic Offer 3"/>
+    <@option text="Basic Offer 11"/>
+    <@option text="Basic Offer 12"/>
+    <@option text="Basic Offer 13"/>
+    <@option text="Basic Offer 14"/>
+    <@option text="Basic Offer 15"/>
+    <@option text="Basic Offer 16"/>
+    <@option text="Basic Offer 17"/>
+    <@option text="Basic Offer 18"/>
+    <@option text="Basic Offer 19"/>
+    <@option text="Basic Offer 20"/>
+    <@option text="Basic Offer 21"/>
+    <@option text="Basic Offer 22"/>
+    <@option text="Basic Offer 23"/>
+    <@option text="Basic Offer 24"/>
+    <@option text="Basic Offer 25"/>
+</ebay-combobox>

@@ -1,0 +1,103 @@
+import { processHtmlAttributes } from "../../common/html-attributes"
+import type { Option } from "./component";
+
+$ const {
+    class: inputClass,
+    style,
+    disabled,
+    borderless,
+    option: inputOptions = [],
+    floatingLabel,
+    isLarge,
+    ...htmlInput
+} = input;
+$ const options = [...(inputOptions || [])];
+static var itemIgnoredAttributes = ["selected", "optgroup"];
+
+static interface OptGroup {
+    optgroup: string;
+    options: Option[];
+};
+
+static function isGroup(optionOrGroup: Option | OptGroup): optionOrGroup is OptGroup {
+    return !!optionOrGroup.optgroup;
+}
+
+$ var selectedOption = options[state.selectedIndex];
+$ var list: (Option | OptGroup)[] = [];
+$ var optgroups: Record<string, OptGroup> = {};
+$ var id = component.selectId
+$ for (const option of options) {
+    var optgroup = option.optgroup;
+
+    if (optgroup) {
+        if (optgroups[optgroup]) {
+            optgroups[optgroup].options.push(option);
+        } else {
+            list.push(
+                (optgroups[optgroup] = {
+                    optgroup: optgroup,
+                    options: [option]
+                })
+            );
+        }
+    } else {
+        list.push(option);
+    }
+};
+<${floatingLabel && "span"} class=["floating-label", isLarge && "floating-label--large"]>
+    <if(floatingLabel)>
+        <label
+            for=id
+            class=[
+                "floating-label__label",
+                disabled && "floating-label__label--disabled"
+            ]>
+            ${floatingLabel}
+        </label>
+    </if>
+    <span
+        class=[
+            "select",
+            isLarge && "select--large",
+            borderless && "select--borderless",
+            inputClass
+        ]
+        style=style>
+        <select
+            ...processHtmlAttributes(htmlInput)
+            disabled=disabled
+            id=id
+            onChange("handleChange")>
+            <for|optionOrGroup| of=list>
+                <if(isGroup(optionOrGroup))>
+                    <optgroup label=optionOrGroup.optgroup>
+                        <for|option| of=optionOrGroup.options>
+                            <option
+                                ...processHtmlAttributes(
+                                    option,
+                                    itemIgnoredAttributes
+                                )
+                                key="option[]"
+                                selected=(option === selectedOption)>
+                                ${option.text}
+                            </option>
+                        </for>
+                    </optgroup>
+                </if>
+                <else>
+                    <option
+                        ...processHtmlAttributes(
+                            optionOrGroup,
+                            itemIgnoredAttributes
+                        )
+                        key="option[]"
+                        selected=(optionOrGroup === selectedOption)>
+                        ${optionOrGroup.text}
+                    </option>
+                </else>
+            </for>
+        </select>
+        <ebay-chevron-down-12-icon/>
+    </span>
+</>

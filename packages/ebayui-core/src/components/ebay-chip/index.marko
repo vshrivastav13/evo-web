@@ -1,0 +1,32 @@
+import { processHtmlAttributes } from "../../common/html-attributes";
+import type { WithNormalizedProps } from "../../global";
+import type { AttrBoolean, AttrString } from "marko/tags-html";
+
+static interface ChipInput extends Omit<Marko.HTML.Span, `on${string}`> {
+    renderBody?: Marko.Body;
+    disabled?: AttrBoolean;
+    "a11y-delete-button-text"?: AttrString;
+    "on-delete"?: () => void;
+}
+
+export interface Input extends WithNormalizedProps<ChipInput> {}
+
+$ const { renderBody, disabled, a11yDeleteButtonText, ...htmlInput } = input;
+
+<span class="chip" ...processHtmlAttributes(htmlInput)>
+    <span class="chip__text" id:scoped="text">
+        <${renderBody}/>
+    </span>
+    <if(a11yDeleteButtonText)>
+        <button
+            type="button"
+            class="chip__button"
+            aria-label=a11yDeleteButtonText
+            disabled=disabled
+            aria-describedby:scoped="text"
+            on-click("emit", "delete")
+        >
+            <ebay-close-12-icon/>
+        </button>
+    </if>
+</span>

@@ -1,0 +1,17 @@
+import { processHtmlAttributes } from "../../common/html-attributes"
+
+$ const { renderBody, max, clippedText, value, ...htmlInput } = input;
+
+<span ...processHtmlAttributes(htmlInput)>
+    <if(renderBody)>
+        <${renderBody}/>
+    </if>
+    <else>
+        ${state.count}/${max}
+        <if(clippedText)>
+            <span class="clipped">
+                ${clippedText}
+            </span>
+        </if>
+    </else>
+</span>

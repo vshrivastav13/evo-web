@@ -1,0 +1,13 @@
+<ebay-infotip
+    a11yCloseButtonText="Dismiss infotip"
+    ariaLabel="Important information"
+    on-expand('emit', 'expand')
+    on-collapse('emit', 'collapse')
+    open=true
+    ...input
+    >
+    <@heading>Important</@heading>
+    <@content>
+        <p>This is some important info</p>
+    </@content>
+</ebay-infotip>

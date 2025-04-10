@@ -26,6 +26,7 @@
         "build:ci": "CI=true npm run build && npm run build:storybook",
         "build:readme": "node scripts/add-ds-version",
         "build:storybook": "storybook build -o ./_site",
+        "deploy": "storybook build -o ./_site",
         "change": "changeset add",
         "clean": "rimraf .coverage .karma .nyc_output demo/static",
         "clean:git": "git clean -xdf",

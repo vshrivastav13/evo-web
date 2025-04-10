@@ -1,0 +1,7 @@
+require('./button.js');
+require('./checkbox.js');
+require('./field.js');
+require('./radio.js');
+require('./select.js');
+require('./switch.js');
+require('./textbox.js');

@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:skin && npm run test:ebayui-core",
-    "skin:pre": "npm run prepublishOnly --workspace=packages/skin",
-    "skin:post": "npm run postpublish --workspace=packages/skin",
-    "test:skin": "npm run build --workspace=packages/skin",
-    "test:ebayui-core": "npm run skin:pre && npm test --workspace=packages/ebayui-core && npm run skin:post",
-    "change": "changeset add"
+    "test": "npm run build --ws",
+    "change": "changeset add",
+    "deploy": "npm run deploy --ws"
   },
   "devDependencies": {
     "@babel/cli": "^7.27.0",

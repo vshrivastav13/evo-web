@@ -5,7 +5,9 @@
   "scripts": {
     "test": "npm run build --ws",
     "change": "changeset add",
-    "deploy": "npm run deploy --ws"
+    "deploy": "npm run deploy --ws",
+    "copy:coreui-site": "npm run deploy --ws",
+    "copy:skin-site": "npm run deploy --ws"
   },
   "devDependencies": {
     "@babel/cli": "^7.27.0",

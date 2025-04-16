@@ -4,7 +4,7 @@ on:
     pull_request:
         types: [opened, synchronize]
     push:
-        branches: ["master", "[1-9][0-9].*"]
+        branches: ["main", "[1-9][0-9].*"]
 
 concurrency:
     group: "${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}"
@@ -96,12 +96,6 @@ jobs:
               run: npm i
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
-            - name: Enter prerelease mode
-              if: ${{ github.ref != 'refs/heads/master' }}
-              run: npm run prerelease:start
-            - name: Exit prerelease mode
-              if: ${{ github.ref == 'refs/heads/master' }}
-              run: npm run prerelease:end
             - name: Release
               id: changesets
               uses: changesets/action@v1

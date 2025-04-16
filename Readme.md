@@ -6,5 +6,5 @@ See each package readme for more information
 
 ## Packages
 
-- [Skin](./packages/skin/README.md)
-- [Ebayui-core](./packages/ebayui-core/README.md)
+- CSS Library [@ebay/skin](./packages/skin/README.md) 
+- Marko components [@ebay/ebayui-core](./packages/ebayui-core/README.md)

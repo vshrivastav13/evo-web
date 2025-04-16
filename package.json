@@ -144,5 +144,15 @@
   "author": "",
   "license": "MIT",
   "description": "",
-  "private": true
+  "private": true,
+  "lint-staged": {
+    "*.{js,css,md,less,json}": "prettier --write --with-node-modules",
+    "*.{css,scss}": "stylelint --config .stylelintrc"
+  },
+  "browserslist": [
+    "extends @ebay/browserslist-config"
+  ],
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  }
 }

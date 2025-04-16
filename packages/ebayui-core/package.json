@@ -26,8 +26,8 @@
         "build:ci": "CI=true npm run build && npm run build:storybook",
         "build:readme": "node scripts/add-ds-version",
         "build:storybook": "storybook build -o ./_site",
-        "deploy": "storybook build -o ./_site",
         "coverage": "vitest run --browser.headless --coverage",
+        "deploy": "storybook build -o ./_site",
         "importSVG": "node --experimental-json-modules --experimental-import-meta-resolve scripts/import-svg && prettier . --write --log-level=warn",
         "installMarkoV4": "npm remove @marko/compiler && npm i marko@4 --force",
         "installMarkoV5": "npm i marko@5 @marko/compiler@5 --force",
@@ -54,15 +54,6 @@
         "tt": "mtc",
         "version": "npm run importSVG && prettier . --write --log-level=warn && npm run build:readme && git add -A src && changeset version && npm i --package-lock-only"
     },
-    "commitlint": {
-        "extends": "@commitlint/config-conventional"
-    },
-    "lint-staged": {
-        "*.{js,css,md,less,json}": "prettier --write --with-node-modules"
-    },
-    "browserslist": [
-        "extends @ebay/browserslist-config"
-    ],
     "dependencies": {
         "@floating-ui/dom": "^1.6.13",
         "@google/model-viewer": "^4.0.0",
@@ -80,7 +71,6 @@
         "makeup-typeahead": "^0.3.3",
         "shaka-player": "4.14.6"
     },
-
     "peerDependencies": {
         "@ebay/skin": "~19.2.0",
         "marko": "^4.27.0 || ^5.31.12"

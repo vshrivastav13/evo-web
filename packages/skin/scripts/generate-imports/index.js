@@ -70,7 +70,6 @@ async function generateTopLevelFiles() {
 async function cleanTopLevelFiles() {
     await removeFile(path.join(currentDir, "browser.json"));
     await removeFile(path.join(currentDir, "index.js"));
-    await removeFile(path.join(currentDir, "index.mjs"));
     await removeFile(path.join(currentDir, "index.css"));
     await removeFile(path.join(currentDir, "index.browser.json"));
     await removeFile(path.join(currentDir, "svg.svg"));

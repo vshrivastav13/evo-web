@@ -85,7 +85,6 @@ class ModuleBuilder {
         if (this.options.isNested) {
             try {
                 await fs.promises.rm(this.moduleName, { recursive: true });
-                await removeFile(getMJSFileName(this.moduleName));
                 await removeFile(getFileName(this.moduleName, "js"));
                 await removeFile(getFileName(this.moduleName, "css"));
             } catch (e) {
@@ -93,7 +92,6 @@ class ModuleBuilder {
             }
         } else {
             await removeFile(getBrowserFileName(this.moduleName));
-            await removeFile(getMJSFileName(this.moduleName));
 
             await removeFile(getFileName(this.moduleName, "js"));
             await removeFile(getFileName(this.moduleName, "css"));
@@ -181,6 +179,16 @@ class ModuleBuilder {
                 this.options.isNested && this.moduleName,
             ),
             await prettier.format(JSON.stringify(content), { parser: "json" }),
+        );
+    }
+
+    async writeBaseModuleFiles(currentModule) {
+        await fs.promises.writeFile(
+            getFileName(mod, "mjs", baseDirectory),
+            this.parseAdditionalModules(getMJSRequireSyntax, "css", {
+                modules,
+                filename,
+            }),
         );
     }
 

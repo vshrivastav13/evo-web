@@ -174,6 +174,15 @@ require("yargs") // eslint-disable-line
         },
     )
     .command(
+        "gen-build",
+        "Generates all imports and clean up",
+        () => {},
+        async () => {
+            await generateTopLevel();
+            await cleanTopLevel();
+        },
+    )
+    .command(
         "verify",
         "Verifies that build is not broken and there are no unchecked files",
         () => {},

@@ -1,6 +1,9 @@
 import "./custom-styles.less";
-import "@ebay/skin/tokens";
-import "@ebay/skin/core";
+import "@ebay/skin/dist/tokens/evo-core.css";
+import "@ebay/skin/dist/tokens/evo-light.css";
+import "@ebay/skin/dist/tokens/evo-dark.css";
+import "@ebay/skin/dist/global/global.css";
+import "@ebay/skin/dist/global/utility.css";
 import "@ebay/skin/marketsans";
 
 export const parameters = {

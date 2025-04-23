@@ -64,6 +64,8 @@ jobs:
               run: npm run deploy
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
+              with:
+                path: _site/public
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
@@ -82,10 +84,7 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v4
             - name: Setup node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: "20"
-                  cache: npm
+              uses: actions/setup-node@v4
             - name: Install dependencies
               run: npm i
             - name: Install Playwright Browsers

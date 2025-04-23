@@ -52,7 +52,7 @@
         "tr": "npm run coverage && npm run report && open .coverage/index.html",
         "ts": "npm run test:server",
         "tt": "mtc",
-        "version": "npm run importSVG && prettier . --write --log-level=warn && npm run build:readme && git add -A src && changeset version && npm i --package-lock-only"
+        "version": "npm run importSVG && prettier . --write --log-level=warn && npm run build:readme"
     },
     "dependencies": {
         "@floating-ui/dom": "^1.6.13",

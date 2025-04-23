@@ -1,7 +1,8 @@
 name: 🐞 Bug report
 description: File a bug/issue
 title: "<component name>: <issue title>"
-labels: ["type: bug", "needs triage"]
+type: "bug"
+labels: ["needs triage"]
 body:
 - type: checkboxes
   id: no-existing-verify
@@ -26,10 +27,10 @@ body:
   validations:
     required: false
 - type: input
-  id: skin-version
+  id: version
   attributes:
-    label: Skin version
-    placeholder: Which version of Skin is the issue occurring in?
+    label: Package and version
+    placeholder: Which version and what package is the issue occurring in?
 - type: textarea
   id: device-os-browser-info
   attributes:

@@ -1,7 +1,8 @@
 name: 🌟 New Feature request
-description: Request a new feature for Skin
+description: Request a new feature
 title: "<existing/proposed component name>: <issue title>"
-labels: ["type: feature", "needs triage"]
+type: "feature"
+labels: ["needs triage"]
 body:
 - type: textarea
   id: feature-description

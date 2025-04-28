@@ -71,7 +71,7 @@ jobs:
               uses: actions/deploy-pages@v4
     release:
         # Sets permissions of the GITHUB_TOKEN to allow opening release PR
-        needs: [deploy]
+        needs: [build]
         permissions:
             id-token: write
             contents: write
@@ -87,8 +87,6 @@ jobs:
               uses: actions/setup-node@v4
             - name: Install dependencies
               run: npm i
-            - name: Install Playwright Browsers
-              run: npx playwright install --with-deps
             - name: Release
               id: changesets
               uses: changesets/action@v1

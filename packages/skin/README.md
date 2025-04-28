@@ -4,7 +4,7 @@
 
 > Pure CSS framework designed & developed by eBay for a branded, e-commerce marketplace.
 
-Please visit the [Skin website](https://opensource.ebay.com/skin/) for all end-user documentation.
+Please visit the [Skin website](https://opensource.ebay.com/evo-web/skin/) for all end-user documentation.
 
 ## License
 
@@ -12,7 +12,7 @@ Skin is [MIT](LICENSE) licensed.
 
 ## Install
 
-Skin is available as the `@ebay/skin` package on [NPM](https://www.npmjs.com/). Skin is also available on our [CDN](https://opensource.ebay.com/skin/#cdn).
+Skin is available as the `@ebay/skin` package on [NPM](https://www.npmjs.com/). Skin is also available on our [CDN](https://opensource.ebay.com/evo-web/skin/#cdn).
 
 ## Versioning
 
@@ -26,13 +26,13 @@ More detailed insight into our versioning process can be found in our [contribut
 
 ## Releases
 
-Please refer to our [releases](https://github.com/eBay/skin/releases) page to view the change log for current and past releases.
+Please refer to our [releases](https://github.com/eBay/evo-web/releases) page to view the change log for current and past releases.
 
-Please refer to our [web archive](https://opensource.ebay.com/skin/archive/) for past examples and documentation.
+Please refer to our [web archive](https://opensource.ebay.com/evo-web/skin/archive/) for past examples and documentation.
 
 ## Roadmap
 
-Please refer to our [projects](https://github.com/eBay/skin/projects) page to see what's coming down the pipeline.
+Please refer to our [projects](https://github.com/eBay/evo-web/projects) page to see what's coming down the pipeline.
 
 ## Browser Support
 
@@ -46,7 +46,7 @@ We take accessibility very seriously. Very seriously indeed. Therefore all modul
 
 ## Issues
 
-Please use our [issues page](https://github.com/eBay/skin/issues) to ask questions, report issues or submit feature requests.
+Please use our [issues page](https://github.com/eBay/evo-web/issues) to ask questions, report issues or submit feature requests.
 
 To help track your issue, the Skin admins will assign it with a label from one or more issue categories.
 
@@ -74,4 +74,4 @@ The original creator of Skin is [Senthil Padmanabhan](https://github.com/senthil
 
 The current author and lead maintainer is [Ian McBurnie](https://github.com/ianmcburnie).
 
-[List of all contributors](https://github.com/eBay/skin/graphs/contributors).
+[List of all contributors](https://github.com/eBay/evo-web/graphs/contributors).

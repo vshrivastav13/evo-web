@@ -1,4 +1,4 @@
-import siteMeta from "./data/site.json" ;
+import pkg from '../../package.json' ;
 
 <div>
     <h2 id="install">
@@ -20,6 +20,6 @@ import siteMeta from "./data/site.json" ;
     </p>
 
     <highlight-code type="json" code=`
-         { "dependencies": { "@ebay/skin": "^${siteMeta.version}" } }`>
+         { "dependencies": { "@ebay/skin": "^${pkg.version}" } }`>
     </highlight-code>
 </div>

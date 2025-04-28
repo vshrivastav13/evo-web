@@ -1,4 +1,5 @@
 import siteMeta from "./data/site.json" ;
+import pkg from '../../package.json' ;
 import {components} from './components.marko';
 
 <header>
@@ -65,7 +66,7 @@ import {components} from './components.marko';
                                     <div class="tabs__cell">
                                         <nav id="primary-nav-mobile" class="primary-nav-mobile" aria-label="Site navigation">
                                             <ul class="app-bar__links" role="menubar">
-                                                <li><a role="menuitem" href="archive/index.html">Archive (v${siteMeta.version})</a></li>
+                                                <li><a role="menuitem" href="archive/index.html">Archive (v${pkg.version})</a></li>
                                                 <li><a role="menuitem" href="https://github.com/eBay/skin">Repo</a></li>
                                                 <li><a role="menuitem" href="/skin/storybook">Storybook</a></li>
                                                 <li><a role="menuitem" href="/sitemap">Sitemap</a></li>
@@ -117,7 +118,7 @@ import {components} from './components.marko';
                     </div>
                     <nav id="primary-nav" class="primary-nav" aria-label="Site navigation">
                         <ul class="app-bar__links" role="menubar">
-                            <li><a role="menuitem" href="archive/index.html">Archive (v${siteMeta.version})</a></li>
+                            <li><a role="menuitem" href="archive/index.html">Archive (v${pkg.version})</a></li>
                             <li><a role="menuitem" href="https://github.com/eBay/skin">Repo</a></li>
                             <li><a role="menuitem" href="/skin/storybook">Storybook</a></li>
                         </ul>

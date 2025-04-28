@@ -1,7 +1,5 @@
 {
     "pageTitle": "eBay Skin",
-    "version": "18.5.0",
-
     "module_metadata": {
         "alert-dialog": {
             "ds-component": { "name": "alert-dialog", "version": "18.1.0" },

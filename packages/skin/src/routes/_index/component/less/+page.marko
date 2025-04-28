@@ -1,4 +1,4 @@
-import siteMeta from "../../../../components/data/site.json" ;
+import pkg from '../../package.json' ;
 
 <div id="less">
     <section-header metadata=metadata/>
@@ -39,7 +39,7 @@ import siteMeta from "../../../../components/data/site.json" ;
     "dependencies": {
       "lasso": "^3",
       "lasso-less": "^3",
-      "@ebay/skin": "^${siteMeta.version}"
+      "@ebay/skin": "^${pkg.version}"
     }
 }
     </highlight-code>

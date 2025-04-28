@@ -1,4 +1,4 @@
-import siteMeta from "../../components/data/site.json" ;
+import pkg from '../../package.json' ;
 import {components} from '../../components/components.marko';
 
 style {
@@ -37,7 +37,7 @@ style {
 
     <nav aria-labelledby="sitemap-pages">
         <ul role="menubar">
-        <li><a role="menuitem" href="archive/index.html">Archive (v${siteMeta.version})</a></li>
+        <li><a role="menuitem" href="archive/index.html">Archive (v${pkg.version})</a></li>
             <li><a role="menuitem" href="https://github.com/eBay/skin">Repo</a></li>
             <li><a role="menuitem" href="/storybook">Storybook</a></li>
         </ul>

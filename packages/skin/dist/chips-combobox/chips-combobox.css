@@ -3,8 +3,8 @@
     border: 1px solid var(--color-stroke-default);
     border-radius: var(--border-radius-50);
     display: inline-block;
-    padding-bottom: var(--spacing-100);
     padding-inline-end: var(--spacing-200);
+    padding-bottom: var(--spacing-100);
     padding-inline-start: var(--spacing-100);
     padding-top: var(--spacing-100);
     position: relative;

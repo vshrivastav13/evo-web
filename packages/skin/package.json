@@ -12,7 +12,7 @@
     "homepage": "https://opensource.ebay.com/skin/",
     "repository": {
         "type": "git",
-        "url": "https://github.com/eBay/skin"
+        "url": "https://github.com/ebay/evo-core"
     },
     "files": [
         "dist",
@@ -25,7 +25,7 @@
         "!webpack.config.js"
     ],
     "devDependencies": {
-        "@marko/run-adapter-static": "^1.0.1"
+        "@marko/run-adapter-static": "^1.0.2"
     },
     "scripts": {
         "preview": "marko-run preview",

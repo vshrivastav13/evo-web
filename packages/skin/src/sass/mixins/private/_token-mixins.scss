@@ -28,12 +28,12 @@
     $product-token: ""
 ) {
     @if $product-token != "" {
-        background-color: rgba(
+        background-color: rgb(
             var(--#{$component-token}, var(--#{$product-token})),
             $alpha
         );
     } @else {
-        background-color: rgba(var(--#{$component-token}), $alpha);
+        background-color: rgb(var(--#{$component-token}), $alpha);
     }
 }
 

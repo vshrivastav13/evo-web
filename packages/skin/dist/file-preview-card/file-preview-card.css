@@ -100,7 +100,7 @@ video.file-preview-card__asset {
 
 .file-preview-card__see-more {
     aspect-ratio: 1/1;
-    background-color: rgba(
+    background-color: rgb(
         var(
             --file-preview-card-see-more-background-color-rgb,
             var(--color-background-strong-rgb)
@@ -136,7 +136,7 @@ video.file-preview-card__asset {
 
 .file-preview-card__see-more:focus-visible,
 .file-preview-card__see-more:hover {
-    background-color: rgba(
+    background-color: rgb(
         var(
             --file-preview-card-see-more-interactive-background-color-rgb,
             var(--color-state-secondary-hover-rgb)
@@ -146,7 +146,7 @@ video.file-preview-card__asset {
 }
 
 .file-preview-card__see-more:active {
-    background-color: rgba(
+    background-color: rgb(
         var(
             --file-preview-card-see-more-interactive-active-background-color-rgb,
             var(--color-state-secondary-active-rgb)

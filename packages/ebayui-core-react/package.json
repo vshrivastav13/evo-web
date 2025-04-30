@@ -18,7 +18,6 @@
     "lint": "eslint . --ext ts,tsx",
     "lint:ci": "eslint . --ext .ts,.tsx -f @microsoft/eslint-formatter-sarif -o eslint-results.sarif",
     "coverage": "yarn clean && yarn test --coverage --ci",
-    "change": "changeset add",
     "eslint-local": "eslint . --ext ts,tsx",
     "eslint": "eslint . --ext .ts,.tsx -f checkstyle -o ./lint/checkstyle-result.xml",
     "format": "eslint . --fix 'src/**/*.{ts,tsx}'",
@@ -32,9 +31,9 @@
     "update-icons": "node ./scripts/update-icons",
     "copy": "copyfiles package.json README.md dist; yarn copy:rest",
     "copy:rest": "yarn copyfiles -u 1 'src/**/*.md' dist",
-    "release": "yarn clean && yarn build && yarn copy && CI=1 changeset publish",
+    "release": "yarn clean && yarn build && yarn copy",
     "prepare": "node scripts/husky-install || node ../scripts/husky-install",
-    "version": "yarn update-icons && git add -A src && changeset version"
+    "version": "yarn update-icons && git add -A src"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -43,7 +42,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:eBay/ebayui-core-react.git"
+    "url": "git@github.com:eBay/evo-web"
   },
   "keywords": [
     "React",
@@ -78,8 +77,6 @@
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
     "@babel/register": "^7.0.0",
-    "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.11",
     "@ebay/skin": "^19",
     "@microsoft/eslint-formatter-sarif": "^3.0.0",
     "@rollup/plugin-typescript": "^11.1.6",

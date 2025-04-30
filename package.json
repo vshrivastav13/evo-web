@@ -140,7 +140,8 @@
   },
   "workspaces": [
     "packages/skin",
-    "packages/ebayui-core"
+    "packages/ebayui-core",
+    "packages/ebayui-core-react"
   ],
   "author": "",
   "license": "MIT",

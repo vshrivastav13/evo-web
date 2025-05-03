@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 import React from 'react'
 import { EbayAccordion } from '../index'
-import { render } from '@testing-library/react'
+import { render, waitFor } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 import { EbayDetails } from '../../ebay-details'
 import { eventOfType } from '../../common/event-utils/__tests__/helpers'
@@ -92,9 +92,11 @@ describe('<EbayAccordion />', () => {
             await userEvent.click(getByText('Summary 2'))
 
             // Check first details event is closed
-            expect(onToggle).toHaveBeenCalledWith(eventOfType('toggle'), {
-                open: false,
-                index: 0
+            await waitFor(() => {
+                expect(onToggle).toHaveBeenCalledWith(eventOfType('toggle'), {
+                    open: false,
+                    index: 0
+                })
             })
 
             // Check second details event is opened

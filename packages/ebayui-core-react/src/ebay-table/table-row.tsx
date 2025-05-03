@@ -1,4 +1,4 @@
-import React, { Component, ComponentProps, FC } from 'react'
+import React, { Component, ComponentProps, FC, ReactElement } from 'react'
 import type { EbayTableHeaderProps } from './table-header'
 import { filterByType } from '../utils'
 import EbayTableCell from './table-cell'
@@ -17,7 +17,7 @@ export type EbayTableRowProps = Omit<ComponentProps<'tr'>, 'onSelect'> & {
      * NOTE: The flag "@deprecated" is only to not show this property in the autocomplete list on the top
      * @deprecated
      */
-    __headers?: Component<EbayTableHeaderProps>[];
+    __headers?: ReactElement<EbayTableHeaderProps>[];
 }
 
 const EbayTableRow: FC<EbayTableRowProps> = ({

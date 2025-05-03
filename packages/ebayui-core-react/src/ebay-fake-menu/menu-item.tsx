@@ -5,8 +5,8 @@ import { EbayBadge } from '../ebay-badge'
 
 export type EbayMenuItemType = 'button'
 export type EbayFakeMenuItemProps =
-    Omit<ComponentProps<'a'>, 'onKeyDown' | 'onMouseDown'> &
-    Omit<ComponentProps<'button'>, 'onKeyDown' | 'onMouseDown'> &
+    Omit<ComponentProps<'a'>, 'onKeyDown'> &
+    Omit<ComponentProps<'button'>, 'onKeyDown'> &
     {
         current?: boolean;
         disabled?: boolean;
@@ -27,7 +27,7 @@ const EbayMenuItem: FC<EbayFakeMenuItemProps> = ({
     children,
     ...rest
 }) => {
-    const ref = useRef<HTMLAnchorElement & HTMLButtonElement>()
+    const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null)
     const hasBadge = badgeNumber !== undefined
 
     useEffect(() => {

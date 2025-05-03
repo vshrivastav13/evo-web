@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import { EbayIcon } from '../ebay-icon'
 import { EbayChangeEventHandler, Key } from '../common/event-utils/types'
 import { filterByType } from '../common/component-utils'
-import EbayListboxButtonOption from './listbox-button-option'
+import EbayListboxButtonOption, { EbayListboxButtonOptionProps } from './listbox-button-option'
 import { useFloatingDropdown } from '../common/dropdown'
 
 export type ChangeEventProps = {
@@ -90,7 +90,7 @@ const ListboxButton: FC<EbayListboxButtonProps> = ({
         setSelectedOption(selectedOptionFromValue)
     }, [value])
 
-    const childrenArray = Children.toArray(children) as ReactElement[]
+    const childrenArray = Children.toArray(children) as ReactElement<EbayListboxButtonOptionProps>[]
     const getSelectedValueByIndex = (index: number) => childrenArray[index].props.value
     const getIndexByValue = useCallback((selectedValue) =>
         childrenArray.findIndex(({ props }) => props.value === selectedValue), [childrenArray])
@@ -120,7 +120,7 @@ const ListboxButton: FC<EbayListboxButtonProps> = ({
         setSelectedIndex(index)
         collapseListbox()
         buttonRef.current.focus()
-        onChange(e, { index, selected: [getSelectedValueByIndex(index)], wasClicked })
+        onChange(e, { index, selected: [String(getSelectedValueByIndex(index))], wasClicked })
         setWasClicked(false)
     }
 
@@ -212,7 +212,7 @@ const ListboxButton: FC<EbayListboxButtonProps> = ({
                 setTimeout(() => buttonRef.current.focus(), 0)
                 onChange(e as any, {
                     index: selectedIndex,
-                    selected: [getSelectedValueByIndex(selectedIndex)],
+                    selected: [String(getSelectedValueByIndex(selectedIndex))],
                     wasClicked
                 })
                 break
@@ -234,9 +234,13 @@ const ListboxButton: FC<EbayListboxButtonProps> = ({
             selected: selectedOption && child.props.value === selectedOption.props.value,
             id: child.props.id || `listbox_btn_${child.props.value}_${index}`,
             onClick: (e) => onOptionsSelect(e, index),
-            innerRef: optionNode => !optionNode
-                ? optionsByIndexRef.current.delete(index)
-                : optionsByIndexRef.current.set(index, optionNode)
+            innerRef: optionNode => {
+                if (!optionNode) {
+                    optionsByIndexRef.current.delete(index)
+                } else {
+                    optionsByIndexRef.current.set(index, optionNode)
+                }
+            }
         }))
     const wrapperClassName = classNames('listbox-button', className, { 'listbox-button--fluid': fluid })
     const buttonClassName = classNames('btn', {

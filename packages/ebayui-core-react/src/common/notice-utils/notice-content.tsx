@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react'
 import cx from 'classnames'
 
 export type NoticeContentProps = {
-    type: 'inline' | 'section' | 'page';
+    type: 'inline' | 'section' | 'page' | 'education';
     className?: string;
     children?: ReactNode;
 }

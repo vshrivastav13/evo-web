@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import React, { KeyboardEventHandler, MouseEventHandler, ReactElement, useEffect, useRef, useState } from 'react'
 import { DialogBaseProps, DialogBaseWithState, EbayDialogActions } from '../../ebay-dialog-base'
 import { EbaySnackbarDialogAction } from './ebay-snackbar-dialog-action'
+import { excludeComponent, findComponent } from '../../utils'
 
 export type EbaySnackbarDialogProps = Omit<DialogBaseProps<HTMLElement>, 'a11yCloseText'> & {
     layout?: 'row' | 'column';
@@ -26,12 +27,11 @@ export const EbaySnackbarDialog = ({
     // we don't close the snackbar in an undesired moment.
     // For example, the snackbar should stay open on focus even if the mouseLeave event happened.
     const eventSet = useRef<Set<string>>(new Set())
-    const timeoutRef = useRef<ReturnType<typeof setTimeout>>()
+    const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null)
     const [isOpen, setIsOpen] = useState(open)
 
-    const childrenArray = React.Children.toArray(children) as ReactElement[]
-    const action = childrenArray.find((child: ReactElement) => child.type === EbaySnackbarDialogAction)
-    const content = childrenArray.filter((child: ReactElement) => child.type !== EbaySnackbarDialogAction)
+    const action = findComponent(children, EbaySnackbarDialogAction)
+    const content = excludeComponent(children, EbaySnackbarDialogAction)
 
     const cancelCurrentCloseRequest = () => {
         clearTimeout(timeoutRef.current)

@@ -1,6 +1,6 @@
-const { resolve } = require('path')
+import { resolve } from 'path'
 
-module.exports = {
+export default {
     stories: ['../src/**/__tests__/*.stories.tsx'],
     typescript: {
         check: false,

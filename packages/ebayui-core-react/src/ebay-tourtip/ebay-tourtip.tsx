@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, useRef } from 'react'
+import React, { ComponentProps, ComponentType, CSSProperties, FC, useRef } from 'react'
 import { findComponent } from '../common/component-utils'
 import {
     Tooltip,
@@ -35,17 +35,17 @@ const EbayTourtip:FC<TourtipProps> = ({
     pointer,
     ...rest
 }) => {
-    const hostRef = useRef()
+    const hostRef = useRef<HTMLElement>(null)
     const {
         isExpanded,
         collapseTooltip
     } = useTooltip({ onExpand, onCollapse, initialExpanded: true, hostRef })
-    const containerRef = useRef()
+    const containerRef = useRef<FC<TooltipProps>>(null)
     const content = findComponent(children, EbayTourtipContent)
     if (!content) {
         throw new Error(`EbayTourtip: Please use a EbayTourtipContent that defines the content of the tourtip`)
     }
-    const { children: contentChildren, contentProps } = content.props
+    const { children: contentChildren, ...contentProps } = content.props
     const host = findComponent(children, EbayTourtipHost)
     if (!host) {
         throw new Error(`EbayTourtip: Please use a EbayTourtipHost that defines the host of the tourtip`)

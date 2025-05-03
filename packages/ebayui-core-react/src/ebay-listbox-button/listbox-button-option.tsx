@@ -1,12 +1,12 @@
-import React, { ComponentProps, FC, MouseEvent, RefObject } from 'react'
+import React, { ComponentProps, FC, MouseEvent, RefCallback, RefObject } from 'react'
 import classNames from 'classnames'
 import { EbayIcon } from '../ebay-icon'
 
-type EbayListboxButtonOptionProps = ComponentProps<'input'> & {
+export type EbayListboxButtonOptionProps = ComponentProps<'input'> & {
     selected?: boolean;
     index?: number;
     onClick?: (event: MouseEvent<HTMLDivElement>, value: any, index: number) => void;
-    innerRef?: RefObject<HTMLDivElement>;
+    innerRef?: RefObject<HTMLDivElement> | RefCallback<HTMLDivElement>;
 };
 
 const ListboxOption: FC<EbayListboxButtonOptionProps> = ({

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, cloneElement, FC, KeyboardEvent, useEffect } from 'react'
+import React, { ChangeEvent, cloneElement, FC, KeyboardEvent, MouseEvent, useEffect } from 'react'
 import { createLinear } from 'makeup-active-descendant'
 import typeahead from 'makeup-typeahead'
 import classNames from 'classnames'
@@ -54,12 +54,12 @@ export const EbayListbox: FC<EbayListboxProps> = ({
         }
     }, [selectedOptionComponentIndex])
 
-    const containerRef = useRef<HTMLDivElement>()
-    const activeDescendantRef = useRef<ReturnType<typeof createLinear>>()
-    const typeaheadRef = useRef<ReturnType<typeof typeahead>>()
+    const containerRef = useRef<HTMLDivElement>(null)
+    const activeDescendantRef = useRef<ReturnType<typeof createLinear>>(null)
+    const typeaheadRef = useRef<ReturnType<typeof typeahead>>(null)
     const wasClickedRef = useRef(false)
 
-    function handleChange(event: CustomEvent | Event | KeyboardEvent, nextSelectedIndex: number, wasClicked: boolean) {
+    function handleChange(event: MouseEvent | CustomEvent | Event | KeyboardEvent, nextSelectedIndex: number, wasClicked: boolean) {
         if (nextSelectedIndex === selectedIndex) {
             return
         }
@@ -188,7 +188,7 @@ export const EbayListbox: FC<EbayListboxProps> = ({
                         key: option.props.value || index,
                         ...option.props,
                         onMouseDown: listSelection === 'auto' ? handleMouseDown : undefined,
-                        onClick: (event: MouseEvent) => {
+                        onClick: (event) => {
                             if (listSelection !== 'auto') {
                                 handleChange(event, index, true)
                             }

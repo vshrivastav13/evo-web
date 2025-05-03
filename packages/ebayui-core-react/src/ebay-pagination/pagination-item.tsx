@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import { EbayEventHandler } from '../common/event-utils/types'
 
 export type PaginationItemType = 'previous' | 'next' | 'page' | 'separator'
-type HtmlProps = Omit<ComponentProps<'button'>, 'type'> & ComponentProps<'a'> & ComponentProps<'li'>
+type HtmlProps = Omit<ComponentProps<'button'>, 'type' | 'onSelect'> & Omit<ComponentProps<'a'>, 'onSelect'> & Omit<ComponentProps<'li'>, 'onSelect'>
 export type PaginationItemProps = HtmlProps & {
     pageIndex?: number;
     key?: Key;

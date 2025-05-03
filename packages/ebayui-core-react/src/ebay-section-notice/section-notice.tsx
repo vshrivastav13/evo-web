@@ -5,7 +5,7 @@ import React, {
     KeyboardEventHandler,
     MouseEvent,
     MouseEventHandler,
-    ReactElement, useEffect, useState
+    useEffect, useState
 } from 'react'
 import cx from 'classnames'
 import { EbayNoticeContent } from '../ebay-notice-base/components/ebay-notice-content'
@@ -13,6 +13,7 @@ import NoticeContent from '../common/notice-utils/notice-content'
 import { EbayIcon, Icon } from '../ebay-icon'
 import { EbaySectionNoticeFooter } from './index'
 import { randomId } from '../common/random-id'
+import { findComponent } from '../utils'
 
 export type SectionNoticeStatus = 'general' | 'none' | 'attention' | 'confirmation' | 'information' | 'education'
 export type Props = ComponentProps<'section'> & {
@@ -48,8 +49,7 @@ const EbaySectionNotice: FC<Props> = ({
         setRandomId(randomId())
     }, [])
 
-    const childrenArray = React.Children.toArray(children) as ReactElement[]
-    const content = childrenArray.find(({ type }) => type === EbayNoticeContent)
+    const content = findComponent(children, EbayNoticeContent)
     const hasStatus = status !== 'general' && status !== 'none'
     const isEducational = status === 'education'
     let iconName = null

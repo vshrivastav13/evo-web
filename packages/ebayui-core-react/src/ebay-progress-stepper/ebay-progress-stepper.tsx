@@ -17,7 +17,7 @@ const EbayProgressStepper: FC<ProgressStepperProps> = ({
     className,
     ...rest
 }) => {
-    const childrenArray = Children.toArray(children) as ReactElement[]
+    const childrenArray = Children.toArray(children) as ReactElement<EbayProgressStepProps>[]
     const currentIndex = currentIndexByDefaultState(childrenArray, defaultState)
 
     return (
@@ -31,7 +31,7 @@ const EbayProgressStepper: FC<ProgressStepperProps> = ({
                 role="list"
                 className="progress-stepper__items"
             >
-                {childrenArray.map((child: ReactElement, index) => (
+                {childrenArray.map((child, index) => (
                     <Fragment key={index}>
                         {index > 0 && <hr className="progress-stepper__separator" role="presentation" />}
                         {cloneElement<EbayProgressStepProps>(child, {
@@ -46,7 +46,7 @@ const EbayProgressStepper: FC<ProgressStepperProps> = ({
     )
 }
 
-function currentIndexByDefaultState(steps: ReactElement[], defaultState: StepState): number {
+function currentIndexByDefaultState(steps: ReactElement<EbayProgressStepProps>[], defaultState: StepState): number {
     const foundCurrentIndex = steps.findIndex(child => child.props.current)
 
     if (foundCurrentIndex === -1) {

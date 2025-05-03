@@ -36,7 +36,7 @@ export function useFloatingLabel({
     onMount = () => {}
 }: MakeupFloatingLabelHookProps): MakeupFloatingLabelHookReturn {
     const containerRef = useRef(null)
-    const floatingLabel = useRef<typeof FloatingLabel>()
+    const floatingLabel = useRef<typeof FloatingLabel>(null)
 
     // This effect needs to be defined before the initialization effect
     // as it is only intended for subsequent updates

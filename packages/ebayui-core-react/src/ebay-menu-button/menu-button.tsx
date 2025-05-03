@@ -1,4 +1,4 @@
-import React, { cloneElement, ComponentProps, FC, useEffect, useState } from 'react'
+import React, { cloneElement, ComponentProps, FC, useEffect, useState, JSX } from 'react'
 import classnames from 'classnames'
 import { filterByType, findComponent } from '../common/component-utils'
 
@@ -48,7 +48,7 @@ const EbayMenuButton: FC<MenuButtonProps> = ({
     const buttonRef = refs.host as React.MutableRefObject<HTMLButtonElement>
     const menuRef = refs.overlay
 
-    const menuItems = filterByType(children, [EbayMenuButtonItem, EbayMenuButtonSeparator])
+    const menuItems = filterByType<typeof EbayMenuButtonItem>(children, [EbayMenuButtonItem, EbayMenuButtonSeparator])
     const defaultIndexes = menuItems.map((item) => Boolean(item.props.checked))
     const [checkedIndexes, setCheckedIndexes] = useState<boolean[]>(defaultIndexes)
 

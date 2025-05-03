@@ -1,9 +1,9 @@
-import { Children, cloneElement, FC, ReactElement, RefObject } from 'react'
+import { Children, cloneElement, ComponentProps, ComponentType, FC, HTMLAttributes, JSXElementConstructor, ReactElement, RefObject } from 'react'
 import classNames from 'classnames'
 
-export type TooltipHostProps = {
+export type TooltipHostProps =  ComponentProps<ComponentType<any>> & {
     className?: string;
-    children?: ReactElement;
+    children?: ReactElement<any>;
     forwardedRef?: RefObject<any>;
 }
 

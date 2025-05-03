@@ -3,7 +3,7 @@ import { EbayIcon } from '../ebay-icon'
 
 type ItemAttributes = ComponentProps<'a'> & ComponentProps<'button'>;
 
-type BreadcrumbItemProps = ItemAttributes & {
+export type BreadcrumbItemProps = ItemAttributes & {
     children: ReactNode;
     tag?: 'a' | 'button';
     href?: string;

@@ -1,4 +1,4 @@
-import React, { cloneElement, ComponentProps, FC, useEffect, useState } from 'react'
+import React, { cloneElement, ComponentProps, DetailedReactHTMLElement, FC, MouseEvent, ReactElement, useEffect, useState } from 'react'
 import classnames from 'classnames'
 
 import { filterByType, findComponent } from '../common/component-utils'
@@ -137,7 +137,7 @@ const EbayMenuButton: FC<Props> = ({
                     style={overlayStyles}
                 >
                     {menuItems.map((item, i) =>
-                        cloneElement<EbayFakeMenuItemProps>(item, {
+                        cloneElement<EbayFakeMenuItemProps>(item as ReactElement<EbayFakeMenuItemProps>, {
                             ...item.props,
                             onMouseDown: (e) => {
                                 onMouseDown(e, { index: i })
@@ -145,7 +145,7 @@ const EbayMenuButton: FC<Props> = ({
                             className: classnames(item.props.className, 'fake-menu-button__item'),
                             key: i,
                             autoFocus: i === 0
-                        })
+                        } as Partial<EbayFakeMenuItemProps>)
                     )}
                 </EbayFakeMenu>
             }

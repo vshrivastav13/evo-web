@@ -1,13 +1,14 @@
 import React, { cloneElement, createElement, CSSProperties, FC, useRef, ReactNode } from 'react'
 import classNames from 'classnames'
 import { findComponent } from '../common/component-utils'
-import { Tooltip, TooltipHost, TooltipContent, PointerDirection, useTooltip } from '../common/tooltip-utils'
+import { Tooltip, TooltipHost, TooltipContent, PointerDirection, useTooltip, TooltipProps } from '../common/tooltip-utils'
 import { EbayDialogHeader } from '../ebay-dialog-base'
-import EbayInfotipHost from './ebay-infotip-host'
+import EbayInfotipHost, { InfotipHostProps } from './ebay-infotip-host'
 import { Icon } from '../ebay-icon'
 import { EbayLightboxDialog } from '../ebay-lightbox-dialog'
 import { Variant } from './types'
 import { EbayInfotipHeading, EbayInfotipContent } from './index'
+import { TooltipHostProps } from 'src/common/tooltip-utils/tooltip-host'
 
 type InfotipProps = {
     variant?: Variant;
@@ -38,7 +39,7 @@ const EbayInfotip: FC<InfotipProps> = ({
     'aria-label': ariaLabel,
     className
 }: InfotipProps) => {
-    const buttonRef = useRef()
+    const buttonRef = useRef<HTMLElement & FC<TooltipHostProps>>(null)
     const {
         isExpanded,
         expandTooltip,
@@ -46,7 +47,7 @@ const EbayInfotip: FC<InfotipProps> = ({
     } = useTooltip({ onCollapse, onExpand, initialExpanded, hostRef: buttonRef })
 
     const isModal = variant === 'modal'
-    const containerRef = useRef()
+    const containerRef = useRef<FC<TooltipProps>>(null)
     const heading = findComponent(children, EbayInfotipHeading)
     const content = findComponent(children, EbayInfotipContent)
     const button = findComponent(children, EbayInfotipHost) || createElement(EbayInfotipHost)

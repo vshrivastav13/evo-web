@@ -1,12 +1,13 @@
 import React, {
     ChangeEvent, FocusEvent, KeyboardEvent,
-    Children, cloneElement,
+    cloneElement,
     ComponentProps, FC, ReactElement
 } from 'react'
 import classNames from 'classnames'
 import { EbayIcon } from '../ebay-icon'
 import { EbayLabel, EbayLabelProps } from '../ebay-field'
 import { EbayChangeEventHandler, EbayFocusEventHandler, EbayKeyboardEventHandler } from '../common/event-utils/types'
+import { findComponent } from '../utils'
 
 type Size = 'default' | 'large'
 
@@ -51,8 +52,7 @@ const EbayRadio: FC<InputProps & EbayRadioProps> = ({
         <EbayIcon name="radioUnchecked24" className="radio__unchecked" /> :
         <EbayIcon name="radioUnchecked18" className="radio__unchecked" />
 
-    const childrenArray = Children.toArray(children) as ReactElement[]
-    const ebayLabel = childrenArray.find(child => child.type === EbayLabel)
+    const ebayLabel = findComponent(children, EbayLabel)
 
     return (
         <>

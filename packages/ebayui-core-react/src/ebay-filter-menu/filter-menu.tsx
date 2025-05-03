@@ -232,7 +232,7 @@ const EbayFilterMenu: FC<EbayFilterMenuProps> = ({
                                 index
                             })
                         },
-                        onKeyDown: (event: KeyboardEvent<HTMLLabelElement | HTMLDivElement>) => {
+                        onKeyDown: (event: KeyboardEvent<HTMLLabelElement & HTMLDivElement>) => {
                             item.props.onKeyDown?.(event)
                             if (event.key === 'Enter' || event.key === ' ') {
                                 const currentChecked = isRadio ? index === checkedIndex : checkedItems[index]

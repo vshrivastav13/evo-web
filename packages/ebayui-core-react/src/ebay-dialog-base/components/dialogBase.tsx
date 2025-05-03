@@ -17,6 +17,7 @@ import { EbayIcon } from '../../ebay-icon'
 import { randomId } from '../../common/random-id'
 import { useDialogAnimation, TransitionElement } from './animation'
 import { DialogCloseEventHandler } from '../types'
+import { EbayDialogHeaderProps } from './dialog-header'
 
 
 export type WindowType = 'compact'
@@ -32,7 +33,7 @@ export interface DialogBaseProps<T> extends HTMLProps<T> {
     classPrefix?: ClassPrefix;
     windowClass?: string;
     windowType?: WindowType;
-    header?: ReactElement;
+    header?: ReactElement<EbayDialogHeaderProps>;
     footer?: ReactElement;
     actions?: ReactElement;
     isModal?: boolean;

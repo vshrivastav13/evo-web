@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
-import { act } from '@testing-library/react-hooks/dom'
+import { act } from '@testing-library/react'
 
 import { EbayMenu, EbayMenuItem } from '../index'
 import { WithBadges, WithSeparator, Radio } from './index.stories'

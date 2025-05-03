@@ -32,7 +32,7 @@ const EbayMenu: FC<EbayMenuProps> = ({
     children,
     ...rest
 }) => {
-    const childrenArray = Children.toArray(children) as ReactElement[]
+    const childrenArray = Children.toArray(children) as ReactElement<MenuItemProps>[]
     const [focusedIndex, setFocusedIndex] = useRovingIndex(children, EbayMenuItem, autofocus === true ? 0 : undefined)
     const [checkedIndexes, setCheckedIndexes] = useState<boolean[]>(childrenArray.map(() => false))
 

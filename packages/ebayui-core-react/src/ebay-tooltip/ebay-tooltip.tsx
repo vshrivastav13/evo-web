@@ -35,7 +35,7 @@ const EbayTooltip: FC<Props> = ({
     ...rest
 }) => {
     const { isExpanded, expandTooltip, collapseTooltip } = useTooltip({ onCollapse, onExpand })
-    const timeoutRef = useRef<ReturnType<typeof setTimeout>>()
+    const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null)
 
     const handleOnMouseEnter = (event) => {
         onMouseEnter(event)

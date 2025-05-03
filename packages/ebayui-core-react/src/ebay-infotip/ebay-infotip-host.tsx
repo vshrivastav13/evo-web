@@ -4,7 +4,7 @@ import { EbayIcon, Icon } from '../ebay-icon'
 import { withForwardRef } from '../common/component-utils/forwardRef'
 import { Variant } from './types'
 
-type InfotipHostProps = Omit<ComponentProps<'button'>, 'children'> & {
+export type InfotipHostProps = Omit<ComponentProps<'button'>, 'children'> & {
     icon?: Icon;
     forwardedRef?: RefObject<HTMLAnchorElement & HTMLButtonElement>;
     variant?: Variant;

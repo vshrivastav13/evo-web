@@ -73,7 +73,7 @@ const CarouselList: FC<CarouselListProps> = ({
             onSetActiveIndex(closest)
             onScroll({ index: closest })
         }
-    }, [listRef.current, itemsRef.current, slideWidth, activeIndex, onSetActiveIndex])
+    }, [listRef.current, slideWidth, activeIndex, onSetActiveIndex])
 
     const handleScroll = () => {
         if (scrollTimeout.current) {

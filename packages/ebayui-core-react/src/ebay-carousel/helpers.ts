@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 import { Children, cloneElement, ReactElement, ReactNode, RefObject } from 'react'
 import { ListItemRef, MovementDirection, RelativeRect } from './types'
+import { CarouselItemProps } from './carousel-item'
+import { EbayCarouselItem } from '.'
 
 export function getRelativeRects(el: Element): RelativeRect {
     const parent = el.parentElement
@@ -40,7 +42,7 @@ export const alterChildren = (
     itemsPerSlide?: number,
     slideWidth?: number,
     offset?: number,
-    gap?: number): ReactElement[] => Children.map(children, (item: ReactElement, index) => {
+    gap?: number): ReactElement[] => Children.map(children, (item: ReactElement<CarouselItemProps>, index) => {
     const { style = {} } = item.props
     let itemWidth
 

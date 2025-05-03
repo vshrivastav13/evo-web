@@ -1,8 +1,8 @@
 import React, { FC, ComponentProps } from 'react'
 
-type Props = ComponentProps<'h2'>
+export type EbayDialogHeaderProps = ComponentProps<'h2'>
 
-const EbayDialogHeader:FC<Props> = ({
+const EbayDialogHeader:FC<EbayDialogHeaderProps> = ({
     children,
     ...rest
 }) => <h2 {...rest}>{children}</h2>

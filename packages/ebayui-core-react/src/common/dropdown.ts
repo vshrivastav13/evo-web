@@ -89,7 +89,7 @@ export function useExpander<T extends HTMLElement>({
     onExpand,
     onCollapse
 }: ExpanderHookArgs<T>, deps?: React.DependencyList): ExpanderHookReturn {
-    const expander = useRef<typeof Expander>()
+    const expander = useRef<typeof Expander>(null)
     const isExpanded = useSyncExternalStore((listener) => {
         function handleExpand() {
             listener()
@@ -182,7 +182,7 @@ export function useActiveDescendant({
     disabled,
     options
 }: ActiveDescendantHookArgs): ActiveDescendantHookReturn {
-    const activeDescendantRef = useRef<typeof createLinear>()
+    const activeDescendantRef = useRef<typeof createLinear>(null)
 
     useEffect(() => {
         const handleChange = (event: ActiveDescendantChangeEvent) => {

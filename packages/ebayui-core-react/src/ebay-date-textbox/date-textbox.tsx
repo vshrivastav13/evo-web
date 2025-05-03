@@ -48,7 +48,7 @@ const EbayDateTextbox: FC<EbayDateTextboxProps> = ({
     onInputRangeEndChange = () => {},
     ...rest
 }) => {
-    const expander = useRef<typeof Expander>()
+    const expander = useRef<typeof Expander>(null)
     const [internalValue, setInternalValue] = useState<string>(defaultValue || '')
     const [internalRangeEnd, setInternalRangeEnd] = useState<string>(defaultRangeEnd || '')
     const valueToRender = isControlled(controlledValue) ? controlledValue : internalValue

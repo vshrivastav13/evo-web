@@ -121,7 +121,7 @@ function options(children) {
         optGroups = optionGroups(childrenOpts)
         let currentGroupName
         childrenOpts.forEach((option, idx) => {
-            const { value, optionClassName, children: optionChildren, optgroup } = option.props
+            const { value, className: optionClassName, children: optionChildren, optgroup } = option.props
             withinGroup = optgroup && renderedGroups.indexOf(optgroup) === -1
 
             if (withinGroup) { // This will always be true when the very first group is encountered.
@@ -131,7 +131,7 @@ function options(children) {
                     <EbaySelectOption
                         key={`opt-${groupOption.value}`}
                         value={groupOption.value}
-                        className={groupOption.optionClassName}>
+                        className={groupOption.className}>
                         {groupOption.children}
                     </EbaySelectOption>))
                 allOptions.push(<optgroup key={idx} label={optgroup}>{opts}</optgroup>)

@@ -1,6 +1,9 @@
 import React, {
     ComponentProps,
+    ComponentPropsWithoutRef,
+    ComponentPropsWithRef,
     FC,
+    RefCallback,
     RefObject,
     useImperativeHandle,
     useRef,
@@ -10,17 +13,17 @@ import { withForwardRef } from '../common/component-utils'
 import { getRelativeRects } from './helpers'
 import { ListItemRef } from './types'
 
-type ListProps = ComponentProps<'li'>
-type CarouselItemProps = ListProps & {
+export type CarouselItemProps = ComponentPropsWithoutRef<'li'> & {
     slideWidth?: number;
     offset?: number;
     className?: string;
-    forwardedRef?: RefObject<ListItemRef>
+    ref?: RefCallback<ListItemRef>;
+    forwardedRef?: RefObject<ListItemRef>;
 };
 
 
 const EbayCarouselItem: FC<CarouselItemProps> = ({ slideWidth, offset, forwardedRef, children, ...rest }) => {
-    const itemRef = useRef()
+    const itemRef = useRef<HTMLLIElement>(null)
     const [isVisible, setIsVisible] = useState(false)
 
     useImperativeHandle(forwardedRef, () => {
@@ -42,9 +45,9 @@ const EbayCarouselItem: FC<CarouselItemProps> = ({ slideWidth, offset, forwarded
 
     return (
         <li
+            {...rest}
             ref={itemRef}
-            aria-hidden={!isVisible}
-            {...rest}>
+            aria-hidden={!isVisible}>
             {children}
         </li>
     )

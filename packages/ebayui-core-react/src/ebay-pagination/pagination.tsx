@@ -10,7 +10,7 @@ import classNames from 'classnames'
 import { debounce } from '../common/debounce'
 import { calcPageState, getMaxWidth } from './helpers'
 import { filterBy } from '../common/component-utils'
-import { PaginationItemType } from './pagination-item'
+import { PaginationItemProps, PaginationItemType } from './pagination-item'
 import { ItemState, PaginationVariant } from './types'
 import { EbayIcon } from '../ebay-icon'
 import { EbayEventHandler } from '../common/event-utils/types'
@@ -44,7 +44,7 @@ const EbayPagination: FC<PaginationProps> = ({
     const paginationContainerRef = useRef<HTMLUnknownElement>(null)
     const childPageRefs = useRef([])
     childPageRefs.current = Children.map(children, createRef)
-    const totalPages = filterBy(children, ({ props }) => props.type === undefined || props.type === 'page').length
+    const totalPages = filterBy(children, ({ props }: ReactElement<PaginationItemProps>) => props.type === undefined || props.type === 'page').length
     const itemWidthRef = useRef<number>(0)
     const arrowWidthRef = useRef<number>(0)
     const getNumOfVisiblePageItems = () => {
@@ -96,13 +96,13 @@ const EbayPagination: FC<PaginationProps> = ({
         const firstDot = page.indexOf('dots')
         const lastDot = page.lastIndexOf('dots')
 
-        return Children.map(children, (item: ReactElement, index) => {
+        return Children.map(children, (item: ReactElement<PaginationItemProps>, index) => {
             const { type = 'page', current, disabled, href, children: text } = item.props
             const isDot = page[index] === 'dots'
             const key = `${id}-item-${index}`
             const hide = page[index] === 'hidden'
             const isSeparator = isDot && type === 'page'
-            const newProps = {
+            const newProps: PaginationItemProps = {
                 current, disabled, href,
                 type: isSeparator ? 'separator' : type,
                 children: isDot ? <EbayIcon name="overflowHorizontal24" focusable={false} /> : text,

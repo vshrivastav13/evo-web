@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks/dom'
+import { act, renderHook } from '@testing-library/react'
 import { fireEvent } from '@testing-library/react'
 import useKeyPress from '../use-key-press'
 

@@ -1,2 +1,2 @@
-import "./dist/tokens/evo-core.css";
-import "./dist/tokens/evo-light.css";
+import './tokens/evo-core.css';
+import './tokens/evo-light.css';

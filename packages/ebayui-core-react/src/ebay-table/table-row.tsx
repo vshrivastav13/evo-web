@@ -1,4 +1,4 @@
-import React, { Component, ComponentProps, FC, ReactElement } from 'react'
+import React, { ComponentProps, FC, ReactElement } from 'react'
 import type { EbayTableHeaderProps } from './table-header'
 import { filterByType } from '../utils'
 import EbayTableCell from './table-cell'

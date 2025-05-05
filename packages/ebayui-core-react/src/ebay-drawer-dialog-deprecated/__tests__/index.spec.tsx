@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { EbayDrawerDialogDeprecated } from '../index'
 import { EbayDialogHeader } from '../../ebay-dialog-base'
@@ -8,7 +8,7 @@ jest.mock('../../common/random-id')
 const classPrefix = 'drawer-dialog'
 const closeDrawerHandler = jest.fn()
 let wrapper
-const renderComponent = (props?: any) => {
+const renderComponent = (props?: ComponentProps<typeof EbayDrawerDialogDeprecated>) => {
     wrapper = render(
         <EbayDrawerDialogDeprecated open onClose={closeDrawerHandler} {...props}>
             <EbayDialogHeader>Heading</EbayDialogHeader>

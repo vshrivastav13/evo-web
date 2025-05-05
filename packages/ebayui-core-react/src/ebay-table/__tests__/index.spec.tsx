@@ -1,6 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 import React from 'react'
-import { act, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import { EbayTable, EbayTableCell, EbayTableHeader, EbayTableRow } from '../index';
 import { eventOfType } from '../../common/event-utils/__tests__/helpers';

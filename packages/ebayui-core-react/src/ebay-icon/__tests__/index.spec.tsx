@@ -23,7 +23,7 @@ describe('ebay-icon rendering', () => {
     describe('CustomColor story', () => {
         it('renders icon correctly', () => {
             const { container } = render(<CustomColor />)
-            const [_, iconClass, iconStyle] = container.querySelectorAll('svg')
+            const [, iconClass, iconStyle] = container.querySelectorAll('svg')
             expect(iconClass).toHaveClass('icon demo3')
             expect(iconStyle).toHaveAttribute('style', 'color: green;')
         })

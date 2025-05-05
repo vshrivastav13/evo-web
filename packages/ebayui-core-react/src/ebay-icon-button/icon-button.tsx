@@ -6,7 +6,7 @@ import { withForwardRef } from '../common/component-utils'
 import { EbayKeyboardEventHandler } from '../common/event-utils/types'
 import { Size } from '../ebay-button'
 
-export type EbayIconButtonProps = {
+export type EbayIconButtonProps = ComponentProps<'button'> & ComponentProps<'a'> & {
     href?: string;
     icon: Icon;
     badgeNumber?: number;
@@ -17,11 +17,7 @@ export type EbayIconButtonProps = {
     onEscape?: EbayKeyboardEventHandler;
 }
 
-type HTMLButtonProps = ComponentProps<'button'>;
-type HTMLAnchorProps = ComponentProps<'a'>;
-type Props = EbayIconButtonProps & HTMLButtonProps & HTMLAnchorProps;
-
-const EbayIconButton: FC<Props> = ({
+const EbayIconButton: FC<EbayIconButtonProps> = ({
     href,
     icon,
     badgeNumber,
@@ -33,7 +29,7 @@ const EbayIconButton: FC<Props> = ({
     onEscape = () => {},
     onKeyDown = () => {},
     ...rest
-}: Props) => {
+}) => {
     const classPrefix = href ? 'icon-link' : 'icon-btn'
     const className = classNames(
         extraClasses,

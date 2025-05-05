@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, KeyboardEvent, MouseEvent, FocusEvent, SyntheticEvent } from 'react'
 
 type ModifierKeys = 'Alt' | 'AltGraph' | 'Control' | 'Shift' | 'CapsLock' | 'Meta'

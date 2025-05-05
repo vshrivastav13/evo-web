@@ -91,7 +91,7 @@ export function calcPageState(
 }
 
 function clamp(n: number, min: number, max: number): number {
-    // eslint-disable-next-line no-nested-ternary
+     
     return n <= min ? min : n >= max ? max : n
 }
 

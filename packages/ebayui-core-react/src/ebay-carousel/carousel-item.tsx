@@ -1,7 +1,5 @@
 import React, {
-    ComponentProps,
     ComponentPropsWithoutRef,
-    ComponentPropsWithRef,
     FC,
     RefCallback,
     RefObject,

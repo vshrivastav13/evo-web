@@ -10,7 +10,6 @@ const EbayMenuItemSeparator: FC<Props> = ({
     <hr
         {...rest}
         className={classNames(className, 'fake-menu__separator')}
-        role="separator"
     />
 )
 

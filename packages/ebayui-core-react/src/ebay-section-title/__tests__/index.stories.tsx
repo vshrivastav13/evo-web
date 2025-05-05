@@ -30,7 +30,7 @@ export const WithTitleButWOSubtitle = {
     render: () => (
         <>
             <EbaySectionTitle>
-                <Title>Missing subtitle shouldn't throw</Title>
+                <Title>Missing subtitle shouldn&apos;t throw</Title>
             </EbaySectionTitle>
         </>
     ),

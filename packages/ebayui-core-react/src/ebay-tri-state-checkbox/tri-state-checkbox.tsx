@@ -35,7 +35,6 @@ const EbayTriStateCheckbox: FC<EbayTriStateCheckboxProps> = ({
     onChange = () => {},
     onFocus = () => {},
     onKeyDown = () => {},
-    children,
     inputRef,
     ...rest
 }) => {

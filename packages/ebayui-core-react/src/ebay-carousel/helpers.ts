@@ -1,8 +1,7 @@
-import React, { ComponentProps } from 'react'
+import React from 'react'
 import { Children, cloneElement, ReactElement, ReactNode, RefObject } from 'react'
 import { ListItemRef, MovementDirection, RelativeRect } from './types'
 import { CarouselItemProps } from './carousel-item'
-import { EbayCarouselItem } from '.'
 
 export function getRelativeRects(el: Element): RelativeRect {
     const parent = el.parentElement

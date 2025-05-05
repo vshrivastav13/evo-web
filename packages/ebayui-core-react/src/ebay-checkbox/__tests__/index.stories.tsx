@@ -122,7 +122,6 @@ export const ControlValueFromOutside: StoryFn<typeof EbayCheckbox> = () => {
         const handleOnChange = (
             e: ChangeEvent<HTMLInputElement>,
             {
-                value,
                 checked
             }: {
                 value: string | number;

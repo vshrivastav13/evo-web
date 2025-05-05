@@ -1,5 +1,5 @@
 import React, { ComponentProps, useEffect, useState } from 'react'
-import { EbaySkeleton, EbaySkeletonAvatar, EbaySkeletonButton, EbaySkeletonButtonProps, EbaySkeletonImage, EbaySkeletonProps, EbaySkeletonText, EbaySkeletonTextbox } from '../'
+import { EbaySkeleton, EbaySkeletonAvatar, EbaySkeletonButton, EbaySkeletonImage, EbaySkeletonText, EbaySkeletonTextbox } from '../'
 import { EbayButton } from '../../ebay-button'
 import { Meta, StoryFn } from '@storybook/react'
 

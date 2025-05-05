@@ -16,7 +16,7 @@ import * as keyboardTrap from 'makeup-keyboard-trap'
 import { EbayIcon } from '../../ebay-icon'
 import { randomId } from '../../common/random-id'
 import { useDialogAnimation, TransitionElement } from './animation'
-import { DialogCloseEventHandler } from '../types'
+import { DialogCloseEvent, DialogCloseEventHandler } from '../types'
 import { EbayDialogHeaderProps } from './dialog-header'
 
 
@@ -97,9 +97,9 @@ export const DialogBase: FC<DialogBaseProps<HTMLElement>> = ({
 
     useEffect(() => {
         let timeout: number
-        const handleBackgroundClick = (e: React.MouseEvent<HTMLElement>) => {
+        const handleBackgroundClick = (e: DocumentEventMap['click']) => {
             if (drawerBaseEl.current && !drawerBaseEl.current.contains(e.target)) {
-                onBackgroundClick(e)
+                onBackgroundClick(e as unknown as DialogCloseEvent)
             }
         }
         if (open && buttonPosition !== 'hidden') {
@@ -108,12 +108,12 @@ export const DialogBase: FC<DialogBaseProps<HTMLElement>> = ({
             // opens. Adding a timeout so the event is attached after the click event that opened the modal
             // is finished.
             timeout = window.setTimeout(() => {
-                document.addEventListener('click', handleBackgroundClick as any, false)
+                document.addEventListener('click', handleBackgroundClick, false)
             })
         }
         return () => {
             clearTimeout(timeout)
-            document.removeEventListener('click', handleBackgroundClick as any, false)
+            document.removeEventListener('click', handleBackgroundClick, false)
         }
     }, [onBackgroundClick, open])
 
@@ -141,7 +141,7 @@ export const DialogBase: FC<DialogBaseProps<HTMLElement>> = ({
         onTransitionEnd: () => handleFocus(open)
     })
 
-    const onKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    const onKeyDown = (event: KeyboardEvent<HTMLElement> & DocumentEventMap['keydown']) => {
         if (!ignoreEscape && event.key === 'Escape') {
             event.stopPropagation()
             onCloseBtnClick(event)
@@ -165,8 +165,8 @@ export const DialogBase: FC<DialogBaseProps<HTMLElement>> = ({
             } else if (isModal) {
                 closeButtonRef.current?.focus()
             }
-            document.addEventListener('keydown', onKeyDown as any, false)
-            return () => document.removeEventListener('keydown', onKeyDown as any, false)
+            document.addEventListener('keydown', onKeyDown, false)
+            return () => document.removeEventListener('keydown', onKeyDown, false)
         }
     }
 
@@ -200,7 +200,7 @@ export const DialogBase: FC<DialogBaseProps<HTMLElement>> = ({
             className={classNames(classPrefix, props.className)}
             aria-live={!isModal ? 'polite' : undefined}
             ref={dialogRef}
-            onKeyDown={onKeyDown}
+            onKeyDown={onKeyDown as (event: KeyboardEvent<HTMLElement>) => void}
         >
             <div className={classNames(windowClassName, windowClass)} ref={drawerBaseEl}>
                 {top}

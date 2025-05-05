@@ -2,9 +2,10 @@ import React from 'react'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 import { EbayButton } from '../../ebay-button'
 import { EbayTourtip, EbayTourtipContent, EbayTourtipFooter, EbayTourtipHeading, EbayTourtipHost } from '../index'
+import { TourtipProps } from '../ebay-tourtip'
 
 
-const renderComponent = (props?: any) => render(
+const renderComponent = (props?: TourtipProps) => render(
     <EbayTourtip a11yCloseText="close" pointer="bottom" {...props}>
         <EbayTourtipHost>
             <EbayButton>Info</EbayButton>

@@ -15,7 +15,6 @@ export type Props = ComponentProps<'section'> & {
     a11yDismissText?: string
     onDismiss?: EducationDismissHandler
     dismissed?: boolean
-    prominent?: boolean
     educationIcon?: Icon
     iconClass?: string
     variant?: 'prominent' | 'none'
@@ -31,7 +30,6 @@ const EbayEducationNotice: FC<Props> = ({
     a11yDismissText,
     educationIcon = 'lightbulb24',
     iconClass,
-    prominent,
     dismissed = false,
     onDismiss = () => {},
     ...rest
@@ -63,7 +61,6 @@ const EbayEducationNotice: FC<Props> = ({
             className={cx(className, `education-notice`, {
                 'education-notice--prominent': isProminent
             })}
-            role="region"
         >
             <div className="education-notice__header">
                 <EbayIcon

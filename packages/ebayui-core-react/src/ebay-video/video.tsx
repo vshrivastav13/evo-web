@@ -1,3 +1,5 @@
+// TODO enable media-has-caption back by introducing a EbayVideoTrack component
+/* eslint-disable @typescript-eslint/ban-ts-comment, jsx-a11y/media-has-caption */
 import React, { ComponentProps, FC, SyntheticEvent, MouseEvent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 // need that for broken definitions workaround
@@ -132,9 +134,9 @@ const EbayVideo: FC<EbayVideoProps> = ({
         playerRef.current = new shaka.Player(video)
         if (!playerRef.current) return
 
-        playerRef.current.addEventListener('error', handleError)
+        playerRef.current.addEventListener('error', () => handleError(new Error('Shake-Player error')))
         playerRef.current.addEventListener('buffering', (e) => {
-            setBuffering(e.buffering)
+            setBuffering((e as unknown as { buffering: boolean }).buffering)
         })
 
         uiRef.current = new shaka.ui.Overlay(

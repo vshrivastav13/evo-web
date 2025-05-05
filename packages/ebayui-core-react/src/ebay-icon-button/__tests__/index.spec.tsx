@@ -6,10 +6,10 @@ import { eventOfType } from '../../common/event-utils/__tests__/helpers'
 describe('<EbayIconButton>', () => {
     describe('on passing a ref', () => {
         it('should set the ref to button element', () => {
-            const ref = React.createRef() as any
+            const ref = React.createRef<HTMLButtonElement & HTMLAnchorElement>()
             render(<EbayIconButton ref={ref} icon="menu20" />)
 
-            expect(ref.current.tagName).toBe('BUTTON')
+            expect(ref.current?.tagName).toBe('BUTTON')
         })
     })
     describe('on button click', () => {

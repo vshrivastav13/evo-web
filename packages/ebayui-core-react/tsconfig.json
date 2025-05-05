@@ -32,7 +32,9 @@
     "skipLibCheck": true
   },
   "include": [
-    "./src"
+    "./src",
+    "shaka-player/dist"
+
   ],
   "exclude": [
     "node_modules",

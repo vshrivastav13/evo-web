@@ -1,5 +1,5 @@
-import React from 'react'
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import React, { ComponentProps, FC } from 'react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { eventOfType } from '../../common/event-utils/__tests__/helpers'
 import { EbayTextbox, EbayTextboxPostfixIcon } from '../index'
@@ -103,7 +103,7 @@ describe('<EbayTextbox>', () => {
     describe('on textbox invalid value', () => {
         it('should fire an onInvalid event', () => {
             const spy = jest.fn()
-            const ref = React.createRef() as any
+            const ref = React.createRef<HTMLFormElement>()
             render(<form ref={ref}><EbayTextbox onInvalid={spy} required /></form>)
 
             ref.current?.reportValidity()
@@ -146,10 +146,10 @@ describe('<EbayTextbox>', () => {
 
     describe('on passing a ref', () => {
         it('should set the ref as the input reference', () => {
-            const ref = React.createRef() as any
+            const ref = React.createRef<FC<ComponentProps<'input'>>>()
             render(<EbayTextbox ref={ref} />)
 
-            expect(ref.current.tagName).toBe('INPUT')
+            expect((ref.current as unknown as HTMLInputElement).tagName).toBe('INPUT')
         })
     })
 })

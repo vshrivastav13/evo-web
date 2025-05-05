@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { Meta } from '@storybook/react'
 import { EbayFullscreenDialogDeprecated } from '../index'
 import { EbayDialogFooter, EbayDialogHeader } from '../../ebay-dialog-base'
 import { action } from '@storybook/addon-actions'
 
-const story: any = {
+const story: Meta<typeof EbayFullscreenDialogDeprecated> = {
     component: EbayFullscreenDialogDeprecated,
     title: 'deprecated/ebay-fullscreen-dialog-deprecated'
 }

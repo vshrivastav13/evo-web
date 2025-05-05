@@ -5,6 +5,7 @@ import { DialogCloseEventHandler } from '../ebay-dialog-base/types'
 
 const classPrefix = 'fullscreen-dialog'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface Props<T = any> extends DialogBaseProps<T> {
   open?: boolean;
   onClose?: DialogCloseEventHandler;

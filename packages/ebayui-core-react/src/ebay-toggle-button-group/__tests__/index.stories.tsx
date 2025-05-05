@@ -1,6 +1,5 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
 import { EbayToggleButtonGroup } from '..'
 import { EbayToggleButton } from '../../ebay-toggle-button'
 

@@ -28,6 +28,7 @@ exports[`<EbayTable /> rendering renders column sorting client side story correc
           <th
             aria-sort="none"
             class="table-cell table-cell--numeric"
+            name="listPrice"
           >
             <button
               type="button"
@@ -49,6 +50,7 @@ exports[`<EbayTable /> rendering renders column sorting client side story correc
           <th
             aria-sort="none"
             class="table-cell table-cell--numeric"
+            name="quantityAvailable"
           >
             <button
               type="button"

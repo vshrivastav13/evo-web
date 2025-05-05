@@ -8,7 +8,7 @@
  * -------------------------------------------------------------------------------
  */
 if (!Array.prototype.flat) {
-    // eslint-disable-next-line no-extend-native
+     
     Object.defineProperty(Array.prototype, 'flat', {
         configurable: true,
         writable: true,

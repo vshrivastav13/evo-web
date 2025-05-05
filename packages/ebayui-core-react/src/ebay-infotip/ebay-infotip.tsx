@@ -3,14 +3,14 @@ import classNames from 'classnames'
 import { findComponent } from '../common/component-utils'
 import { Tooltip, TooltipHost, TooltipContent, PointerDirection, useTooltip, TooltipProps } from '../common/tooltip-utils'
 import { EbayDialogHeader } from '../ebay-dialog-base'
-import EbayInfotipHost, { InfotipHostProps } from './ebay-infotip-host'
+import EbayInfotipHost from './ebay-infotip-host'
 import { Icon } from '../ebay-icon'
 import { EbayLightboxDialog } from '../ebay-lightbox-dialog'
 import { Variant } from './types'
 import { EbayInfotipHeading, EbayInfotipContent } from './index'
 import { TooltipHostProps } from 'src/common/tooltip-utils/tooltip-host'
 
-type InfotipProps = {
+export type InfotipProps = {
     variant?: Variant;
     icon?: Icon;
     disabled?: boolean;
@@ -38,7 +38,7 @@ const EbayInfotip: FC<InfotipProps> = ({
     a11yCloseText,
     'aria-label': ariaLabel,
     className
-}: InfotipProps) => {
+}) => {
     const buttonRef = useRef<HTMLElement & FC<TooltipHostProps>>(null)
     const {
         isExpanded,

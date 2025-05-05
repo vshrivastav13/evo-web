@@ -1,4 +1,4 @@
-import React, { useState, useRef, ChangeEvent } from 'react'
+import React from 'react'
 import { StoryFn, Meta } from '@storybook/react'
 import { EbayField, EbayLabel } from '../../ebay-field'
 import { EbayTriStateCheckbox } from '../index'

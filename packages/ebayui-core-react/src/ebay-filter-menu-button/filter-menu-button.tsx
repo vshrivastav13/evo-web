@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { FC, RefCallback, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { useExpander, useFloatingDropdown } from '../common/dropdown'
 import { EbayIcon } from '../ebay-icon'
@@ -99,7 +99,7 @@ const EbayFilterMenuButton: React.FC<EbayFilterMenuButtonProps> = ({
                 onKeyDown={handleMenuKeyDown}
                 onFooterClick={handleFooterButtonClick}
                 onFormSubmit={handleMenuFormSubmit}
-                ref={refs.setOverlay as any /* TODO: Update @types/react version to fix the type */}
+                ref={refs.setOverlay as unknown as RefCallback<FC<EbayFilterMenuProps>>}
                 style={overlayStyles}
             >
                 {children}

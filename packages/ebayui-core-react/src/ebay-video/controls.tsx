@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 // need that for broken definitions workaround
@@ -7,7 +8,7 @@ import { ReportButton } from './reportButton'
 
 export function customControls(onReport = () => {}): { Report: any } {
     // Have to contain in order to not execute until shaka is downloaded
-    // eslint-disable-next-line no-extra-parens
+
     const Report = class extends (ui.Element as any) {
         constructor(parent, controls, text) {
             super(parent, controls)

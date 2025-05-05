@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import { EbayFakeMenu, EbayFakeMenuItem } from '../index'

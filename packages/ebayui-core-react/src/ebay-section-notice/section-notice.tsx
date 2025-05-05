@@ -1,9 +1,7 @@
 import React, {
     ComponentProps,
     FC,
-    KeyboardEvent,
     KeyboardEventHandler,
-    MouseEvent,
     MouseEventHandler,
     useEffect, useState
 } from 'react'
@@ -66,7 +64,7 @@ const EbaySectionNotice: FC<Props> = ({
         throw new Error(`EbaySectionNotice: Please use a EbayNoticeContent that defines the content of the notice`)
     }
 
-    const handleDismissed = (event: MouseEvent & KeyboardEvent) => {
+    const handleDismissed: ComponentProps<'button'>['onClick'] = (event) => {
         setDismissed(true)
         onDismiss(event)
     }
@@ -79,7 +77,6 @@ const EbaySectionNotice: FC<Props> = ({
                 'section-notice--education': isEducational && prominent,
                 'section-notice--large-icon': isEducational
             })}
-            role="region"
             aria-label={!hasStatus ? ariaLabel : null}
             aria-labelledby={hasStatus ? `section-notice-${status}-${rId}` : null}
             aria-roledescription={ariaRoleDescription}>
@@ -95,7 +92,7 @@ const EbaySectionNotice: FC<Props> = ({
                     <button
                         aria-label={a11yDismissText}
                         className="fake-link page-notice__dismiss"
-                        onClick={handleDismissed as any}>
+                        onClick={handleDismissed}>
                         <EbayIcon name="close16" />
                     </button>
                 </EbaySectionNoticeFooter>

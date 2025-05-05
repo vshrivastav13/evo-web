@@ -5,7 +5,6 @@ exports[`<EbayEducationNotice> should render notice prominent snapshot 1`] = `
   <section
     aria-roledescription="Notice"
     class="education-notice education-notice--prominent"
-    role="region"
   >
     <div
       class="education-notice__header"
@@ -58,7 +57,6 @@ exports[`<EbayEducationNotice> should render notice snapshot 1`] = `
   <section
     aria-roledescription="Notice"
     class="education-notice"
-    role="region"
   >
     <div
       class="education-notice__header"

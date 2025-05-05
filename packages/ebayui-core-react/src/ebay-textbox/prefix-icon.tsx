@@ -1,3 +1,5 @@
+// TODO: make sure EbayTextboxIconProps needs button/anchor types
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { FC } from 'react'
 import { EbayIcon } from '../ebay-icon'
 import { EbayTextboxIconProps } from './types'

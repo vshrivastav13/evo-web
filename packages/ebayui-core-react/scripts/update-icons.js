@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 /*
  This script extracts SVG icons from Skin and saves them as React TSX
  */

@@ -34,7 +34,7 @@ export const ConfirmationMessage = () => (
             <EbayNoticeContent>
                 <EbayPageNoticeTitle>Congrats!</EbayPageNoticeTitle>
                 <p>
-                    You just listed <a href="#">Spam and Eggs From the Cows Perspective</a> (paperback).
+                    You just listed <a href="#link">Spam and Eggs From the Cows Perspective</a> (paperback).
                 </p>
             </EbayNoticeContent>
         </EbayPageNotice>
@@ -47,7 +47,7 @@ export const InformationMessage = () => (
             <EbayNoticeContent>
                 <EbayPageNoticeTitle>Good news!</EbayPageNoticeTitle>
                 <p>
-                    You get free shipping on your next pair of shoes! <a href="#">Learn more</a>.
+                    You get free shipping on your next pair of shoes! <a href="#link">Learn more</a>.
                 </p>
             </EbayNoticeContent>
         </EbayPageNotice>
@@ -62,8 +62,8 @@ export const AttentionMessage = () => (
                 <p>
                     Please take another look at the following:
                     <br />
-                    <a href="#">Card number</a>, <a href="#">Expiration date</a> &amp;{' '}
-                    <a href="#">Security code</a>.
+                    <a href="#link">Card number</a>, <a href="#link">Expiration date</a> &amp;{' '}
+                    <a href="#link">Security code</a>.
                 </p>
             </EbayNoticeContent>
         </EbayPageNotice>
@@ -95,7 +95,7 @@ export const DismissibleNotice = () => (
             <EbayNoticeContent>
                 <EbayPageNoticeTitle>Good news!</EbayPageNoticeTitle>
                 <p>
-                    You get free shipping on your next pair of shoes! <a href="#">Learn more</a>.
+                    You get free shipping on your next pair of shoes! <a href="#link">Learn more</a>.
                 </p>
             </EbayNoticeContent>
         </EbayPageNotice>

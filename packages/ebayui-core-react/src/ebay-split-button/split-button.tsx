@@ -14,11 +14,10 @@ const EbaySplitButton: FC<Props> = ({
     onExpand,
     onSelect = () => {},
     onChange = () => {},
-    ref,
     ...rest
 }) => {
-    const menuItemComponents: FC[] = [EbayMenuButtonItem, EbayMenuButtonSeparator]
-    const buttonLabel = filterBy(children, el => !menuItemComponents.includes(el.type as any))
+    const menuItemComponents = [EbayMenuButtonItem, EbayMenuButtonSeparator]
+    const buttonLabel = filterBy(children, el => !menuItemComponents.includes(el.type as FC))
     const menuItems = filterByType(children, menuItemComponents)
 
     return (
@@ -26,6 +25,7 @@ const EbaySplitButton: FC<Props> = ({
             <EbayButton
                 aria-label={bodyState === 'loading' ? a11yButtonLoadingText : undefined}
                 {...rest}
+                ref={undefined}
                 split="start"
                 bodyState={bodyState === 'expand' ? undefined : bodyState}
             >

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions'
 
 import { EbayListbox, EbayListboxOption, EbayListboxOptionDescription } from '../'
@@ -89,7 +89,7 @@ export const WithDescription = (args) => (
     </EbayListbox>
 )
 
-export const withDisabled = (args) => (
+export const WithDisabled = (args) => (
     <EbayListbox {...args}>
         <EbayListboxOption value="AA" text="Option 1"/>
         <EbayListboxOption value="BB" text="Option 2" disabled />
@@ -97,7 +97,7 @@ export const withDisabled = (args) => (
     </EbayListbox>
 )
 
-export const withManyOptions = () => (
+export const WithManyOptions = () => (
     <EbayListbox name="formFieldName">
         {Array.from({ length: 20 }, (_, i) => (
             <EbayListboxOption key={i} value={i.toString()} text={`Option ${i + 1}`} />
@@ -105,7 +105,7 @@ export const withManyOptions = () => (
     </EbayListbox>
 )
 
-export const withActions = (args) => (
+export const WithActions = (args) => (
     <EbayListbox {...args} name="formFieldName" onChange={action('onChange')} onEscape={action('onEscape')}>
         <EbayListboxOption value="AA" text="Option 1"/>
         <EbayListboxOption value="BB" text="Option 2" />

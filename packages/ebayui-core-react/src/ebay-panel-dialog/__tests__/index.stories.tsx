@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { EbayPanelDialog } from '../index'
 import { EbayDialogCloseButton, EbayDialogHeader } from '../../ebay-dialog-base'
 import { action } from '@storybook/addon-actions'
+import { Meta } from '@storybook/react'
 
-const story: any = {
+const story: Meta<typeof EbayPanelDialog> = {
     component: EbayPanelDialog,
     title: 'dialogs/ebay-panel-dialog'
 }

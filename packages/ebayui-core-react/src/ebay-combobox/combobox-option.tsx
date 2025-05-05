@@ -4,7 +4,7 @@ import React, { ComponentProps, FC } from 'react'
 export type EbayComboboxOptionProps = Omit<ComponentProps<'div'>, 'children'> & {
     text: string;
     // We use "value" to detect if it is selected or not on EbayCombobox
-    // eslint-disable-next-line react/no-unused-prop-types
+     
     value?: string;
     selected?: boolean;
 }

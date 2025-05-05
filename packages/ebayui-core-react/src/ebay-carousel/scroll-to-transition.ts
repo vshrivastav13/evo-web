@@ -11,7 +11,7 @@
  */
 type ReturnFunctionType = () => void
 const onScrollEnd = (el: HTMLElement, fn: (offset: number) => void): ReturnFunctionType => {
-    let timeout: any
+    let timeout: ReturnType<typeof setTimeout>
     let frame: number
     let lastPos: number|undefined;
 

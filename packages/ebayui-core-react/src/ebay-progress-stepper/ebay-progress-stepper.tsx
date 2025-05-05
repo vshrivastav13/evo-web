@@ -50,7 +50,7 @@ function currentIndexByDefaultState(steps: ReactElement<EbayProgressStepProps>[]
     const foundCurrentIndex = steps.findIndex(child => child.props.current)
 
     if (foundCurrentIndex === -1) {
-        // eslint-disable-next-line default-case
+         
         switch (defaultState) {
             case 'complete': return steps.length - 1
             case 'upcoming': return 0

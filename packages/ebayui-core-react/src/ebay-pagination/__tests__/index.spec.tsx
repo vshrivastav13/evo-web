@@ -101,7 +101,7 @@ describe('<EbayPagination>', () => {
                     <Item type="next" href="#" />
                 </EbayPagination>
             )
-            resizeWindow(500, 300)
+            resizeWindow()
             expect(wrapper.container.querySelectorAll('li')[1]).toHaveAttribute('hidden', '')
         })
 
@@ -115,13 +115,13 @@ describe('<EbayPagination>', () => {
                     <Item type="next" href="#" />
                 </EbayPagination>
             )
-            resizeWindow(500, 300)
+            resizeWindow()
             expect(wrapper.container.querySelectorAll('li')[1]).not.toHaveAttribute('hidden')
         })
     })
 })
 
-function resizeWindow(x, y) {
+function resizeWindow() {
     // todo: fix this
     // this thing doesn't affect any elements rendered by JSDOM
     // global.window.innerWidth = x

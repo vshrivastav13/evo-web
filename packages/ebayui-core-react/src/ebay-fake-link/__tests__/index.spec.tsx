@@ -5,8 +5,8 @@ import EbayFakeLink from '../fake-link';
 
 describe('<EbayFakeLink>', () => {
     let component
-    let onClick = jest.fn()
-    let onEscape = jest.fn()
+    const onClick = jest.fn()
+    const onEscape = jest.fn()
 
     afterEach(jest.clearAllMocks)
 

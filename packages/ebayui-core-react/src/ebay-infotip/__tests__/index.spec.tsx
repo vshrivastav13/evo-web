@@ -1,11 +1,12 @@
 import React from 'react'
 import { render, fireEvent, RenderResult } from '@testing-library/react'
 import { EbayInfotip, EbayInfotipContent, EbayInfotipHeading } from '../index'
+import { InfotipProps } from '../ebay-infotip'
 
 jest.mock('../../common/random-id')
 
-const renderComponent = (props?: any) => render(
-    <EbayInfotip {...props}>
+const renderComponent = (props?: InfotipProps) => render(
+    <EbayInfotip a11yCloseText="" {...props}>
         <EbayInfotipHeading>Title</EbayInfotipHeading>
         <EbayInfotipContent>
             <p>Info content</p>

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC, Ref } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { composeStory } from '@storybook/react'
 import { eventOfType } from '../../common/event-utils/__tests__/helpers'
 import Meta, { Default, Size, Priority, DestructiveVariant } from './index.stories'
-import { EbayButton } from '../index'
+import { EbayButton, EbayButtonProps } from '../index'
 
 const DefaultStory = composeStory(Default, Meta)
 const SizeStory = composeStory(Size, Meta)
@@ -80,17 +80,17 @@ describe('<EbayButton>', () => {
 
     describe('on passing a ref', () => {
         it('should set the ref to button element', () => {
-            const ref = React.createRef() as any
-            render(<EbayButton ref={ref} />)
+            const ref = React.createRef<HTMLButtonElement>()
+            render(<EbayButton ref={ref as unknown as Ref<FC<EbayButtonProps>>} />)
 
-            expect(ref.current.tagName).toBe('BUTTON')
+            expect(ref.current!.tagName).toBe('BUTTON')
         })
 
         it('should set the ref to a element', () => {
-            const ref = React.createRef() as any
-            render(<EbayButton href="https://www.ebay.com" ref={ref} />)
+            const ref = React.createRef<HTMLAnchorElement>()
+            render(<EbayButton href="https://www.ebay.com" ref={ref as unknown as Ref<FC<EbayButtonProps>>} />)
 
-            expect(ref.current.tagName).toBe('A')
+            expect(ref.current!.tagName).toBe('A')
         })
     })
 

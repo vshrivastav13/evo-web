@@ -104,7 +104,7 @@ describe('<EbayMenu>', () => {
         })
 
         it('should fire onKeyDown, onSelect event', async () => {
-            const [item1, item2] = screen.getAllByRole('menuitem')
+            const [, item2] = screen.getAllByRole('menuitem')
 
             await act(() => {
                 fireEvent.keyDown(item2, { key: 'Enter' })
@@ -176,7 +176,7 @@ describe('<EbayMenu>', () => {
         })
 
         it('should fire onKeyDown, onChange event', async () => {
-            const [item1, item2] = screen.getAllByRole('menuitemradio')
+            const [, item2] = screen.getAllByRole('menuitemradio')
 
             await act(() => {
                 fireEvent.keyDown(item2, { key: 'Enter' })
@@ -267,7 +267,7 @@ describe('<EbayMenu>', () => {
         })
 
         it('should fire onKeyDown, onChange event', async () => {
-            const [item1, item2] = screen.getAllByRole('menuitemcheckbox')
+            const [, item2] = screen.getAllByRole('menuitemcheckbox')
 
             await act(() => {
                 fireEvent.keyDown(item2, { key: ' ' })

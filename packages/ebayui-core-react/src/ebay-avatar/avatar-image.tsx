@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { ComponentProps, FC } from 'react'
 
 export type EbayAvatarImageProps = ComponentProps<'img'>

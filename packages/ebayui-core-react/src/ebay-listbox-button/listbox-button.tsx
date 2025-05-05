@@ -1,6 +1,7 @@
 import React, {
     Children, cloneElement, useEffect, useRef, useState,
-    ComponentProps, FC, KeyboardEvent, ReactElement, useCallback
+    ComponentProps, FC, KeyboardEvent, ReactElement, useCallback,
+    ChangeEvent
 } from 'react'
 import classNames from 'classnames'
 import { EbayIcon } from '../ebay-icon'
@@ -55,7 +56,7 @@ const ListboxButton: FC<EbayListboxButtonProps> = ({
         throw new Error(`EbayListboxButton: Please use a
         EbayListboxButtonOption that defines the options of the listbox`)
     }
-    const getInitialSelectedOption = (): { option: any, index: number } => {
+    const getInitialSelectedOption = (): { option: (typeof listBoxButtonOptions)[0], index: number } => {
         const selectedIndex = selected !== undefined ? selected : listBoxButtonOptions.findIndex(({ props }) =>
             value !== undefined && props.value === value)
         const index = selectedIndex > -1 || floatingLabel ? selectedIndex : undefined
@@ -210,7 +211,7 @@ const ListboxButton: FC<EbayListboxButtonProps> = ({
                 collapseListbox()
                 setTimeout(() => setSelectedOption(childrenArray[selectedIndex]))
                 setTimeout(() => buttonRef.current.focus(), 0)
-                onChange(e as any, {
+                onChange(e as unknown as ChangeEvent<HTMLButtonElement>, {
                     index: selectedIndex,
                     selected: [String(getSelectedValueByIndex(selectedIndex))],
                     wasClicked

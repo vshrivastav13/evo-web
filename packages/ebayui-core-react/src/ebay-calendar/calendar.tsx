@@ -1,3 +1,5 @@
+// TODO: Check onKeydown event on non interactive table event
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { FC, FocusEvent, KeyboardEvent, MouseEvent, useEffect, useRef, useState } from 'react'
 import { EbayIconButton } from '../ebay-icon-button'
 import { DayISO, fromISO, getWeekdayInfo, localeOverride, offsetISO, toISO } from './date-utils'
@@ -417,7 +419,7 @@ const EbayCalendar: FC<EbayCalendarProps> = ({
                                                             onMouseOver={
                                                                 (event: MouseEvent) => onDayFocus(event, dayISO)
                                                             }
-                                                            onMouseOut={(event: MouseEvent) => onDayBlur()}
+                                                            onMouseOut={() => onDayBlur()}
                                                             onBlur={() => onDayBlur()}
                                                             data-iso={dayISO}
                                                         >

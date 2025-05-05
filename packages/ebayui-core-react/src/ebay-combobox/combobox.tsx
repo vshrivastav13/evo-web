@@ -1,8 +1,8 @@
+/* eslint-disable jsx-a11y/role-has-required-aria-props */
 import React, {
     ComponentProps,
     FC,
     MutableRefObject,
-    Ref,
     useCallback,
     useMemo,
     useRef,
@@ -43,7 +43,6 @@ export type EbayComboboxProps =
         defaultValue?: string;
         autocomplete?: Autocomplete;
         listSelection?: ListSelection;
-        forwardedRef?: Ref<HTMLInputElement>;
         opaqueLabel?: boolean;
         dropdownRef?: MutableRefObject<HTMLElement>;
         onFocus?: ComboboxFocusHandler;
@@ -64,7 +63,6 @@ const EbayCombobox: FC<EbayComboboxProps> = ({
     borderless,
     autocomplete = 'none',
     listSelection = 'automatic',
-    forwardedRef,
     defaultValue = '',
     value: controlledValue,
     placeholder,

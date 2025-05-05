@@ -7,4 +7,4 @@ export type VideoSource = {
     type?: VideoSourceType
 }
 
-export type Player = Record<string, any>
+export type Player = shaka.Player

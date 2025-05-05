@@ -168,7 +168,7 @@ export const CustomButtonContentWithRenderProp = {
                     aria-label="Click to open infotip"
                     style={{ height: 'auto', width: 'auto' }}
                 >
-                    {({ icon }: any) => (
+                    {({ icon }) => (
                         <span style={{ display: 'inline-flex', alignItems: 'center' }}>
                             {icon}
                             <span style={{ marginLeft: 5 }}>Click me</span>

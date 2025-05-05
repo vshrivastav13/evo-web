@@ -124,7 +124,7 @@ const EbayPagination: FC<PaginationProps> = ({
                                     event.preventDefault()
                                 }
                                 const currentTarget = event.currentTarget as HTMLElement
-                                onSelect(event as any, { value: currentTarget?.innerText || '', index: pageIndex })
+                                onSelect(event, { value: currentTarget?.innerText || '', index: pageIndex })
                                 updatePages(Number(currentTarget?.innerText))
                             }
                         }

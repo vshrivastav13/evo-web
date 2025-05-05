@@ -6,7 +6,7 @@ import * as stories from './index.stories'
 import EbayAvatar from '../avatar'
 import { EbayAvatarImage } from '..'
 
-const { Default, SignedOut, WithCustomBody, WithImage, WithAutoPlacement } = composeStories(stories)
+const { Default, SignedOut, WithCustomBody, WithImage } = composeStories(stories)
 
 describe('<EbayAvatar /> rendering', () => {
     it('renders default story correctly', () => {

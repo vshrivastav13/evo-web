@@ -1,7 +1,7 @@
 import React, {
-    ChangeEvent, FocusEvent, KeyboardEvent,
+    ChangeEvent, FocusEvent,
     cloneElement,
-    ComponentProps, FC, ReactElement
+    ComponentProps, FC
 } from 'react'
 import classNames from 'classnames'
 import { EbayIcon } from '../ebay-icon'
@@ -38,9 +38,9 @@ const EbayRadio: FC<InputProps & EbayRadioProps> = ({
     const handleFocus = (e: FocusEvent<HTMLInputElement>) =>
         onFocus(e, { value: e.target?.value })
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-        const radioButton = e.target as any
-        return onKeyDown(e, { value: radioButton?.value })
+    const handleKeyDown: ComponentProps<'input'>['onKeyDown'] = (event) => {
+        const radioButton = event.target as HTMLInputElement
+        return onKeyDown(event, { value: radioButton?.value })
     }
 
     const containerClass = classNames('radio', className, { 'radio--large': size === 'large' })

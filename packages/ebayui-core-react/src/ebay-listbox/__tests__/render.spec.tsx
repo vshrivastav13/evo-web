@@ -11,7 +11,7 @@ const {
 
 describe('ebay-listbox rendering', () => {
     it('renders default listbox correctly', () => {
-        const { container } = render(<Default />)
+        render(<Default />)
 
         const listbox = screen.getByRole('listbox')
         expect(listbox).toHaveAttribute('tabindex', '0')

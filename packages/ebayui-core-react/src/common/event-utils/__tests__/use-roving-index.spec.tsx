@@ -6,10 +6,10 @@ import useRovingIndex from '../use-roving-index'
 const TestComponent: FC = () => <div />
 
 const children = [
-    <div />,
-    <TestComponent />,
-    <TestComponent />,
-    <div />
+    <div key="div1" />,
+    <TestComponent key="test1" />,
+    <TestComponent key="test2" />,
+    <div key="div2" />
 ]
 
 describe('useRovingIndex', () => {

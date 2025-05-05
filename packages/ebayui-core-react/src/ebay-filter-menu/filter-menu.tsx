@@ -203,11 +203,11 @@ const EbayFilterMenu: FC<EbayFilterMenuProps> = ({
                         value={searchTerm}
                         className="filter-menu__search"
                         placeholder={searchHeaderPlaceholderText}
-                        aria-owns="TODO with menuitems ID"
+                        aria-owns={menuId}
                         onChange={handleSearchChange}
                     />
 
-                    <EbayButton type="button" onClick={handleClearSearch}>
+                    <EbayButton type="button" onClick={handleClearSearch} aria-label={a11ySearchHeaderClearText}>
                         <EbayIcon name="clear20" />
                     </EbayButton>
                 </div>

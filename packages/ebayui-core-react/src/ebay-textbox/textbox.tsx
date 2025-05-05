@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React, {
     cloneElement, ComponentProps, FC, Ref,
     ChangeEvent, FocusEvent, KeyboardEvent, MouseEvent, SyntheticEvent,
@@ -98,20 +99,20 @@ const EbayTextbox: FC<EbayTextboxProps> = ({
     }
 
     const handleKeyPress = (event?: KeyboardEvent<HTMLInputElement & HTMLTextAreaElement>) => {
-        const textbox = event.target as any
+        const textbox = event.target as HTMLInputElement & HTMLTextAreaElement
         onKeyPress(event, { value: textbox?.value })
     }
     const handleKeyUp = (event?: KeyboardEvent<HTMLInputElement & HTMLTextAreaElement>) => {
-        const textbox = event.target as any
+        const textbox = event.target as HTMLInputElement & HTMLTextAreaElement
         onKeyUp(event, { value: textbox?.value })
     }
     const handleKeyDown = (event?: KeyboardEvent<HTMLInputElement & HTMLTextAreaElement>) => {
-        const textbox = event.target as any
+        const textbox = event.target as HTMLInputElement & HTMLTextAreaElement
         onKeyDown(event, { value: textbox?.value })
     }
 
     const handleInvalid = (event?: SyntheticEvent<HTMLInputElement & HTMLTextAreaElement>) => {
-        const textbox = event.target as any
+        const textbox = event.target as HTMLInputElement & HTMLTextAreaElement
         onInvalid(event, { value: textbox?.value })
     }
 

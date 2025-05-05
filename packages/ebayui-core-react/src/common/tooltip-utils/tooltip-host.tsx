@@ -1,4 +1,5 @@
-import { Children, cloneElement, ComponentProps, ComponentType, FC, HTMLAttributes, JSXElementConstructor, ReactElement, RefObject } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Children, cloneElement, ComponentProps, ComponentType, FC, ReactElement, RefObject } from 'react'
 import classNames from 'classnames'
 
 export type TooltipHostProps =  ComponentProps<ComponentType<any>> & {

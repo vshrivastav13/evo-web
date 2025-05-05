@@ -17,6 +17,7 @@ export interface EbayDrawerProps<T> extends DialogBaseProps<T> {
     onCollapsed?: () => void;
 }
 
+// eslint-disable-next-line
 const EbayDrawerDialogDeprecated: FC<EbayDrawerProps<any>> = ({
     expanded: controlledExpanded = false,
     noHandle,

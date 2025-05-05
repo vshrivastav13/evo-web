@@ -1,3 +1,5 @@
+// TODO: Remove support for autoFocus on EbayTextbox
+/* eslint-disable jsx-a11y/no-autofocus */
 import React, { ChangeEvent, FC, useState, KeyboardEvent, MouseEvent } from 'react'
 import { action } from '@storybook/addon-actions'
 import { EbayButton } from '../../ebay-button'
@@ -239,7 +241,7 @@ export const ControlValueFromOutside = {
 
 export const RefForwarding = {
     render: () => {
-        const ref = React.createRef() as any
+        const ref = React.createRef<HTMLInputElement>()
 
         return (
             <>

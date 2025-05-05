@@ -153,7 +153,7 @@ describe('<EbayTooltip>', () => {
                 render(
                     <EbayTooltip>
                         <EbayTooltipHost>
-                            <a>Test</a>
+                            <a href="//example.com">Test</a>
                         </EbayTooltipHost>
                     </EbayTooltip>
                 )
@@ -168,9 +168,8 @@ describe('<EbayTooltip>', () => {
             expect(() => {
                 render(
                     <EbayTooltip>
-                        {/* @ts-ignore: Forcing error to test assertion */}
                         <EbayTooltipHost>
-                            <a>Test</a>
+                            <a href="//example.com">Test</a>
                             <button>Test</button>
                         </EbayTooltipHost>
                         <EbayTooltipContent>Content</EbayTooltipContent>

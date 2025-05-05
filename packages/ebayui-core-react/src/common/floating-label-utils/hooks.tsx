@@ -69,6 +69,7 @@ export function useFloatingLabel({
     const FragmentContainer = useCallback(({ children }) => <>{children}</>, [])
 
     const FloatingLabelContainer: FC<ComponentProps<'div' | 'span'>> = useCallback(
+        // eslint-disable-next-line react/display-name
         forwardRef(({ className, ...rest }, forwardedRef) => (
             <Container
                 {...rest}

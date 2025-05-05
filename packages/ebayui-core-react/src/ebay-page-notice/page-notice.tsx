@@ -1,11 +1,8 @@
 import React, {
     ComponentProps,
     FC,
-    KeyboardEvent,
     KeyboardEventHandler,
-    MouseEvent,
     MouseEventHandler,
-    ReactElement,
     useState
 } from 'react'
 import NoticeContent from '../common/notice-utils/notice-content'
@@ -38,7 +35,7 @@ const EbayPageNotice: FC<Props> = ({
         throw new Error(`EbayPageNotice: Please use a EbayNoticeContent that defines the content of the notice`)
     }
 
-    const handleDismissed = (event: MouseEvent & KeyboardEvent) => {
+    const handleDismissed: ComponentProps<'button'>['onClick'] = (event) => {
         setDismissed(true)
         onDismiss(event)
     }
@@ -47,8 +44,7 @@ const EbayPageNotice: FC<Props> = ({
         <section
             {...rest}
             aria-labelledby={id || `${status}-status`}
-            className={`page-notice ${status !== `general` ? `page-notice--${status}` : ``}`}
-            role="region">
+            className={`page-notice ${status !== `general` ? `page-notice--${status}` : ``}`}>
             {status !== `general` ? (
                 <div className="page-notice__header" id={id || `${status}-status`}>
                     <EbayIcon
@@ -65,7 +61,7 @@ const EbayPageNotice: FC<Props> = ({
                     <button
                         aria-label={a11yDismissText}
                         className="fake-link page-notice__dismiss"
-                        onClick={handleDismissed as any}>
+                        onClick={handleDismissed}>
                         <EbayIcon name="close16" />
                     </button>
                 </EbayPageNoticeFooter>

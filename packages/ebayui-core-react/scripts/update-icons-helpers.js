@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const { readFileSync, writeFile } = require('fs')
 const { parseSync, stringify } = require('svgson')
 

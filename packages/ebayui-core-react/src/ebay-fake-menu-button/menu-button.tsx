@@ -1,4 +1,4 @@
-import React, { cloneElement, ComponentProps, DetailedReactHTMLElement, FC, MouseEvent, ReactElement, useEffect, useState } from 'react'
+import React, { cloneElement, ComponentProps, FC, ReactElement, RefCallback, useEffect, useState } from 'react'
 import classnames from 'classnames'
 
 import { filterByType, findComponent } from '../common/component-utils'
@@ -11,6 +11,7 @@ import { EbayIconButton } from '../ebay-icon-button'
 import { EbayFakeMenu, EbayFakeMenuItemProps } from '../ebay-fake-menu'
 import { EbayFakeMenuButtonItem, EbayFakeMenuButtonLabel, EbayFakeMenuButtonSeparator } from '.'
 import { useFloatingDropdown } from '../common/dropdown'
+import { EbayFakeMenuProps } from '../ebay-fake-menu/menu'
 
 export type EbayFakeMenuButtonVariant = 'overflow' | 'form' | 'button'
 
@@ -66,8 +67,8 @@ const EbayMenuButton: FC<Props> = ({
     const buttonRef = refs.host as React.MutableRefObject<HTMLButtonElement>
 
     useEffect(() => {
-        const handleBackgroundClick = (e: React.MouseEvent) => {
-            if (buttonRef.current && !buttonRef.current.contains(e.currentTarget)) {
+        const handleBackgroundClick = (e: DocumentEventMap['click']) => {
+            if (buttonRef.current && !buttonRef.current.contains(e.currentTarget as HTMLElement)) {
                 setExpanded(false)
             }
         }
@@ -79,12 +80,12 @@ const EbayMenuButton: FC<Props> = ({
             // opens. Adding a timeout so the event is attached after the click event that opened the modal
             // is finished.
             setTimeout(() => {
-                document.addEventListener('click', handleBackgroundClick as any, false)
+                document.addEventListener('click', handleBackgroundClick, false)
             })
         } else if (expanded === false) {
             onCollapse()
         }
-        return () => document.removeEventListener('click', handleBackgroundClick as any, false)
+        return () => document.removeEventListener('click', handleBackgroundClick, false)
     }, [expanded])
 
     useEffect(() => {
@@ -128,7 +129,7 @@ const EbayMenuButton: FC<Props> = ({
             }
             {expanded &&
                 <EbayFakeMenu
-                    ref={refs.setOverlay as any /* TODO: Update @types/react version to fix the type */}
+                    ref={refs.setOverlay as unknown as RefCallback<FC<EbayFakeMenuProps>>}
                     className={menuClasses}
                     id={menuId}
                     tabIndex={-1}

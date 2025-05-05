@@ -1,7 +1,6 @@
 /// <reference types="@testing-library/jest-dom" />
 import React from 'react'
-import { act, fireEvent, render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { eventOfType } from '../../common/event-utils/__tests__/helpers'
 import { EbayListboxButton, EbayListboxButtonOption } from '..'
 
@@ -11,10 +10,10 @@ describe('<EbayListboxButton>', () => {
         const renderListbox = (listboxBtnLabel?) => {
             render(
                 <>
-                    <label id={listboxBtnLabel}>Select these items</label>
+                    <label htmlFor="btn-id" id={listboxBtnLabel}>Select these items</label>
                     <br />
                     <br />
-                    <EbayListboxButton value="BB" prefixId={listboxBtnLabel}>
+                    <EbayListboxButton value="BB" id="btn-id" prefixId={listboxBtnLabel}>
                         <EbayListboxButtonOption value="AA">Option 1</EbayListboxButtonOption>
                         <EbayListboxButtonOption value="BB">Option 2</EbayListboxButtonOption>
                         <EbayListboxButtonOption value="CC">Option 3</EbayListboxButtonOption>

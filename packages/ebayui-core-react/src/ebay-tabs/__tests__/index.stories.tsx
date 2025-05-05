@@ -18,21 +18,21 @@ export const DefaultTabs: StoryFn<typeof EbayTabs> = (args) => (
             <Panel>
                 <h3>Panel 1</h3>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab 1`
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab 1`
                     (skipping `Tab 2` and `Tab 3`)
                 </p>
             </Panel>
             <Panel>
                 <h3>Panel 2</h3>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab 2`
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab 2`
                     (skipping `Tab 3` and `Tab 1`)
                 </p>
             </Panel>
             <Panel>
                 <h3>Panel 3</h3>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab 3`
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab 3`
                     (skipping `Tab 1` and `Tab 2`)
                 </p>
             </Panel>
@@ -50,21 +50,21 @@ export const PreSelectedTab = {
                 <Panel>
                     <h3>Panel 1</h3>
                     <p>
-                        Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab
+                        Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab
                         1` (skipping `Tab 2` and `Tab 3`)
                     </p>
                 </Panel>
                 <Panel>
                     <h3>Panel 2</h3>
                     <p>
-                        Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab
+                        Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab
                         2` (skipping `Tab 3` and `Tab 1`)
                     </p>
                 </Panel>
                 <Panel>
                     <h3>Panel 3</h3>
                     <p>
-                        Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab
+                        Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab
                         3` (skipping `Tab 1` and `Tab 2`)
                     </p>
                 </Panel>
@@ -125,7 +125,7 @@ export const ManuallyActivatedTabs = (args) => (
                 <h3>Panel 1</h3>
                 <p>These tabs are activated manually on Space/Enter key press</p>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab
                     1` (skipping `Tab 2` and `Tab 3`)
                 </p>
             </Panel>
@@ -133,7 +133,7 @@ export const ManuallyActivatedTabs = (args) => (
                 <h3>Panel 2</h3>
                 <p>These tabs are activated manually on Space/Enter key press</p>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab
                     2` (skipping `Tab 3` and `Tab 1`)
                 </p>
             </Panel>
@@ -141,7 +141,7 @@ export const ManuallyActivatedTabs = (args) => (
                 <p>These tabs are activated manually on Space/Enter key press</p>
                 <h3>Panel 3</h3>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab
                     3` (skipping `Tab 1` and `Tab 2`)
                 </p>
             </Panel>
@@ -158,21 +158,21 @@ export const LargeTabs = () => (
             <Panel>
                 <h3>Panel 1</h3>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab 1`
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab 1`
                     (skipping `Tab 2` and `Tab 3`)
                 </p>
             </Panel>
             <Panel>
                 <h3>Panel 2</h3>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab 2`
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab 2`
                     (skipping `Tab 3` and `Tab 1`)
                 </p>
             </Panel>
             <Panel>
                 <h3>Panel 3</h3>
                 <p>
-                    Focus should go to <a href="#">this link</a> using `tab`-key immediately after the `Tab 3`
+                    Focus should go to <a href="#link">this link</a> using `tab`-key immediately after the `Tab 3`
                     (skipping `Tab 1` and `Tab 2`)
                 </p>
             </Panel>
@@ -189,13 +189,13 @@ export const MultipleTabs = () => (
                 <Panel>
                     <h3>Panel 1</h3>
                     <p>
-                        Panel 1 content. Here is a <a href="#">link</a>.
+                        Panel 1 content. Here is a <a href="#link">link</a>.
                     </p>
                 </Panel>
                 <Panel>
                     <h3>Panel 2</h3>
                     <p>
-                        Panel 2 content. Here is a <a href="#">link</a>.
+                        Panel 2 content. Here is a <a href="#link">link</a>.
                     </p>
                 </Panel>
             </EbayTabs>
@@ -208,19 +208,19 @@ export const MultipleTabs = () => (
                 <Panel>
                     <h3>Panel A</h3>
                     <p>
-                        Panel A content. Here is a <a href="#">link</a>.
+                        Panel A content. Here is a <a href="#link">link</a>.
                     </p>
                 </Panel>
                 <Panel>
                     <h3>Panel B</h3>
                     <p>
-                        Panel B content. Here is a <a href="#">link</a>.
+                        Panel B content. Here is a <a href="#link">link</a>.
                     </p>
                 </Panel>
                 <Panel>
                     <h3>Panel C</h3>
                     <p>
-                        Panel C content. Here is a <a href="#">link</a>.
+                        Panel C content. Here is a <a href="#link">link</a>.
                     </p>
                 </Panel>
             </EbayTabs>

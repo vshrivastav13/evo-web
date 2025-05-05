@@ -1,4 +1,4 @@
-import React, { createRef, useState } from 'react'
+import React, { ComponentProps, createRef, useState } from 'react'
 import { EbayButton } from '../../ebay-button'
 import { action } from '@storybook/addon-actions'
 import { EbayDialogFooter, EbayDialogHeader } from '../../ebay-dialog-base'
@@ -151,14 +151,14 @@ export const _LotsOfContent: StoryFn<typeof EbayDrawerDialogDeprecated> = () => 
 
 export const _CustomFocus: StoryFn<typeof EbayDrawerDialogDeprecated> = () => {
     const [open, setOpen] = useState(false)
-    const focusRef = createRef() as any
+    const focusRef = createRef<HTMLButtonElement>()
 
     return (
         <>
             <EbayButton onClick={() => setOpen(!open)}>Open Drawer</EbayButton>
             <EbayDrawerDialogDeprecated
                 open={open}
-                focus={focusRef}
+                focus={focusRef as unknown as ComponentProps<typeof EbayDrawerDialogDeprecated>['focus']}
                 onClose={() => setOpen(false)}
                 a11yMaximizeText="Maximize"
                 a11yMinimizeText="Minimize"
@@ -176,7 +176,7 @@ export const _CustomFocus: StoryFn<typeof EbayDrawerDialogDeprecated> = () => {
                     <a href="http://www.ebay.com">www.ebay.com</a>
                 </p>
                 <EbayDialogFooter>
-                    <EbayButton ref={focusRef} onClick={() => setOpen(false)}>
+                    <EbayButton ref={focusRef as unknown as ComponentProps<typeof EbayButton>['ref']} onClick={() => setOpen(false)}>
                         Close
                     </EbayButton>
                 </EbayDialogFooter>

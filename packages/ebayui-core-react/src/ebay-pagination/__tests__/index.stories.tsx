@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ComponentProps, useState } from 'react'
 import { action } from '@storybook/addon-actions'
 import { EbayPagination, EbayPaginationItem as Item } from '../index'
 import { EbayButton } from '../../ebay-button'
@@ -98,9 +98,9 @@ export const ButtonsInteractiveClickToChangeActivePage = {
                 setActiveIndex(newIndex)
                 action('Select next')(newIndex + firstPage)
             }
-            const handleSelect = (_, __, pageIndex) => {
-                setActiveIndex(pageIndex)
-                action('Select page')(pageIndex + firstPage)
+            const handleSelect: ComponentProps<typeof EbayPagination>['onSelect'] = (_, options) => {
+                setActiveIndex(options?.index)
+                action('Select page')(options?.index + firstPage)
             }
 
             return (
@@ -108,7 +108,7 @@ export const ButtonsInteractiveClickToChangeActivePage = {
                     a11yCurrentText={`Results Pagination - Page ${firstPage + activeIndex}`}
                     onPrevious={handlePrev}
                     onNext={handleNext}
-                    onSelect={handleSelect as any}
+                    onSelect={handleSelect}
                 >
                     <Item type="previous" disabled={activeIndex === 0} />
                     {Array.from(Array(numOfItems).keys()).map((i) => (
@@ -142,14 +142,14 @@ export const VariantShowLastInteractive = {
             const [activeIndex, setActiveIndex] = useState(0)
             const handlePrev = () => setActiveIndex(Math.max(activeIndex - 1, 0))
             const handleNext = () => setActiveIndex(Math.min(activeIndex + 1, numOfItems))
-            const handleSelect = (_, value) => setActiveIndex(parseInt(value, 10) - 1)
+            const handleSelect: ComponentProps<typeof EbayPagination>['onSelect'] = (_, data) => setActiveIndex(parseInt(data?.value, 10) - 1)
 
             return (
                 <EbayPagination
                     a11yCurrentText={`Results Pagination - Page ${activeIndex + 1}`}
                     onPrevious={handlePrev}
                     onNext={handleNext}
-                    onSelect={handleSelect as any}
+                    onSelect={handleSelect}
                     variant="show-last"
                 >
                     <Item type="previous" disabled={activeIndex === 0} />
@@ -179,14 +179,14 @@ export const VariantOverflowInteractive = {
             const [activeIndex, setActiveIndex] = useState(0)
             const handlePrev = () => setActiveIndex(Math.max(activeIndex - 1, 0))
             const handleNext = () => setActiveIndex(Math.min(activeIndex + 1, numOfItems))
-            const handleSelect = (_, value) => setActiveIndex(parseInt(value, 10) - 1)
+            const handleSelect: ComponentProps<typeof EbayPagination>['onSelect'] = (_, data) => setActiveIndex(parseInt(data?.value, 10) - 1)
 
             return (
                 <EbayPagination
                     a11yCurrentText={`Results Pagination - Page ${activeIndex + 1}`}
                     onPrevious={handlePrev}
                     onNext={handleNext}
-                    onSelect={handleSelect as any}
+                    onSelect={handleSelect}
                     variant="overflow"
                 >
                     <Item type="previous" disabled={activeIndex === 0} />

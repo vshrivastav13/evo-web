@@ -18,7 +18,6 @@ export type EbayFakeMenuItemProps =
 
 const EbayMenuItem: FC<EbayFakeMenuItemProps> = ({
     className,
-    current,
     disabled,
     autoFocus,
     type,

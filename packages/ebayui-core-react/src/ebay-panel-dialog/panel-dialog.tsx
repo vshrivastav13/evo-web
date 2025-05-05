@@ -7,6 +7,7 @@ const classPrefix = 'panel-dialog'
 
 type Position = 'start' | 'end'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface Props<T = any> extends DialogBaseProps<T> {
   open?: boolean;
   animated?: boolean;

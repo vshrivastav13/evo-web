@@ -16,7 +16,6 @@ export type EbayTableHeaderProps = ComponentProps<'th'> & {
 
 export const EbayTableHeader: FC<EbayTableHeaderProps> = ({
     columnType,
-    name,
     sort,
     href,
     children,

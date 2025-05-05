@@ -6,7 +6,6 @@ import { EbayNoticeContent, EbayPageNotice, EbayPageNoticeTitle } from '../index
 jest.mock('../../common/random-id')
 
 const clickEvent = expect.objectContaining({ type: 'click' })
-const keyDownEvent = expect.objectContaining({ type: 'keydown' })
 
 describe('<EbayPageNotice>', () => {
     describe('when a page title exists', () => {

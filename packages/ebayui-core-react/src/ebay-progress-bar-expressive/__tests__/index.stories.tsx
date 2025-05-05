@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React from 'react'
 import { Meta, StoryFn } from '@storybook/react';
 import { EbayProgressBarExpressive, EbayProgressBarExpressiveMessage } from '../index';;
 
@@ -42,7 +42,7 @@ export const Default: StoryFn<typeof EbayProgressBarExpressive> = (args) => (
 export const WithMessages: StoryFn<typeof EbayProgressBarExpressive> = (args) => (
     <EbayProgressBarExpressive {...args}>
         <EbayProgressBarExpressiveMessage>Hang tight</EbayProgressBarExpressiveMessage>
-        <EbayProgressBarExpressiveMessage>We're processing your order</EbayProgressBarExpressiveMessage>
+        <EbayProgressBarExpressiveMessage>We&apos;re processing your order</EbayProgressBarExpressiveMessage>
         <EbayProgressBarExpressiveMessage>Just a moment longer</EbayProgressBarExpressiveMessage>
     </EbayProgressBarExpressive>
 )
@@ -56,8 +56,8 @@ export const WithSingleMessage: StoryFn<typeof EbayProgressBarExpressive> = (arg
 export const WithLongMessage: StoryFn<typeof EbayProgressBarExpressive> = (args) => (
     <EbayProgressBarExpressive {...args}>
         <EbayProgressBarExpressiveMessage>Messages should be one line...</EbayProgressBarExpressiveMessage>
-        <EbayProgressBarExpressiveMessage duration={2500}>Sometimes that's hard to guarantee, though.</EbayProgressBarExpressiveMessage>
-        <EbayProgressBarExpressiveMessage>That's okay!</EbayProgressBarExpressiveMessage>
+        <EbayProgressBarExpressiveMessage duration={2500}>Sometimes that&apos;s hard to guarantee, though.</EbayProgressBarExpressiveMessage>
+        <EbayProgressBarExpressiveMessage>That&apos;s okay!</EbayProgressBarExpressiveMessage>
     </EbayProgressBarExpressive>
 );
 

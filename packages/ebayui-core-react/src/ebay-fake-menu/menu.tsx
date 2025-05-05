@@ -9,14 +9,14 @@ import { EbayKeyboardEventHandler, EbayMouseEventHandler } from '../common/event
 import { withForwardRef } from '../utils'
 
 type SpanProps = Omit<ComponentProps<'div'>, 'onKeyDown' | 'onSelect'>
-type Props = SpanProps & {
+export type EbayFakeMenuProps = SpanProps & {
     itemMatchesUrl?: boolean;
     onKeyDown?: EbayKeyboardEventHandler<HTMLElement, { index: number }>;
     onSelect?: EbayMouseEventHandler<HTMLAnchorElement, { index: number }>;
     forwardedRef?: RefObject<HTMLDivElement>;
 }
 
-const EbayFakeMenu: FC<Props> = ({
+const EbayFakeMenu: FC<EbayFakeMenuProps> = ({
     className,
     itemMatchesUrl = true,
     onKeyDown = () => {},

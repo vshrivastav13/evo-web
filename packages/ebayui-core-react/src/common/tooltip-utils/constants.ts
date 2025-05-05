@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react'
 import { PointerDirection, TooltipType } from './types'
 
 export const DEFAULT_POINTER_DIRECTION: PointerDirection = 'bottom'
@@ -8,7 +9,7 @@ export const TYPE_ROLES: Record<TooltipType, string> = {
     infotip: ''
 }
 
-export const POINTER_STYLES: { [key in PointerDirection]: any } = {
+export const POINTER_STYLES: { [key in PointerDirection]: CSSProperties } = {
     left: {
         transform: 'translateX(16px) translateY(-50%) scale3d(1,1,1)',
         left: '100%',

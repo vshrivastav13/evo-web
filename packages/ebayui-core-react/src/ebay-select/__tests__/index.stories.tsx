@@ -129,7 +129,6 @@ export const ControlledComponent = {
             const handleChange = (
                 e: ChangeEvent<HTMLSelectElement>,
                 {
-                    index,
                     selected
                 }: {
           index: number;

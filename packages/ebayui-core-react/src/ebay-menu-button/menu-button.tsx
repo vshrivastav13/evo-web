@@ -1,8 +1,8 @@
-import React, { cloneElement, ComponentProps, FC, useEffect, useState, JSX } from 'react'
+import React, { cloneElement, ComponentProps, FC, useEffect, useState, JSX, RefCallback } from 'react'
 import classnames from 'classnames'
 import { filterByType, findComponent } from '../common/component-utils'
 
-import { EbayMenu, EbayMenuChangeEventHandler } from '../ebay-menu'
+import { EbayMenu, EbayMenuChangeEventHandler, EbayMenuProps } from '../ebay-menu'
 import { EbayButton, EbayButtonProps } from '../ebay-button'
 import { EbayIconButton } from '../ebay-icon-button'
 import { EbayIcon } from '../ebay-icon'
@@ -63,7 +63,7 @@ const EbayMenuButton: FC<MenuButtonProps> = ({
     })
 
     useEffect(() => {
-        const handleBackgroundClick = (e: React.MouseEvent) => {
+        const handleBackgroundClick = (e: DocumentEventMap['click']) => {
             const menuEl = menuRef.current as HTMLDivElement
             const menuClicked = menuEl && menuEl.contains(e.target as Node)
             if (collapseOnSelect || !menuClicked) {
@@ -78,12 +78,12 @@ const EbayMenuButton: FC<MenuButtonProps> = ({
             // opens. Adding a timeout so the event is attached after the click event that opened the modal
             // is finished.
             setTimeout(() => {
-                document.addEventListener('click', handleBackgroundClick as any, false)
+                document.addEventListener('click', handleBackgroundClick, false)
             })
         } else if (expanded === false) {
             onCollapse()
         }
-        return () => document.removeEventListener('click', handleBackgroundClick as any, false)
+        return () => document.removeEventListener('click', handleBackgroundClick, false)
     }, [expanded])
 
     useEffect(() => {
@@ -140,7 +140,7 @@ const EbayMenuButton: FC<MenuButtonProps> = ({
             {expanded &&
                 <EbayMenu
                     baseEl="div"
-                    ref={refs.setOverlay as any /* TODO: Update @types/react version to fix the type */}
+                    ref={refs.setOverlay as unknown as RefCallback<FC<EbayMenuProps>>}
                     type={type}
                     className={menuClasses}
                     tabIndex={-1}

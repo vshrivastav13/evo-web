@@ -5,6 +5,7 @@ import { EbayButton } from '../ebay-button'
 
 const classPrefix = 'alert-dialog'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface Props<T = any> extends DialogBaseProps<T> {
   open?: boolean;
   confirmText: string;

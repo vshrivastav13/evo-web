@@ -1,4 +1,4 @@
-import React, { ComponentProps, ComponentType, CSSProperties, FC, useRef } from 'react'
+import React, { CSSProperties, FC, useRef } from 'react'
 import { findComponent } from '../common/component-utils'
 import {
     Tooltip,
@@ -14,7 +14,7 @@ import EbayTourtipHost from './ebay-tourtip-host'
 import EbayTourtipFooter from './ebay-tourtip-footer'
 import EbayTourtipHeading from './ebay-tourtip-heading'
 
-type TourtipProps = Omit<TooltipProps, 'ref'> & {
+export type TourtipProps = Omit<TooltipProps, 'ref'> & {
     a11yCloseText: string;
     pointer?: PointerDirection;
     onExpand?: () => void;

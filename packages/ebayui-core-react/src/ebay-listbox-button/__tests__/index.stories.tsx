@@ -52,10 +52,11 @@ export const DefaultWithA11YPrefix = {
 
         return (
             <>
-                <label id={listboxBtnLabel}>Select these items:</label>
+                <label htmlFor="btn-id" id={listboxBtnLabel}>Select these items:</label>
                 <br />
                 <br />
                 <EbayListboxButton
+                    id="btn-id"
                     value="BB"
                     prefixId={listboxBtnLabel}
                     onChange={(e, props) => action('onChange')(e, props)}

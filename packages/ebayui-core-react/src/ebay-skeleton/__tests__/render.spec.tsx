@@ -1,5 +1,5 @@
 /// <reference types="@testing-library/jest-dom" />
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from './index.stories'

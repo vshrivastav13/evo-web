@@ -14,7 +14,7 @@ export function excludeComponent<T extends FC>(nodes: ReactNode = [], componentT
 export function filterByType<T extends FC>(nodes: ReactNode = [], componentType: T | T[]): ReactElement<ComponentProps<T>>[] {
     const elements = Children.toArray(nodes) as ReactElement<ComponentProps<T>>[]
     const types = [componentType].flat()
-    return elements.filter(({ type }) => types.includes(type as any))
+    return elements.filter(({ type }) => types.includes(type as T))
 }
 
 export function filterBy(nodes: ReactNode = [], predicate: (el: ReactElement) => boolean): ReactElement[] {

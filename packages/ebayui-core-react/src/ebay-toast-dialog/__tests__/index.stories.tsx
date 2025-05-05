@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-access-key */
 import React, { useState } from 'react'
 import { EbayButton } from '../../ebay-button'
 import { EbayDialogFooter, EbayDialogHeader } from '../../ebay-dialog-base'

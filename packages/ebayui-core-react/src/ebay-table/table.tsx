@@ -1,3 +1,5 @@
+// TODO check if tabIndex on table should be used
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { ComponentProps, FC, MouseEvent, useState } from 'react'
 import classNames from 'classnames'
 import { EbayTriStateCheckbox, CheckboxState, TriStateCheckboxChangeHandler } from '../ebay-tri-state-checkbox'

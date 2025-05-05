@@ -10,6 +10,7 @@ import { DialogCloseEventHandler } from '../ebay-dialog-base/types'
 type Mode = 'default' | 'mini'
 type Size = 'wide' | 'narrow' | 'fullscreen' | 'large'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Props<T = any> = Omit<DialogBaseProps<T>, 'size'> & {
   open?: boolean;
   mode?: Mode;

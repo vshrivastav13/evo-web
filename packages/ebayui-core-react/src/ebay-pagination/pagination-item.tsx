@@ -71,7 +71,7 @@ const EbayPaginationItem: FC<PaginationItemProps> = ({
                     aria-disabled={disabled ? 'true' : undefined}
                     aria-label={a11yPreviousText}
                     href={disabled ? undefined : href}
-                    className={classNames(iconClassName, 'pagination__previous')}
+                    className={classNames(className, iconClassName, 'pagination__previous')}
                     style={arrowStyle}
                     onClick={handlePreviousPage}
                 >
@@ -86,7 +86,7 @@ const EbayPaginationItem: FC<PaginationItemProps> = ({
                     aria-disabled={disabled ? 'true' : undefined}
                     aria-label={a11yNextText}
                     href={disabled ? undefined : href}
-                    className={classNames(iconClassName, 'pagination__next')}
+                    className={classNames(className, iconClassName, 'pagination__next')}
                     style={arrowStyle}
                     onClick={handleNextPage}
                 >
@@ -98,7 +98,7 @@ const EbayPaginationItem: FC<PaginationItemProps> = ({
                 <span
                     key={key}
                     style={style}
-                    className="pagination__item"
+                    className={classNames(className, 'pagination__item')}
                     ref={forwardedRef}
                     role="separator">
                     {children}
@@ -111,7 +111,7 @@ const EbayPaginationItem: FC<PaginationItemProps> = ({
                         ref={forwardedRef}
                         aria-current={current ? 'page' : undefined}
                         href={href}
-                        className="pagination__item"
+                        className={classNames(className, 'pagination__item')}
                         style={style}
                         key={key}
                         onClick={handlePageNumber}

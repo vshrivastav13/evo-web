@@ -211,13 +211,14 @@ exports[`<EbayFilterMenu /> rendering renders WithSearch story correctly 1`] = `
         />
       </svg>
       <input
-        aria-owns="TODO with menuitems ID"
+        aria-owns="abc123"
         class="filter-menu__search"
         placeholder="Search"
         type="text"
         value=""
       />
       <button
+        aria-label="Clear"
         class="btn btn--secondary"
         type="button"
       >

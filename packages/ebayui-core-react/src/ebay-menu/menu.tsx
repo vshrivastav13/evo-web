@@ -19,7 +19,6 @@ import type { EbayMenuProps } from './types'
 const EbayMenu: FC<EbayMenuProps> = ({
     baseEl: Container = 'span',
     type,
-    priority = 'secondary',
     checked,
     className,
     autofocus,
@@ -136,7 +135,7 @@ const EbayMenu: FC<EbayMenuProps> = ({
     }
 
     return (
-        <Container {...rest} className={classNames(className, 'menu')} ref={forwardedRef as any}>
+        <Container {...rest} className={classNames(className, 'menu')} ref={forwardedRef}>
             <div className="menu__items" role="menu" ref={menuRef}>
                 {childrenArray.map((child: ReactElement, i) => {
                     const {

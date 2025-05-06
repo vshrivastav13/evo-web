@@ -31,7 +31,7 @@ async function generateTopLevelFiles() {
         .join("");
     const contentMJS = indexFiles
         .map((item) => {
-            return `import './${item}.css';\n`;
+            return `import './dist/${item}/${item}.css';\n`;
         })
         .join("");
 

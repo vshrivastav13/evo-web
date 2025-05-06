@@ -4,6 +4,7 @@
     "version": "19.3.0",
     "license": "MIT",
     "main": "./index.js",
+    "module": "./index.mjs",
     "maintainers": [
         "Ian McBurnie <ianmcburnie@hotmail.com>",
         "Andrew Gliga <agliga4@gmail.com>",
@@ -30,7 +31,7 @@
     "scripts": {
         "preview": "marko-run preview",
         "start": "marko-run",
-        "test": "npm run build:css",
+        "test": "npm run build",
         "deploy": "BASE_URL=/evo-web/skin/ marko-run build -o ./_site && npm run build:storybook && rimraf _site/public/archive && ncp docs/archive _site/public/archive && touch _site/public/.nojekyll",
         "deploy:only": "marko-run build -o ./_site && npm run build:storybook && rimraf _site/public/archive && ncp docs/archive _site/public/archive --dereference=true && touch _site/public/.nojekyll",
         "prebuild": "npm run clean",

@@ -1,0 +1,78 @@
+{
+  "name": "@ebay/ui-core-react",
+  "version": "8.3.0",
+  "description": "Skin components build off React",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "directory": "dist"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./*": {
+      "types": "./*/index.d.ts",
+      "default": "./*/index.js"
+    }
+  },
+  "scripts": {
+    "clean": "node scripts/clean",
+    "lint": "eslint . --ext ts,tsx",
+    "lint:ci": "eslint . --ext .ts,.tsx -f @microsoft/eslint-formatter-sarif -o eslint-results.sarif",
+    "coverage": "yarn clean && yarn test --coverage --ci",
+    "eslint-local": "eslint . --ext ts,tsx",
+    "eslint": "eslint . --ext .ts,.tsx -f checkstyle -o ./lint/checkstyle-result.xml",
+    "format": "eslint . --fix 'src/**/*.{ts,tsx}'",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider storybook dev -p 9001 -c .storybook",
+    "storybook-node16": "storybook dev -p 9001 -c .storybook",
+    "build-storybook": "storybook build",
+    "storybook:publish": "NODE_OPTIONS=--openssl-legacy-provider yarn build-storybook --output-dir storybook-static/$(git branch --show-current) && gh-pages --add --message=\"Deploying to gh-pages from @ eBay/ebayui-core-react@$(git rev-parse --short HEAD) 🚀\" -d storybook-static",
+    "test": "yarn jest",
+    "build": "yarn type:check && vite build",
+    "type:check": "tsc --noEmit",
+    "update-icons": "node ./scripts/update-icons",
+    "copy": "copyfiles package.json README.md dist; yarn copy:rest",
+    "copy:rest": "yarn copyfiles -u 1 'src/**/*.md' dist",
+    "release": "yarn clean && yarn build && yarn copy",
+    "version": "yarn update-icons && git add -A src"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:eBay/evo-web"
+  },
+  "keywords": [
+    "React",
+    "Skin",
+    "EbayUI"
+  ],
+  "author": "tmanyanov@ebay.com",
+  "license": "ISC",
+  "peerDependencies": {
+    "@ebay/skin": "^19.0.0",
+    "react": ">= 16.0.0",
+    "react-dom": ">= 16.0.0"
+  },
+  "optionalDependencies": {
+    "shaka-player": "^4.3.2"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.27.3",
+    "classnames": "^2.2.6",
+    "makeup-active-descendant": "^0.7.4",
+    "makeup-expander": "^0.10.1",
+    "makeup-floating-label": "^0.4.5",
+    "makeup-keyboard-trap": "^0.4.1",
+    "makeup-prevent-scroll-keys": "^0.3.3",
+    "makeup-roving-tabindex": "^0.7.3",
+    "makeup-screenreader-trap": "^0.4.1",
+    "makeup-typeahead": "^0.3.3",
+    "react-remove-scroll": "^2.6.3"
+  },
+  "resolutions": {
+    "@storybook/addon-actions": "~7.5.3",
+    "string-width": "4.2.3"
+  }
+}

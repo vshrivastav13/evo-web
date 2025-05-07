@@ -39,7 +39,7 @@
         "postpublish": "node scripts/postpublish",
         "release": "node scripts/postpublish && node scripts/prepublish",
         "report": "nyc report --reporter=text-summary",
-        "start": "storybook dev -p 6006",
+        "start": "storybook dev -p 6006 --no-open",
         "start:prod": "NODE_ENV=production npm start",
         "storybook": "storybook dev -p 6006",
         "tb": "npm run test:browser",

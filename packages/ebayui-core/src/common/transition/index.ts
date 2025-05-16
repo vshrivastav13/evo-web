@@ -32,7 +32,7 @@ export default (
     const transitions = new Set([...transitionList]);
     // On reduce motion devices we don't want to check for transoform
     if (useReducedMotion) {
-        transitions.delete("tranform")
+        transitions.delete("tranform");
     }
 
     if (!("ontransitionend" in el)) {
@@ -84,7 +84,7 @@ export default (
      * Once all child transitions have ended the overall animation is completed.
      */
     function listener({
-        propertyName
+        propertyName,
     }: TransitionEvent): ReturnType<EventListener> {
         transitions.delete(propertyName);
         if (transitions.size === 0) {

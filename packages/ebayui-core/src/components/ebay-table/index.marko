@@ -15,7 +15,6 @@ $ const {
     bodyState = "none",
     ...divInput
 } = input;
-
 $ const isLoading = bodyState === "loading";
 
 <div
@@ -80,7 +79,7 @@ $ const isLoading = bodyState === "loading";
                         $ let sortEleAttr = {};
                         $ if (href) {
                             if (isLoading) {
-                                sortEleAttr = { };
+                                sortEleAttr = {};
                             } else {
                                 sortEleAttr = { href };
                             }
@@ -167,7 +166,8 @@ $ const isLoading = bodyState === "loading";
     </table>
     <div role="status">
         <if(isLoading)>
-            <ebay-progress-bar-expressive a11y-text=a11yLoadingText || "Loading..." />
+            <ebay-progress-bar-expressive a11y-text=a11yLoadingText ||
+            "Loading..."/>
         </if>
     </div>
 </div>

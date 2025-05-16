@@ -54,7 +54,8 @@ export default {
                 "Either this or @label is required. Renders text for screen readers",
         },
         label: {
-            description: "Either this or aria-label is required. Renders label inside input if set",
+            description:
+                "Either this or aria-label is required. Renders label inside input if set",
             control: { type: "text" },
             table: {
                 category: "@attribute tag",
@@ -134,7 +135,7 @@ export default {
                 },
             },
         },
-       "onIncrement": {
+        onIncrement: {
             action: "on-increment",
             description: "Triggered when increment button is clicked",
             table: {
@@ -144,7 +145,7 @@ export default {
                 },
             },
         },
-        "onDecrement": {
+        onDecrement: {
             action: "on-decrement",
             description: "Triggered when decrement button is clicked",
             table: {
@@ -154,7 +155,7 @@ export default {
                 },
             },
         },
-        "onDelete": {
+        onDelete: {
             action: "on-delete",
             description: "Triggered when delete button is clicked",
             table: {

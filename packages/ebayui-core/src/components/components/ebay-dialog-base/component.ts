@@ -184,8 +184,11 @@ class DialogBase extends Marko.Component<Input, State> {
         this.windowEl = this.getEl("window") ?? null;
         this.closeEl = this.getEl("close") ?? null;
         this.bodyEl = this.getEl("body") ?? null;
-        this.transitionList = this.input.transitionList || ["background-color", "transform"];
-       // Add an event listener to the dialog to fix an issue with Safari not recognizing it as a touch target.
+        this.transitionList = this.input.transitionList || [
+            "background-color",
+            "transform",
+        ];
+        // Add an event listener to the dialog to fix an issue with Safari not recognizing it as a touch target.
         this.subscribeTo(this.rootEl).on("click", () => {});
 
         this._trap({

@@ -13,12 +13,12 @@ The viewbox given will be translated to the `width` and `height` that the icons 
 
 **Couple of Notes**
 
--   We should not apply fill on base icons. We use `fill: currentColor` to be able to change the color on icons
--   We should not apply base sizes. We will apply those using CSS
--   If there is a `<use>` tag, move necessary attributes to the `<path>` and remove this tag
-    -   Specific attributes to look for: `fill` (if it needs to be different), `fill-rule`, etc.
--   In all cases, remove the `id` from the `<path>`, as it is unnecessary
--   If `id` is needed for certain `clip-path` or such, make sure it is unique
+- We should not apply fill on base icons. We use `fill: currentColor` to be able to change the color on icons
+- We should not apply base sizes. We will apply those using CSS
+- If there is a `<use>` tag, move necessary attributes to the `<path>` and remove this tag
+    - Specific attributes to look for: `fill` (if it needs to be different), `fill-rule`, etc.
+- In all cases, remove the `id` from the `<path>`, as it is unnecessary
+- If `id` is needed for certain `clip-path` or such, make sure it is unique
 
 ## Step 2: Run scripts
 

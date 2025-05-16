@@ -1,5 +1,4 @@
-class {
-}
+class {}
 
 <ebay-number-input
     on-keydown("emit", "keydown")
@@ -12,7 +11,9 @@ class {
     on-delete-click("emit", "delete-click")
     on-increment("emit", "increment")
     on-decrement("emit", "decrement")
-    min=0 max=100
-    ...input>
+    min=0
+    max=100
+    ...input
+>
     <@label>Enter a number</@label>
-    </ebay-number-input>
+</ebay-number-input>

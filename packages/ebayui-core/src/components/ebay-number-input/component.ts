@@ -40,7 +40,9 @@ class NumberInput extends Marko.Component<Input, State> {
     }
 
     onMount() {
-        this.textbox = this.getComponent("input")?.getEl("input") as HTMLInputElement;
+        this.textbox = this.getComponent("input")?.getEl(
+            "input",
+        ) as HTMLInputElement;
     }
 
     onInput(input: Input) {
@@ -75,7 +77,10 @@ class NumberInput extends Marko.Component<Input, State> {
         this.state.value = value;
         // Update the input field's value to reflect the bounded value
         this.textbox.value = value.toString();
-        this.emit("input-change", { originalEvent: event.originalEvent, value });
+        this.emit("input-change", {
+            originalEvent: event.originalEvent,
+            value,
+        });
         this.emit("change", { originalEvent: event.originalEvent, value });
     }
 

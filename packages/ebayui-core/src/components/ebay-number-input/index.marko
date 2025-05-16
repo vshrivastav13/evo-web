@@ -1,5 +1,4 @@
-import { processHtmlAttributes } from "../../common/html-attributes"
-
+import { processHtmlAttributes } from "../../common/html-attributes";
 $ const {
     label,
     a11yDeleteText,
@@ -30,12 +29,10 @@ $ const {
         type="number"
         key="input"
         value=state.value
-        >
+    >
         <@prefix-icon>
             <if(label)>
-                <label
-                    for:scoped="number-input"
-                >
+                <label for:scoped="number-input">
                     <${label}/>
                 </label>
             </if>
@@ -50,7 +47,6 @@ $ const {
             >
                 <ebay-remove-24-icon/>
             </ebay-icon-button>
-
         </@prefix-icon>
         <@postfix-icon>
             <if(a11yDeleteText)>

@@ -55,7 +55,7 @@
         "version": "npm run importSVG && prettier . --write --log-level=warn && npm run build:readme"
     },
     "dependencies": {
-        "@floating-ui/dom": "^1.6.13",
+        "@floating-ui/dom": "^1.7.0",
         "@google/model-viewer": "^4.1.0",
         "@marko-tags/subscribe": "^0.5.2",
         "highcharts": "^11.4.8",
@@ -69,7 +69,7 @@
         "makeup-roving-tabindex": "~0.7.5",
         "makeup-screenreader-trap": "~0.5.4",
         "makeup-typeahead": "^0.3.3",
-        "shaka-player": "4.14.10"
+        "shaka-player": "4.14.12"
     },
     "peerDependencies": {
         "@ebay/skin": "^19.2.0",

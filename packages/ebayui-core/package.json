@@ -28,7 +28,7 @@
         "build:storybook": "storybook build -o ./_site",
         "coverage": "vitest run --browser.headless --coverage",
         "deploy": "storybook build -o ./_site",
-        "importSVG": "node --experimental-json-modules --experimental-import-meta-resolve scripts/import-svg && prettier . --write --log-level=warn",
+        "importSVG": "node --experimental-json-modules --experimental-import-meta-resolve scripts/import-svg && prettier \"{./src/components/ebay-{icon,flag,star-rating,image-placeholder}/**/*,**/*.{js,ts,json,MD}}\" --write --log-level=warn",
         "installMarkoV4": "npm remove @marko/compiler && npm i marko@4 --force",
         "installMarkoV5": "npm i marko@5 @marko/compiler@5 --force",
         "lint": "npm run lint:less && npm run lint:js && npm run lint:whitespace",
@@ -52,7 +52,7 @@
         "tr": "npm run coverage && npm run report && open .coverage/index.html",
         "ts": "npm run test:server",
         "tt": "mtc",
-        "version": "npm run importSVG && prettier . --write --log-level=warn && npm run build:readme"
+        "version": "npm run importSVG && npm run build:readme"
     },
     "dependencies": {
         "@floating-ui/dom": "^1.7.0",

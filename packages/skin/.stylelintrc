@@ -14,7 +14,6 @@
         "no-descending-specificity": null,
         "no-duplicate-selectors": null,
         "rule-empty-line-before": null,
-        "color-function-notation": "legacy",
         "property-no-vendor-prefix": null,
         "selector-no-vendor-prefix": null,
         "value-no-vendor-prefix": null,

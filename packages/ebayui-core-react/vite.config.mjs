@@ -31,7 +31,6 @@ export default defineConfig({
             ]
         }),
         nodeExternals(),
-        typescript()
     ],
     build: {
         lib: {
@@ -42,5 +41,10 @@ export default defineConfig({
             // and might cause reference issues.
             formats: ["cjs"],
         },
+        rollupOptions: {
+            plugins: [
+                typescript()
+            ]
+        }
     },
 });

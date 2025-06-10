@@ -92,8 +92,24 @@ class NumberInput extends Marko.Component<Input, State> {
         this.emit("change", { originalEvent: event.originalEvent, value });
     }
 
+    handleAnimation(action: string) {
+        // Normally we dont want to use dom manipulation for removing or adding classes,
+        // but for this animation to work we need to trigger a reflow.
+
+        const el = this.el as HTMLElement;
+        el.classList.remove(`number-input--increment`);
+        el.classList.remove(`number-input--decrement`);
+        el.classList.remove(`number-input--increment-disabled`);
+        el.classList.remove(`number-input--decrement-disabled`);
+        // Trigger a reflow to ensure the animation starts
+        void el.offsetWidth;
+        // Add the class for the animation
+        el.classList.add(`number-input--${action}`);
+    }
+
     handleIncrement(event: { originalEvent: MouseEvent }) {
         const value = this.checkBoundary(this.textbox.value, 1);
+        this.handleAnimation(value >= this.state.max ? "increment-disabled" : "increment");
         this.state.value = value;
         // Update the input field's value to reflect the bounded value
         this.textbox.value = value.toString();
@@ -103,6 +119,7 @@ class NumberInput extends Marko.Component<Input, State> {
 
     handleDecrement(event: { originalEvent: MouseEvent }) {
         const value = this.checkBoundary(this.textbox.value, -1);
+        this.handleAnimation(value <= this.state.min ? "decrement-disabled" : "decrement");
         this.state.value = value;
         // Update the input field's value to reflect the bounded value
         this.textbox.value = value.toString();

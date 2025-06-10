@@ -56,7 +56,7 @@
         "version": "npm run importSVG && npm run build:readme"
     },
     "dependencies": {
-        "@floating-ui/dom": "^1.7.0",
+        "@floating-ui/dom": "^1.7.1",
         "@google/model-viewer": "^4.1.0",
         "@marko-tags/subscribe": "^0.5.2",
         "highcharts": "^11.4.8",
@@ -70,7 +70,7 @@
         "makeup-roving-tabindex": "~0.7.5",
         "makeup-screenreader-trap": "~0.5.4",
         "makeup-typeahead": "^0.3.3",
-        "shaka-player": "4.14.12"
+        "shaka-player": "4.15.2"
     },
     "peerDependencies": {
         "@ebay/skin": "^19.2.0",

@@ -26,8 +26,8 @@ describe("ebay-video rendering", () => {
         const controlsContainer = videoContainer.querySelector(".shaka-controls-container");
         expect(controlsContainer).toBeInTheDocument();
         const playButton = controlsContainer.querySelector(".shaka-play-button");
-        expect(playButton).toHaveAttribute("aria-label", "Play");
-        expect(playButton).toHaveAttribute("icon", "play");
+        expect(playButton).toHaveAttribute("aria-label", "Replay");
+        expect(playButton).toHaveAttribute("icon", "replay");
         expect(playButton).toHaveClass("shaka-play-button shaka-no-propagation");
         const spinnerContainer = videoContainer.querySelector(".shaka-spinner-container");
         expect(spinnerContainer).toHaveClass("shaka-hidden");

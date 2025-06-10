@@ -111,7 +111,7 @@ exports[`<EbayToggleButton /> should render component - <ImageButtonWithPlacemen
         aria-label="image alt"
         class="toggle-button__image"
         role="img"
-        style="background-image: url(https://cloudfront.slrlounge.com/wp-content/uploads/2012/07/01-SLRLounge-Holding-Standing-Wrong.jpg); background-position: top; background-size: cover; background-repeat: no-repeat;"
+        style="background-image: url("https://cloudfront.slrlounge.com/wp-content/uploads/2012/07/01-SLRLounge-Holding-Standing-Wrong.jpg"); background-position: top; background-size: cover; background-repeat: no-repeat;"
       />
     </span>
     <div

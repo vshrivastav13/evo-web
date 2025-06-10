@@ -10,8 +10,10 @@ const {
     copySVGFlags,
 } = require("./storybook/copy");
 const { splitter } = require("./split-icon");
+const yargs = require("yargs");
+const { hideBin } = require("yargs/helpers");
 
-require("yargs") // eslint-disable-line
+yargs(hideBin(process.argv))
     .usage("Usage: $0 <command> [options]")
     .command(
         "split <file>",

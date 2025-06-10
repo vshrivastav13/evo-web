@@ -61,7 +61,8 @@ describe("<EbayTextbox>", () => {
         });
         it('should not have "inline" class after blur event when value is present', () => {
             const { container } = render(<EbayTextbox floatingLabel="Test label" />);
-            fireEvent.blur(screen.getByRole("textbox"), { target: { value: "New Value" } });
+            fireEvent.input(screen.getByRole("textbox"), { target: { value: "New Value" } });
+            fireEvent.blur(screen.getByRole("textbox"));
             expect(container.querySelector(".floating-label__label")).not.toHaveClass("floating-label__label--inline");
         });
     });

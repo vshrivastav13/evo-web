@@ -30,7 +30,7 @@ describe("<EbayVideo>", () => {
     });
 
     it("shows play button", () => {
-        expect(screen.getByLabelText("Play")).toBeInTheDocument();
+        expect(screen.getByLabelText("Replay")).toBeInTheDocument();
     });
 
     it("shows loading spinner", () => {

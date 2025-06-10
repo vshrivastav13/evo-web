@@ -6,7 +6,7 @@ exports[`ebay-textbox rendering renders floating label fluid story correctly 1`]
     class="floating-label"
   >
     <label
-      class="floating-label__label"
+      class="floating-label__label floating-label__label--inline"
     >
       Floating label
     </label>
@@ -29,7 +29,7 @@ exports[`ebay-textbox rendering renders floating label story correctly 1`] = `
     class="floating-label"
   >
     <label
-      class="floating-label__label"
+      class="floating-label__label floating-label__label--inline"
     >
       Floating label
     </label>

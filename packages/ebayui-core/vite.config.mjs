@@ -27,8 +27,7 @@ export default defineConfig({
         onConsoleLog: () => true,
         globals: true,
         coverage: {
-            enabled: false,
-            provider: "istanbul",
+            enabled: isCI,
             reporter: ["json-summary", "html", "cobertura", "lcov"],
             include: ["src/**/*"],
             exclude: [

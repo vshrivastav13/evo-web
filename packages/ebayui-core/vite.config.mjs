@@ -25,10 +25,9 @@ export default defineConfig({
     },
     test: {
         onConsoleLog: () => true,
-        pool: "vmForks",
         globals: true,
         coverage: {
-            enabled: isCI,
+            enabled: false,
             provider: "istanbul",
             reporter: ["json-summary", "html", "cobertura", "lcov"],
             include: ["src/**/*"],

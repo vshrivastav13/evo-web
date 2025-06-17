@@ -20,6 +20,7 @@
     "copy:skin-site": "npm run deploy --ws",
     "deploy": "npm run deploy --ws && BASE_URL=/evo-web/ marko-run build -o ./_site && npm run deploy:copy-site",
     "deploy:copy-site": "ncp packages/skin/_site/public _site/public/skin && ncp packages/ebayui-core/_site _site/public/ebayui-core && ncp packages/ebayui-core-react/_site _site/public/ebayui-core-react",
+    "postinstall": "npx playwright install --with-deps chromium",
     "prepare": "husky",
     "release": "npm run release --ws && changeset publish",
     "test": "npm run test --ws",

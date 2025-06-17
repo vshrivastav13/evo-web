@@ -1,1 +1,3 @@
 ### ebay-number-input
+
+## Usage

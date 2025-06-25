@@ -15,11 +15,10 @@ export type NumberInputChangeHandler = EbayChangeEventHandler<HTMLInputElement, 
 export type NumberInputFocusHandler = EbayFocusEventHandler<HTMLInputElement, NumberInputEventProps>;
 export type NumberInputKeyDownHandler = EbayKeyboardEventHandler<HTMLInputElement, NumberInputEventProps>;
 
-export interface EbayNumberInputProps
-    extends Omit<
-        TextboxInput,
-        "onChange" | "onInputChange" | "onFocus" | "onBlur" | "onKeyDown" | "onKeyPress" | "onKeyUp" | "forwardedRef"
-    > {
+export type EbayNumberInputProps = Omit<
+    TextboxInput,
+    "onChange" | "onInputChange" | "onFocus" | "onBlur" | "onKeyDown" | "onKeyPress" | "onKeyUp" | "forwardedRef"
+> & {
     label?: string;
     a11yDeleteText?: string;
     min?: number;
@@ -35,4 +34,4 @@ export interface EbayNumberInputProps
     onDeleteClick?: EbayMouseEventHandler<HTMLInputElement, NumberInputEventProps>;
     onIncrement?: EbayMouseEventHandler<HTMLInputElement, NumberInputEventProps>;
     onDecrement?: EbayMouseEventHandler<HTMLInputElement, NumberInputEventProps>;
-}
+};

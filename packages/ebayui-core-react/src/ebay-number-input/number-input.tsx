@@ -1,7 +1,7 @@
 import React, { FC, useRef, useState } from "react";
 import classNames from "classnames";
 import { EbayTextbox, EbayTextboxPrefixIcon, EbayTextboxPostfixIcon } from "../ebay-textbox";
-import { EbayNumberInputProps } from "./types";
+import type { EbayNumberInputProps } from "./types";
 import { EbayIconButton } from "../ebay-icon-button";
 
 const EbayNumberInput: FC<EbayNumberInputProps> = (props) => {
@@ -108,52 +108,60 @@ const EbayNumberInput: FC<EbayNumberInputProps> = (props) => {
     };
 
     return (
-        <span ref={containerRef} className={classNames(`number-input`, className)}>
+        <span
+            ref={containerRef}
+            className={classNames(
+                `number-input`,
+                a11yDeleteText && inputValue === 1 && "number-input--show-delete",
+                className
+            )}
+        >
             <EbayTextbox
-                type="number"
-                min={min}
                 max={max}
-                value={inputValue}
-                onChange={handleInputChange}
-                onInputChange={handleInputChange}
-                onFocus={handleFocus}
+                min={min}
                 onBlur={handleBlur}
+                onChange={handleInputChange}
+                onFocus={handleFocus}
+                onInputChange={handleInputChange}
                 onKeyDown={handleKeyDown}
                 onKeyPress={handleKeyPress}
                 onKeyUp={handleKeyUp}
-                {...rest}
+                type="number"
+                value={inputValue}
             >
                 <EbayTextboxPrefixIcon>
-                    {label && <label htmlFor={rest.id || "number-input"}>{label}</label>}
-
-                    {/* Show remove button when greater than min or when a11yDeleteText was not passsed */}
-                    {(!a11yDeleteText || inputValue > min) && (
-                        <EbayIconButton
-                            disabled={inputValue <= min}
-                            size="small"
-                            className="number-input__decrement"
-                            icon="remove24"
-                            onClick={handleDecrement}
-                        />
-                    )}
-
-                    {/* Show delete button when equal to min or when a11yDeleteText is passsed */}
-                    {a11yDeleteText && inputValue === min && (
-                        <EbayIconButton
-                            size="small"
-                            className="number-input__decrement"
-                            icon="delete24"
-                            onClick={handleDeleteClick}
-                        />
-                    )}
+                    {label && <label htmlFor={rest?.id || "number-input"}>{label}</label>}
+                    <EbayIconButton
+                        aria-hidden
+                        className="number-input__decrement"
+                        disabled={inputValue <= min}
+                        icon="remove24"
+                        onClick={handleDecrement}
+                        size="small"
+                        tabIndex={-1}
+                        transparent
+                    />
                 </EbayTextboxPrefixIcon>
                 <EbayTextboxPostfixIcon>
+                    {a11yDeleteText && (
+                        <EbayIconButton
+                            aria-label={a11yDeleteText}
+                            className="number-input__delete"
+                            icon="delete24"
+                            onClick={handleDeleteClick}
+                            size="small"
+                            transparent
+                        />
+                    )}
                     <EbayIconButton
-                        disabled={inputValue >= max}
-                        size="small"
+                        aria-hidden
                         className="number-input__increment"
+                        disabled={inputValue >= max}
                         icon="add24"
                         onClick={handleIncrement}
+                        size="small"
+                        tabIndex={-1}
+                        transparent
                     />
                 </EbayTextboxPostfixIcon>
             </EbayTextbox>

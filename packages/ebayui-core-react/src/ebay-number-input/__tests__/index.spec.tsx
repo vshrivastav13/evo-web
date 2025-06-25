@@ -16,9 +16,8 @@ describe("given a number input textbox", () => {
 
     describe("when increment is pressed", () => {
         beforeEach(async () => {
-            render(<EbayNumberInput value={1} onChange={onChange} onIncrement={onIncrement} />);
-            const buttons = screen.getAllByRole("button");
-            const incrementButton = buttons.find((btn) => btn.className.includes("number-input__increment"));
+            const { container } = render(<EbayNumberInput value={1} onChange={onChange} onIncrement={onIncrement} />);
+            const incrementButton = container.querySelector(".number-input__increment");
             await fireEvent.click(incrementButton!);
         });
 
@@ -33,9 +32,8 @@ describe("given a number input textbox", () => {
 
     describe("when decrement is pressed", () => {
         beforeEach(async () => {
-            render(<EbayNumberInput value={2} onChange={onChange} onDecrement={onDecrement} />);
-            const buttons = screen.getAllByRole("button");
-            const decrementButton = buttons.find((btn) => btn.className.includes("number-input__decrement"));
+            const { container } = render(<EbayNumberInput value={2} onChange={onChange} onDecrement={onDecrement} />);
+            const decrementButton = container.querySelector(".number-input__decrement");
             await fireEvent.click(decrementButton!);
         });
 
@@ -53,16 +51,38 @@ describe("given a number input textbox with delete", () => {
     let onChange: jest.Mock;
     let onIncrement: jest.Mock;
     let onDecrement: jest.Mock;
+    let onDeleteClick: jest.Mock;
 
     beforeEach(() => {
         onChange = jest.fn();
         onIncrement = jest.fn();
         onDecrement = jest.fn();
+        onDeleteClick = jest.fn();
+    });
+
+    describe("when delete is pressed", () => {
+        beforeEach(async () => {
+            const { container } = render(
+                <EbayNumberInput
+                    value={1}
+                    min={1}
+                    a11yDeleteText="Delete item"
+                    onChange={onChange}
+                    onDeleteClick={onDeleteClick}
+                />,
+            );
+            const deleteButton = container.querySelector(".number-input__delete");
+            await fireEvent.click(deleteButton!);
+        });
+
+        it("should trigger delete event", () => {
+            expect(onDeleteClick).toHaveBeenCalledWith(expect.anything(), { value: 1 });
+        });
     });
 
     describe("when increment is pressed", () => {
         beforeEach(async () => {
-            render(
+            const { container } = render(
                 <EbayNumberInput
                     value={1}
                     min={1}
@@ -71,12 +91,11 @@ describe("given a number input textbox with delete", () => {
                     onIncrement={onIncrement}
                 />,
             );
-            const buttons = screen.getAllByRole("button");
-            const incrementButton = buttons.find((btn) => btn.className.includes("number-input__increment"));
+            const incrementButton = container.querySelector(".number-input__increment");
             await fireEvent.click(incrementButton!);
         });
 
-        it("should increment the value and hide delete button", async () => {
+        it("should increment the value", () => {
             expect(onChange).toHaveBeenCalledWith(expect.anything(), { value: 2 });
         });
 
@@ -87,7 +106,7 @@ describe("given a number input textbox with delete", () => {
 
     describe("when decrement is pressed", () => {
         beforeEach(async () => {
-            render(
+            const { container } = render(
                 <EbayNumberInput
                     value={2}
                     min={1}
@@ -96,8 +115,7 @@ describe("given a number input textbox with delete", () => {
                     onDecrement={onDecrement}
                 />,
             );
-            const buttons = screen.getAllByRole("button");
-            const decrementButton = buttons.find((btn) => btn.className.includes("number-input__decrement"));
+            const decrementButton = container.querySelector(".number-input__decrement");
             await fireEvent.click(decrementButton!);
         });
 
@@ -122,11 +140,18 @@ describe("given a number input textbox with constraints", () => {
         onDecrement = jest.fn();
     });
 
+    describe("when input value exceeds max", () => {
+        it("should disable increment button", () => {
+            const { container } = render(<EbayNumberInput max={10} min={1} value={1} onChange={onChange} />);
+            const incrementDisabledButton = container.querySelector(".number-input__decrement");
+            expect(incrementDisabledButton).toHaveAttribute("disabled");
+        });
+    });
+
     describe("when increment is pressed at max value", () => {
         beforeEach(async () => {
-            render(<EbayNumberInput max={10} min={1} value={10} onChange={onChange} onIncrement={onIncrement} />);
-            const buttons = screen.getAllByRole("button");
-            const incrementButton = buttons.find((btn) => btn.className.includes("number-input__increment"));
+            const { container } = render(<EbayNumberInput max={10} min={1} value={10} onChange={onChange} onIncrement={onIncrement} />);
+            const incrementButton = container.querySelector(".number-input__increment");
             await fireEvent.click(incrementButton!);
         });
 
@@ -141,9 +166,8 @@ describe("given a number input textbox with constraints", () => {
 
     describe("when decrement is pressed", () => {
         beforeEach(async () => {
-            render(<EbayNumberInput max={10} min={1} value={10} onChange={onChange} onDecrement={onDecrement} />);
-            const buttons = screen.getAllByRole("button");
-            const decrementButton = buttons.find((btn) => btn.className.includes("number-input__decrement"));
+            const { container } = render(<EbayNumberInput max={10} min={1} value={10} onChange={onChange} onDecrement={onDecrement} />);
+            const decrementButton = container.querySelector(".number-input__decrement");
             await fireEvent.click(decrementButton!);
         });
 

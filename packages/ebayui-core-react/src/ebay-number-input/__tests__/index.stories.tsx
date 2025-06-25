@@ -16,7 +16,7 @@ export const WithCustomMinAndMax: StoryFn<typeof EbayNumberInput> = () => (
 );
 
 export const WithDelete: StoryFn<typeof EbayNumberInput> = () => (
-    <EbayNumberInput min={20} max={30} value={20} a11yDeleteText={"Delete"} />
+    <EbayNumberInput min={1} max={30} value={1} a11yDeleteText={"Delete"} />
 );
 
 export const WithLabel: StoryFn<typeof EbayNumberInput> = () => (

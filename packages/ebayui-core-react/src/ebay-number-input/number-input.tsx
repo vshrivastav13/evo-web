@@ -22,6 +22,7 @@ const EbayNumberInput: FC<EbayNumberInputProps> = (props) => {
         onDeleteClick = () => {},
         onIncrement = () => {},
         onDecrement = () => {},
+        tabIndex = -1,
         ...rest
     } = props;
     const defaultMin = a11yDeleteText ? 1 : 0;
@@ -138,7 +139,7 @@ const EbayNumberInput: FC<EbayNumberInputProps> = (props) => {
                         icon="remove24"
                         onClick={handleDecrement}
                         size="small"
-                        tabIndex={-1}
+                        tabIndex={tabIndex}
                         transparent
                     />
                 </EbayTextboxPrefixIcon>
@@ -160,7 +161,7 @@ const EbayNumberInput: FC<EbayNumberInputProps> = (props) => {
                         icon="add24"
                         onClick={handleIncrement}
                         size="small"
-                        tabIndex={-1}
+                        tabIndex={tabIndex}
                         transparent
                     />
                 </EbayTextboxPostfixIcon>
